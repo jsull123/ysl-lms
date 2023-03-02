@@ -1,5 +1,6 @@
 import java.util.UUID;
 import java.util.Date;
+import java.util.ArrayList;
 
 private UUID authorID;
 private String comment;
