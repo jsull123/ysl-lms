@@ -1,0 +1,35 @@
+[
+    {
+        "courseID":"fj2n3984-984f-f924-204-299vn2984",
+        "title":"Java Course",
+        "language":"Java",
+        "description":"Learn Java for beginners",
+        "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+        "reviews":[],
+        "comments":[],
+        "modules":[{
+                "title":"Variables",
+                "topic":"Variables in Java",
+                "content":[{
+                    "contentType":"LESSON",
+                    "title":"Data types",
+                    "lesson":"There are 8 primitive data types in Java: boolean, byte, char, short, int, long, float and double.",
+                    "question":{
+                            "question":"Which of the following is not a primitive data type?",
+                            "answers":[{
+                                "text":"boolean"
+                            },{
+                                "text":"char"
+                            },{
+                                "text":"String"
+                            },{
+                                "text":"int"
+                            }],
+                            "correctAnswer":3
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

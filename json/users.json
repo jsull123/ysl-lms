@@ -1,0 +1,52 @@
+[
+    {
+        "userID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+        "accountType":"STUDENT",
+        "firstName":"Bob",
+        "lastName":"Smith",
+        "username":"bsmith1304",
+        "email":"bobsmith@gmail.com",
+        "password":"password123",
+        "dob":"2/27/1980",
+        "enrolledCourses": [{
+            "courseID":"256ftw1-15kd-412c-tt13-ka71nvqt8",
+            "moduleProgess":[{
+                        "progress":[{
+                                "complete":1
+                            },{
+                                "complete":0
+                            }
+                        ]
+                    },{
+                        "progress":[{
+                                "complete":0
+                            },{
+                                "complete":1
+                            },{
+                                "complete":1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],        
+        "createdCourses":[]
+    },
+    {
+        "userID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+        "accountType":"AUTHOR",
+        "firstName":"Matt",
+        "lastName":"Johnson",
+        "username":"mjohnson12",
+        "email":"mattjohnson@gmail.com",
+        "password":"matt$$123",
+        "dob":"5/12/1960",
+        "enrolledCourses": [],        
+        "createdCourses":[{
+            "courseID":"fj2n3984-984f-f924-204-299vn2984"
+            },{
+            "courseID":"5oigj-v082i-f024-492-iuqit98"
+            }
+        ]
+    }
+]
