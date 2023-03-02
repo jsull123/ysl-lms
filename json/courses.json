@@ -5,8 +5,37 @@
         "language":"Java",
         "description":"Learn Java for beginners",
         "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
-        "reviews":[],
-        "comments":[],
+        "reviews":[
+            {
+                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "rating":0.0,
+                "review":"This course is very bad",
+                "dateAdded":"2/22/2023"
+            },{
+                "authorID":"foi824-v982-g35-9838-vh2949na",
+                "rating":9.8,
+                "review":"This course is very good",
+                "dateAdded":"2/27/2023"
+            }
+        ],
+        "comments":[
+            {
+                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "comment":"What is a String?",
+                "dateAdded":"2/22/2023",
+                "replies":[{
+                        "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+                        "comment":"A string is a sequence of characters",
+                        "dateAdded":"2/23/2023",
+                        "replies":[{
+                            "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                            "comment":"Thank you",
+                            "dateAdded":"2/24/2023"
+                        }]
+                    }
+                ]
+            }
+        ],
         "modules":[{
                 "title":"Variables",
                 "topic":"Variables in Java",
