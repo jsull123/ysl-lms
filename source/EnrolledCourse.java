@@ -25,4 +25,8 @@ public class EnrolledCourse {
     public float getCourseProgress(){
         return 0.0f;
     }
+
+    public String toString(){
+        return "";
+    }
 }
