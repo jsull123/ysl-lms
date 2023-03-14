@@ -30,7 +30,8 @@
                         "replies":[{
                             "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
                             "comment":"Thank you",
-                            "dateAdded":"2/24/2023"
+                            "dateAdded":"2/24/2023",
+                            "replies":[]
                         }]
                     }
                 ]

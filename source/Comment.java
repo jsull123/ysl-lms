@@ -1,30 +1,34 @@
+package source;
+
 import java.util.UUID;
 import java.util.Date;
 import java.util.ArrayList;
 
-private UUID authorID;
-private String comment;
-private Date dateAdded;
-private ArrayList<Comment> comments;
-
-public Comment(UUID authorID, float rating, String review, Date dateAdded){
-    this.dateAdded = dateAdded;
-    this.UUID = authorID;
-    this.comment = review;
-    comments.add(review);
-}
-
-
-public int numComments(){
-    return 1;
-}
-
-public Comment getComment(int index) {
+public class Comment{
+    private UUID authorID;
+    private String comment;
+    private Date dateAdded;
+    private ArrayList<Comment> comments;
     
-    Comment CommentOfInterest = comments.get(0);
-    return CommentOFInterest;
-}
-
-public void toString(){
-    System.out.pritnln("Stub");
+    public Comment(UUID authorID, String comment, Date dateAdded, ArrayList<Comment> comments){
+        this.dateAdded = dateAdded;
+        this.authorID = authorID;
+        this.comment = comment;
+        this.comments = comments;
+    }
+    
+    
+    public int numComments(){
+        return 1;
+    }
+    
+    public Comment getComment(int index) {
+        
+        Comment CommentOfInterest = comments.get(0);
+        return CommentOfInterest;
+    }
+    
+    public String toString(){
+        return "";
+    }
 }
