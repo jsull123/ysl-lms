@@ -7,7 +7,7 @@
         "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
         "reviews":[
             {
-                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                 "rating":0.0,
                 "review":"This course is very bad",
                 "dateAdded":"2/22/2023"
@@ -20,7 +20,7 @@
         ],
         "comments":[
             {
-                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                 "comment":"What is a String?",
                 "dateAdded":"2/22/2023",
                 "replies":[{
@@ -28,7 +28,7 @@
                         "comment":"A string is a sequence of characters",
                         "dateAdded":"2/23/2023",
                         "replies":[{
-                            "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                            "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                             "comment":"Thank you",
                             "dateAdded":"2/24/2023",
                             "replies":[]

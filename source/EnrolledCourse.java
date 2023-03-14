@@ -1,11 +1,12 @@
 package source;
 import java.util.UUID;
+import java.util.ArrayList;
 
 public class EnrolledCourse {
     private UUID courseID;
-    private int[][] moduleProgress;
+    private ArrayList<ArrayList<Integer>> moduleProgress;
 
-    public EnrolledCourse(UUID courseID, int[][] moduleProgress){
+    public EnrolledCourse(UUID courseID, ArrayList<ArrayList<Integer>> moduleProgress){
         this.courseID = courseID;
         this.moduleProgress = moduleProgress;
     }
@@ -16,6 +17,10 @@ public class EnrolledCourse {
 
     public UUID getID(){
         return courseID;
+    }
+
+    public void setModuleProgress(ArrayList<ArrayList<Integer>> moduleProgress){
+        this.moduleProgress = moduleProgress;
     }
 
     public float getModuleProgress(int index){
