@@ -2,8 +2,6 @@ package source;
 
 import java.util.ArrayList;
 
-import javax.swing.text.AbstractDocument.Content;
-
 public class Module {
     public String title;
     public String topic;
