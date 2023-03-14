@@ -32,9 +32,9 @@ public class UserDataProcessor {
                     JSONArray jmoduleProgress = (JSONArray)jCourse.get(DataConstants.MODULE_PROGRESS);
                     for (int p = 0; p < jmoduleProgress.size(); p++){
                         moduleProgress.add(new ArrayList<>());
-                        JSONArray jprogress = (JSONArray)((JSONArray)jmoduleProgress.get(p)).get(DataConstants.PROGRESS);
-                        for (int q = 0; q < jmoduleProgress.size(); q++){
-                            moduleProgress.get(p).add(jmoduleProgress.)
+                        JSONArray jprogress = (JSONArray)jmoduleProgress.get(p);
+                        for (int q = 0; q < jprogress.size(); q++){
+                            
                         }
                     }
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class EnrolledCourse {
     private UUID courseID;
-    private ArrayList<ArrayList<Integer>> moduleProgress;
+    private ArrayList<ArrayList<Boolean>> moduleProgress;
 
-    public EnrolledCourse(UUID courseID, ArrayList<ArrayList<Integer>> moduleProgress){
+    public EnrolledCourse(UUID courseID, ArrayList<ArrayList<Boolean>> moduleProgress){
         this.courseID = courseID;
         this.moduleProgress = moduleProgress;
     }
@@ -19,7 +19,7 @@ public class EnrolledCourse {
         return courseID;
     }
 
-    public void setModuleProgress(ArrayList<ArrayList<Integer>> moduleProgress){
+    public void setModuleProgress(ArrayList<ArrayList<Boolean>> moduleProgress){
         this.moduleProgress = moduleProgress;
     }
 

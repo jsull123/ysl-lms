@@ -8,4 +8,11 @@ public abstract class DataConstants {
 
     protected static final String ENROLLED_COURSES = "enrolledCourses";
     protected static final String CREATED_COURSES = "createdCourses";
+
+    protected static final String COURSE_ID = "courseID";
+    
+    protected static final String MODULE_PROGRESS = "moduleProgess";
+
+    protected static final String PROGRESS = "progress";
+    protected static final String IS_COMPLETE = "isComplete";
 }
