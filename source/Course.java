@@ -3,6 +3,7 @@
 import java.util.UUID;
 import java.util.ArrayList;
 
+public class Course {
 private UUID courseID;
 private String title;
 private String language;
@@ -72,6 +73,6 @@ public String toString() {
     a good LMS!";
     return toReturn;
 }
- 
+}
 
 
