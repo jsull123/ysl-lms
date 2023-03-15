@@ -1,7 +1,7 @@
 import java.util.UUID;
 import java.util.Date;
 import java.util.ArrayList;
-
+public class Comment {
 private UUID authorID;
 private String comment;
 private Date dateAdded;
@@ -27,4 +27,5 @@ public Comment getComment(int index) {
 
 public void toString(){
     System.out.pritnln("Stub");
+}
 }
