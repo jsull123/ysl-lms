@@ -35,5 +35,49 @@ public class User {
     public UUID getID(){
         return userID;
     }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String toString() {
+        return "";
+    }
+
+    public void addCC(Course course) {
+
+    }
+
+    public Course getCC(int index) {
+        return new Course(userID, lastName, firstName, 0, email, userID, null, null, null);
+    }
+
+    public ArrayList<UUID> getAllCC() {
+        return new ArrayList<>();
+    }
+
+    public int numCC() {
+        return 0;
+    }
+
+    public void addEC(Course course) {
+
+    }
+
+    public Course getEC(int index) {
+        return new Course(userID, lastName, firstName, 0, email, userID, null, null, null);
+    }
+
+    public ArrayList<EnrolledCourse> getAllEC() {
+        return new ArrayList<>();
+    }
+
+    public int numEC() {
+        return 0;
+    }
 }
    
