@@ -1,18 +1,18 @@
 [
     {
-        "courseID":"fj2n3984-984f-f924-204-299vn2984",
+        "courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55",
         "title":"Java Course",
         "language":"Java",
         "description":"Learn Java for beginners",
-        "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+        "authorID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
         "reviews":[
             {
-                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                 "rating":0.0,
                 "review":"This course is very bad",
                 "dateAdded":"2/22/2023"
             },{
-                "authorID":"foi824-v982-g35-9838-vh2949na",
+                "authorID":"bf32d410-9cec-44d0-9677-6ad40bbf87a5",
                 "rating":9.8,
                 "review":"This course is very good",
                 "dateAdded":"2/27/2023"
@@ -20,15 +20,15 @@
         ],
         "comments":[
             {
-                "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                 "comment":"What is a String?",
                 "dateAdded":"2/22/2023",
                 "replies":[{
-                        "authorID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+                        "authorID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
                         "comment":"A string is a sequence of characters",
                         "dateAdded":"2/23/2023",
                         "replies":[{
-                            "authorID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+                            "authorID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
                             "comment":"Thank you",
                             "dateAdded":"2/24/2023",
                             "replies":[]
