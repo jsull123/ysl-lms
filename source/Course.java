@@ -31,15 +31,15 @@ public class Course{
     }
     
     public int numReviews() {
-        return 1;
+        return reviews.size();
     }
     
     public int numComments() {
-        return 1;
+        return comments.size();
     } 
     
     public int numModules() {
-        return 1;
+        return modules.size();
     }
     
     public Review getReview(int index) {
