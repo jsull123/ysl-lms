@@ -44,10 +44,6 @@ public class User {
         return username;
     }
 
-    public String toString() {
-        return "";
-    }
-
     public void addCC(Course course) {
         createdCourses.add(course.getCourseID());
     }
