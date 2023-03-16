@@ -25,7 +25,7 @@ public class CourseList {
     }
 
     public Course getCourse(int index) {
-        return new Course(null, null, null, 0, null, null, null, null, null)
+        return new Course(null, null, null, 0, null, null, null, null, null);
     }
 
     public void addCourse(Course course) {
