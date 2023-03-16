@@ -49,35 +49,35 @@ public class User {
     }
 
     public void addCC(Course course) {
-
+        createdCourses.add(course.getCourseID());
     }
 
-    public Course getCC(int index) {
-        return new Course(userID, lastName, firstName, 0, email, userID, null, null, null);
+    public UUID getCC(int index) {
+        return createdCourses.get(index);
     }
 
     public ArrayList<UUID> getAllCC() {
-        return new ArrayList<>();
+        return createdCourses;
     }
 
     public int numCC() {
-        return 0;
+        return createdCourses.size();
     }
 
-    public void addEC(Course course) {
-
+    public void addEC(EnrolledCourse course) {
+        enrolledCourses.add(course);
     }
 
-    public Course getEC(int index) {
-        return new Course(userID, lastName, firstName, 0, email, userID, null, null, null);
+    public EnrolledCourse getEC(int index) {
+        return enrolledCourses.get(index);
     }
 
     public ArrayList<EnrolledCourse> getAllEC() {
-        return new ArrayList<>();
+        return enrolledCourses;
     }
 
     public int numEC() {
-        return 0;
+        return enrolledCourses.size();
     }
 }
    
