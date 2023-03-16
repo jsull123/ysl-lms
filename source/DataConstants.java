@@ -5,6 +5,13 @@ public abstract class DataConstants {
     protected static final String COURSES_FILE_NAME = "json/courses.json";
     protected static final String USER_ID = "userID";
     protected static final String ACCOUNT_TYPE = "accountType";
+    protected static final String FIRST_NAME = "firstName";
+    protected static final String LAST_NAME = "lastName";
+    protected static final String USERNAME = "username";
+    protected static final String EMAIL = "email";
+    protected static final String PASSWORD = "password";
+    protected static final String DOB = "dob";
+
 
     protected static final String ENROLLED_COURSES = "enrolledCourses";
     protected static final String CREATED_COURSES = "createdCourses";

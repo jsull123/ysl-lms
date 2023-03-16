@@ -23,9 +23,15 @@ public class CourseList {
         return courses.get(courseID);
     }
 
+<<<<<<< HEAD
+    public Course getCourse(int index) {
+        return new Course(null, null, null, 0, null, null, null, null, null);
+    }
+=======
     /*public Course getCourse(int index) {
     
     }*/
+>>>>>>> 19b760e2d395997b800c2379c27d52b848175ea6
 
     public void addCourse(Course course) {
         courses.put(course.getCourseID(), course);

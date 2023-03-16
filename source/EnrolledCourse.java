@@ -32,6 +32,14 @@ public class EnrolledCourse {
     }
 
     public String toString(){
-        return "";
+        String ret = courseID+"\n";
+        for (int i = 0; i < moduleProgress.size(); i++){
+            ret += "Progress "+(i+1)+"\n";
+            ArrayList<Boolean> progress = moduleProgress.get(i);
+            for (int j = 0; j < progress.size(); j++){
+                ret += "\t"+progress.get(j)+"\n";
+            }
+        }
+        return ret;
     }
 }
