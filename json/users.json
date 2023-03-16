@@ -1,6 +1,6 @@
 [
     {
-        "userID":"df6fef1-13kf-492c-gk23-86nfa0ai5",
+        "userID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
         "accountType":"STUDENT",
         "firstName":"Bob",
         "lastName":"Smith",
@@ -9,21 +9,21 @@
         "password":"password123",
         "dob":"2/27/1980",
         "enrolledCourses": [{
-            "courseID":"256ftw1-15kd-412c-tt13-ka71nvqt8",
+            "courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55",
             "moduleProgess":[{
                         "progress":[{
-                                "complete":1
+                                "isComplete":true
                             },{
-                                "complete":0
+                                "isComplete":false
                             }
                         ]
                     },{
                         "progress":[{
-                                "complete":0
+                                "isComplete":false
                             },{
-                                "complete":1
+                                "isComplete":true
                             },{
-                                "complete":1
+                                "isComplete":true
                             }
                         ]
                     }
@@ -33,7 +33,7 @@
         "createdCourses":[]
     },
     {
-        "userID":"vj9395s-13kf-492c-gk23-86nfa0ai5",
+        "userID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
         "accountType":"AUTHOR",
         "firstName":"Matt",
         "lastName":"Johnson",
@@ -43,9 +43,9 @@
         "dob":"5/12/1960",
         "enrolledCourses": [],        
         "createdCourses":[{
-            "courseID":"fj2n3984-984f-f924-204-299vn2984"
+            "courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55"
             },{
-            "courseID":"5oigj-v082i-f024-492-iuqit98"
+            "courseID":"ad09ac27-354d-4ccd-a8ac-4573e7bbc7f0"
             }
         ]
     }
