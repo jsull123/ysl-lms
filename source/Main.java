@@ -1,8 +1,10 @@
 package source;
-import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args){
-        ArrayList<User> users = UserDataProcessor.loadData();
+        UserList userList = UserDataProcessor.loadData();
+
+        String s = userList.dbgToString();
+        System.out.println(userList.dbgToString());
     }
 }

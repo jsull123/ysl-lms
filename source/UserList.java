@@ -1,27 +1,28 @@
 package source;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class UserList {
     private HashMap<UUID, User> users;
-    private HashMap<String, String> passwordMap;
+    private HashMap<UUID, String> passwordMap;
     private User currentUser;
     private static UserList userList; 
 
     private UserList(ArrayList<User> users){
-        // make hash maps
-        for(int i = 0; i < users.size; i++) {
-            User newUser = users.get(i);
-            this.users.put(newUser.getID, newUser);
+        this.users = new HashMap<>();
+        this.passwordMap = new HashMap<>();
+        for(int i = 0; i < users.size(); i++) {
+            addUser(users.get(i));
         }
         currentUser = null;
     }
 
-    public static UserList getInstance(){
-        UserList userList = new UserList()
-        return null;
+    public static UserList getInstance(ArrayList<User> users){
+        userList = new UserList(users);
+        return userList;
     }
 
     public void setCurrentUser(User currentUser){
@@ -29,22 +30,17 @@ public class UserList {
     }
 
     public User getUser(String username){
-        for(User user: this.users.values()){
-            if(username.equals(user.getUsername)){
+        for(User user : this.users.values()){
+            if(username.equals(user.getUsername())){
                 return user;
-            } else {
-                return null;
             }
         }
+        return null;
     }
 
     public User getUser(UUID userID){
         return users.get(userID);
     }
-
-//    public User getUsers(int index){
-//        
-//    }
 
     public int numUsers(){
         return users.size();
@@ -52,5 +48,23 @@ public class UserList {
 
     public void addUser(User user){
         users.put(user.getID(), user);
+        passwordMap.put(user.getID(), user.getPassword());
+    }
+    
+    public User getCurrentUser(){
+        return currentUser;
+    }
+
+     // Temporary toString for testing data loading
+    public String dbgToString(){
+        User[] u = new User[users.size()];
+        users.values().toArray(u);
+
+        String ret = "";
+        for (int i = 0; i < users.size(); i++){
+            ret += "User "+(i+1)+"\n"+u[i].dbgToString()+"\n";
+        }
+
+        return ret;
     }
 }

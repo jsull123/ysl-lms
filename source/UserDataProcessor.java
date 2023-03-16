@@ -3,7 +3,7 @@ package source;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
-import javax.xml.crypto.Data;
+//1import java.util.Date;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 public class UserDataProcessor {
 
-    public static ArrayList<EnrolledCourse> loadEnrolledCourses(JSONObject jUser){
+    private static ArrayList<EnrolledCourse> loadEnrolledCourses(JSONObject jUser){
         ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<>();
         JSONArray jEnrolledCourses = (JSONArray)jUser.get(DataConstants.ENROLLED_COURSES);
         
@@ -27,7 +27,6 @@ public class UserDataProcessor {
                 
                 for (int p = 0; p < jProgress.size(); p++){
                     progress.add((Boolean)((JSONObject)(jProgress.get(p))).get(DataConstants.IS_COMPLETE));
-                    System.out.println(progress.get(progress.size()-1));
                 }
                 moduleProgress.add(progress);
             }
@@ -39,7 +38,7 @@ public class UserDataProcessor {
         return enrolledCourses;
     }
 
-    public static ArrayList<User> loadData(){
+    public static UserList loadData(){
         ArrayList<User> users = new ArrayList<>();
         try{
             FileReader reader = new FileReader(DataConstants.USERS_FILE_NAME);
@@ -53,13 +52,19 @@ public class UserDataProcessor {
                 JSONArray jCreatedCourses = (JSONArray)jUser.get(DataConstants.CREATED_COURSES);
                 for (int c = 0; c < jCreatedCourses.size(); c++){
                     createdCourses.add(UUID.fromString((String)((JSONObject)jCreatedCourses.get(c)).get(DataConstants.COURSE_ID)));
-                }
+                }   
 
                 users.add(new User(
                     UUID.fromString((String)jUser.get(DataConstants.USER_ID)),
                     AccountType.fromString((String)jUser.get(DataConstants.ACCOUNT_TYPE)),
-                    
-
+                    (String)jUser.get(DataConstants.FIRST_NAME),
+                    (String)jUser.get(DataConstants.LAST_NAME),
+                    (String)jUser.get(DataConstants.USERNAME),
+                    (String)jUser.get(DataConstants.EMAIL),
+                    (String)jUser.get(DataConstants.PASSWORD),
+                    Date.fromString((String)jUser.get(DataConstants.DOB)),
+                    createdCourses,
+                    enrolledCourses
                 ));
             }
             
@@ -67,7 +72,7 @@ public class UserDataProcessor {
             e.printStackTrace();
         }
     
-        return users;
+        return UserList.getInstance(users);
     }
 
     public static void saveData(UserList userList){

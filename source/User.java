@@ -1,6 +1,6 @@
 package source;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.UUID;
 
 public class User {
@@ -34,6 +34,10 @@ public class User {
 
     public UUID getID(){
         return userID;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     public AccountType getAccountType() {
@@ -74,6 +78,27 @@ public class User {
 
     public int numEC() {
         return enrolledCourses.size();
+    }
+
+
+    // Temporary toString for testing data loading
+    public String dbgToString(){
+        String ret = 
+        "ID: "+userID+"\nAccountType: "+accountType+"\nFirst: "
+        +firstName+"\nLast: "+lastName+"\nUsername: "+username
+        +"\nEmail: "+email+"\nPassword: "+password+"\nDOB: "+dob+"\nCC: ";
+
+        for (int i = 0; i < createdCourses.size(); i++){
+            ret += "\n\t"+createdCourses.get(i);
+        }
+        ret += "\nEC: ";
+
+        for (int i = 0; i < enrolledCourses.size(); i++){
+            ret += "\n\t"+enrolledCourses.get(i);
+        }
+        ret += "\n";
+
+        return ret;
     }
 }
    
