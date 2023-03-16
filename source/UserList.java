@@ -12,10 +12,15 @@ public class UserList {
 
     private UserList(ArrayList<User> users){
         // make hash maps
+        for(int i = 0; i < users.size; i++) {
+            User newUser = users.get(i);
+            this.users.put(newUser.getID, newUser);
+        }
         currentUser = null;
     }
 
     public static UserList getInstance(){
+        UserList userList = new UserList()
         return null;
     }
 
@@ -24,16 +29,22 @@ public class UserList {
     }
 
     public User getUser(String username){
-        return null;
+        for(User user: this.users.values()){
+            if(username.equals(user.getUsername)){
+                return user;
+            } else {
+                return null;
+            }
+        }
     }
 
     public User getUser(UUID userID){
         return users.get(userID);
     }
 
-    public User getUsers(int index){
-        return null;
-    }
+//    public User getUsers(int index){
+//        
+//    }
 
     public int numUsers(){
         return users.size();
