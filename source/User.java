@@ -35,5 +35,45 @@ public class User {
     public UUID getID(){
         return userID;
     }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void addCC(Course course) {
+        createdCourses.add(course.getCourseID());
+    }
+
+    public UUID getCC(int index) {
+        return createdCourses.get(index);
+    }
+
+    public ArrayList<UUID> getAllCC() {
+        return createdCourses;
+    }
+
+    public int numCC() {
+        return createdCourses.size();
+    }
+
+    public void addEC(EnrolledCourse course) {
+        enrolledCourses.add(course);
+    }
+
+    public EnrolledCourse getEC(int index) {
+        return enrolledCourses.get(index);
+    }
+
+    public ArrayList<EnrolledCourse> getAllEC() {
+        return enrolledCourses;
+    }
+
+    public int numEC() {
+        return enrolledCourses.size();
+    }
 }
    
