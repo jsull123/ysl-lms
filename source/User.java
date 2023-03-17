@@ -40,6 +40,22 @@ public class User {
         return password;
     }
 
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+    
+    public String getEmail(){
+        return email;
+    }
+
+    public Date getDOB(){
+        return dob;
+    }
+
     public AccountType getAccountType() {
         return accountType;
     }

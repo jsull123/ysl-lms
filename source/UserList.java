@@ -1,7 +1,6 @@
 package source;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -38,10 +37,17 @@ public class UserList {
         return null;
     }
 
+    public User[] toArray(){
+        User[] u = new User[users.size()];
+        users.values().toArray(u);
+        return u;
+    }
+
     public User getUser(UUID userID){
         return users.get(userID);
     }
 
+    // probably not necessary
     public int numUsers(){
         return users.size();
     }

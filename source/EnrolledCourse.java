@@ -23,6 +23,10 @@ public class EnrolledCourse {
         this.moduleProgress = moduleProgress;
     }
 
+    public ArrayList<ArrayList<Boolean>> getModuleProgress(){
+        return moduleProgress;
+    }
+
     public float getModuleProgress(int index){
         return 0.0f;
     }
