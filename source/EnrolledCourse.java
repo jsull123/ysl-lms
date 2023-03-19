@@ -12,7 +12,8 @@ public class EnrolledCourse {
     }
 
     public EnrolledCourse(UUID courseID){
-
+        this.courseID = courseID;
+        this.moduleProgress = new ArrayList<>();
     }
 
     public UUID getID(){
