@@ -42,9 +42,8 @@ public class Course{
         return modules.size();
     }
     
-    public Review getReview(int index) {
-        Review reviewToSearch = this.reviews.get(index);
-        return reviewToSearch;
+    public Review getReview(int index) {      
+        return reviews.get(index);
     }
     public Comment getComment(int index) {
         Comment commentToSearch = this.comments.get(index);

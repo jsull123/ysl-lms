@@ -20,8 +20,7 @@ public class UserList {
     }
 
     public static UserList getInstance(ArrayList<User> users){
-        userList = new UserList(users);
-        return userList;
+        return new UserList(users);
     }
 
     public void setCurrentUser(User currentUser){
