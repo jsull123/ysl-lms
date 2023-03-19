@@ -69,8 +69,8 @@ public class CourseDataProcessor {
         ArrayList<Module> modules = new ArrayList<>();
         try{         
                 JSONArray jModules = (JSONArray)course.get(DataConstants.MODULES);
-                for (int r = 0; r < jModules.size(); r++){
-                    JSONObject moduleObject = (JSONObject)jModules.get(r);
+                for (int m = 0; m < jModules.size(); m++){
+                    JSONObject moduleObject = (JSONObject)jModules.get(m);
                     Module module = new Module((String)course.get(DataConstants.TITLE),
                     (String)course.get(DataConstants.TOPIC), 
                     loadContent((JSONArray)moduleObject.get(DataConstants.CONTENT)));
