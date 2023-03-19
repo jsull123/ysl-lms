@@ -2,21 +2,26 @@ package source;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.ArrayList;
 
 public class CourseList {
     
     private HashMap<UUID, Course> courses;
     private static CourseList courseList;
 
-    private CourseList(HashMap<UUID, Course> courses) {
-            courseList = this;
+    private CourseList(ArrayList<Course> courses) {
+        this.courses = new HashMap<>();
+        for (int c = 0; c < courses.size(); c++) {
+            addCourse(courses.get(c));
+        }
+    
     }
 
-    public static CourseList getInstance() {
+    public static CourseList getInstance(ArrayList<Course> courses) {
         if (courseList != null) {
             return courseList;
         }
-        return new CourseList(new HashMap<UUID, Course>());
+        return new CourseList(courses);
     }
 
     public Course getCourse(UUID courseID) {
