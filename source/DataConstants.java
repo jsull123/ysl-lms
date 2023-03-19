@@ -32,9 +32,7 @@ public abstract class DataConstants {
     protected static final String LANGUAGE = "language";
     protected static final String DESCRIPTION = "description";
     protected static final String REVIEWS = "reviews";
-    //protected static final String COMMENTS = "comments";
     protected static final String MODULES = "modules";
     protected static final String RATING = "rating";
     protected static final String REVIEW = "review";
-    protected static final String DATE_ADDED = "dateAdded";
 }
