@@ -12,6 +12,11 @@ public abstract class DataConstants {
     protected static final String PASSWORD = "password";
     protected static final String DOB = "dob";
 
+    protected static final String AUTHOR_ID = "authorID";
+    protected static final String DATE_ADDED = "dateAdded";
+    protected static final String COMMENTS = "comments";
+    protected static final String COMMENT = "comment";
+    protected static final String REPLIES = "replies";
 
     protected static final String ENROLLED_COURSES = "enrolledCourses";
     protected static final String CREATED_COURSES = "createdCourses";
