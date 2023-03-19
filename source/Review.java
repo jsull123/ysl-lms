@@ -1,5 +1,6 @@
 package source;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Review { 
@@ -17,7 +18,6 @@ public class Review {
     }
 
     public String toString() {
-        String returnString = "";
-        return  returnString;
+        return "";
     }
 }

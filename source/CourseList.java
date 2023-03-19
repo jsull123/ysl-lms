@@ -9,7 +9,7 @@ public class CourseList {
     private static CourseList courseList;
 
     private CourseList(HashMap<UUID, Course> courses) {
-            courseList = this;
+        courseList = this;
     }
 
     public static CourseList getInstance() {
