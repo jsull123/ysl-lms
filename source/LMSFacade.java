@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+public class LMSFacade {
 private User user;
 private EnrolledCourse currentlyEnrolledCourse;
 private UserDataProcessor userProcessor;
@@ -84,4 +85,4 @@ public void clearScreen() {
     System.out.println("\033[H\033[2J");
     System.out.flush();
 }
-
+}
