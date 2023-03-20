@@ -1,20 +1,19 @@
 package source.Menus;
-import source.LMSUI;
 import source.LMSFacade;
+import source.LMSUI;
 
 public abstract class Menu {
     protected LMSFacade facade;
     protected String header;
-    protected String error;
     protected String[] options;
+
     public abstract void select(int selection);
 
-    public int getSelection(String error){
-        this.error = error;
-        return getSelection();
+    public void getSelection(){
+        getSelection("");
     }
 
-    public int getSelection(){
+    public void getSelection(String error){
         int selection = 1;
         do{
             LMSUI.clearScreen();
@@ -28,17 +27,17 @@ public abstract class Menu {
                 System.out.println(error);
                 error = "";
             }
-               
-            System.out.println("Enter your selection: ");
-            selection = LMSUI.getInt();
+            
+            selection = LMSUI.promptInt("Enter your selection: ", false);
         
         } while (selection <= 0 || selection > options.length);
     
-        return selection;  
+        select(selection); 
     }
     
     public String toString(){
-        String ret = header+"\n";
+        String ret = "";
+        if (header != "") ret += header+"\n";
         for (int i = 0; i < options.length; i++){
             ret += (i+1)+". "+options[i]+"\n";
         }

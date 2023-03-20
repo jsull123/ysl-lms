@@ -6,8 +6,7 @@ public class MainMenu extends Menu{
     
     public MainMenu(LMSFacade facade, User user){
         header = "***Logged in as "+user.getUsername()+"***";
-        options = new String[]{"My courses", "Other stuff1", "Log out"};
-        error = "";
+        options = new String[]{"My courses", "Other stuff", "Log out"};
         this.facade = facade;
     }
 
@@ -15,10 +14,13 @@ public class MainMenu extends Menu{
         switch (selection){
             case 1:
                 //facade.logIn();
+                break;
             case 2:
                 // facade.createAccount();
+                break;
             case 3:
-                 facade.logOut();
+                facade.logOut();
+                break;
         }
     }
 }

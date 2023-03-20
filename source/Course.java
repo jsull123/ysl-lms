@@ -46,13 +46,11 @@ public class Course{
         return reviews.get(index);
     }
     public Comment getComment(int index) {
-        Comment commentToSearch = this.comments.get(index);
-        return commentToSearch;
+        return this.comments.get(index);
     }
     
-    public Module getModule(int index) {
-        Module moduleToSearch = this.modules.get(index);
-        return moduleToSearch;
+    public Module getModule(int index) { 
+        return this.modules.get(index);
     }
     
     public void addReview(Review review) {
@@ -65,11 +63,6 @@ public class Course{
     
     public UUID getCourseID() {
         return this.courseID;
-    }
-    
-    public String toString() {
-        String toReturn = "Man I love a good LMS!";
-        return toReturn;
     }
 }
 

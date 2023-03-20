@@ -9,10 +9,10 @@ public class Comment {
     private Date dateAdded;
     private ArrayList<Comment> replies;
 
-    public Comment(UUID authorID, String comment, Date dateAdded, ArrayList<Comment> replies){
+    public Comment(UUID authorID, String comment, Date date, ArrayList<Comment> replies){
         this.authorID = authorID;
         this.comment = comment;
-        this.dateAdded = dateAdded;
+        this.dateAdded = date;
         this.replies = replies;
     }
 

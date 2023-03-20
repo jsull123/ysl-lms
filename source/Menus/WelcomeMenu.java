@@ -6,7 +6,6 @@ public class WelcomeMenu extends Menu {
     public WelcomeMenu(LMSFacade facade){
         header = "***Welcome to the YSL programming LMS***";
         options = new String[]{"Log In", "Sign Up", "Exit"};
-        error = "";
         this.facade = facade;
     }
 
@@ -14,10 +13,13 @@ public class WelcomeMenu extends Menu {
         switch (selection){
             case 1:
                 facade.logIn();
+                break;
             case 2:
                 // facade.createAccount();
+                break;
             case 3:
                 // facade.exit();
+                break;
         }
     }
 }
