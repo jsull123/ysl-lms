@@ -7,7 +7,6 @@ public class Course{
     private UUID courseID;
     private String title;
     private String language;
-    private float rating;
     private String description;
     private UUID authorID;
     private ArrayList<Review> reviews;
@@ -15,18 +14,42 @@ public class Course{
     private ArrayList<Module> modules;
     
     public Course(UUID courseID, String title,
-    String language, float rating, String description,
+    String language, String description,
     UUID authorID, ArrayList<Review> reviews,
     ArrayList<Comment> comments, ArrayList<Module> modules) { 
         this.courseID = courseID;
         this.title = title;
         this.language = language;
-        this.rating = rating;
         this.description = description;
         this.authorID = authorID;
         this.reviews = reviews;
         this.comments = comments;
         this.modules = modules;
+    }
+
+    
+    public UUID getAuthorID(){
+        return authorID;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public ArrayList<Module> getAllModules(){
+        return modules;
+    }
+
+    public ArrayList<Comment> getAllComments(){
+        return comments;
+    }
+    
+    public ArrayList<Review> getAllReviews(){
+        return reviews;
+    }
+
+    public String getLanguage(){
+        return language;
     }
 
     public String getTitle(){

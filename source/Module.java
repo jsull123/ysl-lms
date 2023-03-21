@@ -19,6 +19,14 @@ public class Module {
 
     public String getTitle(){
         return title;
+    } 
+
+    public String getTopic(){
+        return topic;
+    }
+    
+    public ArrayList<Content> getAllContent(){
+        return content;
     }
 
     public Content getContent(int index){

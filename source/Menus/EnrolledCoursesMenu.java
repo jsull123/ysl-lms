@@ -10,6 +10,7 @@ public class EnrolledCoursesMenu extends Menu{
     private int courseIndex;
     private int numCourses;
     private Menu prevMenu;
+
     public EnrolledCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<EnrolledCourse> courses) {
         this.facade = facade;
         this.courseIndex = 0;
@@ -30,18 +31,18 @@ public class EnrolledCoursesMenu extends Menu{
                 getSelection();
                 break;
             case 2:
-            if (courseIndex <= 0) {
-                courseIndex = numCourses - 1;
-            }
-            else courseIndex--;
-            header = enrolledCourses.get(courseIndex).toString();
-            getSelection();
+                if (courseIndex <= 0) {
+                    courseIndex = numCourses - 1;
+                }
+                else courseIndex--;
+                header = enrolledCourses.get(courseIndex).toString();
+                getSelection();
                 break;
             case 3:
                 break;
             case 4:
-            facade.setCurrentMenu(prevMenu);
-            facade.getCurrentMenu().getSelection();
+                facade.setCurrentMenu(prevMenu);
+                facade.getCurrentMenu().getSelection();
                 break;
         }
     }

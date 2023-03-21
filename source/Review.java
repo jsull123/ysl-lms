@@ -1,6 +1,4 @@
 package source;
-
-import java.util.Date;
 import java.util.UUID;
 
 public class Review { 
@@ -14,6 +12,22 @@ public class Review {
         this.rating = rating;
         this.review = review;
         this.dateAdded = dateAdded;
+    }
+
+    public UUID getAuthorID(){
+        return authorID;
+    } 
+       
+    public Date getDateAdded(){
+        return dateAdded;
+    }
+    
+    public String getReview(){
+        return review;
+    }
+    
+    public float getRating(){
+        return rating;
     }
 
     public String toString() {

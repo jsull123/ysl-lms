@@ -1,7 +1,6 @@
 package source;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.Date;
 
 public class User {
     private UUID userID;

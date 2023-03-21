@@ -1,9 +1,11 @@
 package source.Menus;
+import source.AccountType;
 import source.LMSFacade;
 import source.User;
 
 public class MainMenu extends Menu{
-    User user;
+    private User user;
+
     public MainMenu(LMSFacade facade, User user){
         header = "***Logged in as "+user.getUsername()+"***";
         options = new String[]{"Enrolled courses", "Created courses", "Log out"};
@@ -18,11 +20,10 @@ public class MainMenu extends Menu{
                 facade.getCurrentMenu().getSelection();
                 break;
             case 2:
-                if(user.getAccountType().equals("AUTHOR")) {
-                    facade.setCurrentMenu(new CreatedCoursesMenu());
+                if(user.getAccountType().equals(AccountType.AUTHOR)) {
+                    facade.setCurrentMenu(new CreatedCoursesMenu(facade, facade.getCurrentMenu(), user.getAllCC()));
                 } else {
-                    facade.setCurrentMenu(new MainMenu(facade, user));
-                    facade.getCurrentMenu().getSelection("Acess denied. Must be an Author.");
+                    getSelection("Access denied. Must be an Author.");
                 }
                 break;
             case 3:
