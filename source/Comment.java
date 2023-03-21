@@ -24,11 +24,11 @@ public class Comment {
         return comment;
     }
 
-    public Date GetDateAdded(){
+    public Date getDateAdded(){
         return dateAdded;
     }
 
-    public ArrayList<Comment> GetReplies(){
+    public ArrayList<Comment> getReplies(){
         return replies;
     }
 }

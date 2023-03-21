@@ -11,16 +11,16 @@ import org.json.simple.parser.JSONParser;
 
 public class CourseDataProcessor {
 
-    private static JSONArray commentsToJson(ArrayList<Comment> comments){
+    private static JSONArray saveComments(ArrayList<Comment> comments){
         JSONArray ret = new JSONArray();
-        
+
         for (int i = 0; i < comments.size(); i++){
             Comment comment = comments.get(i);
             JSONObject jComment = new JSONObject();
             jComment.put(DataConstants.AUTHOR_ID, comment.getAuthorID().toString());
             jComment.put(DataConstants.COMMENT, comment.getComment());
-            jComment.put(DataConstants.DATE_ADDED, comment.GetDateAdded().toString());
-            jComment.put(DataConstants.REPLIES, commentsToJson(comment.GetReplies()));
+            jComment.put(DataConstants.DATE_ADDED, comment.getDateAdded().toString());
+            jComment.put(DataConstants.REPLIES, saveComments(comment.getReplies()));
 
             ret.add(jComment);
         }
@@ -45,8 +45,7 @@ public class CourseDataProcessor {
     
     private static ArrayList<Review> loadReviews(JSONObject course) {
         ArrayList<Review> reviews = new ArrayList<>();
-        try{         
-
+        try{
                 JSONArray jReviews = (JSONArray)course.get(DataConstants.REVIEWS);
                 for (int r = 0; r < jReviews.size(); r++){
                     JSONObject reviewObject = (JSONObject)jReviews.get(r);
@@ -55,9 +54,7 @@ public class CourseDataProcessor {
                     (String)reviewObject.get(DataConstants.REVIEW), 
                     Date.fromString((String)reviewObject.get(DataConstants.DATE_ADDED)));
                     reviews.add(review);
-                }     
-
-            
+                }          
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -75,7 +72,7 @@ public class CourseDataProcessor {
                     (String)course.get(DataConstants.TOPIC), 
                     loadContent((JSONArray)moduleObject.get(DataConstants.CONTENT)));
                     modules.add(module);
-                }     
+                }
 
             
         }catch(Exception e){
@@ -85,12 +82,39 @@ public class CourseDataProcessor {
         return modules;
     }
 
-   //  UNFINISHED: Will finish once lesson is made
-   private static ArrayList<Content> loadContent(JSONArray contentArray) {
+    private static ArrayList<String> loadAnswers(JSONArray jAnswers){
+        ArrayList<String> answers = new ArrayList<>();
+        for (int i = 0; i < jAnswers.size(); i++){
+            answers.add((String)((JSONObject)jAnswers.get(i)).get(DataConstants.ANSWER));
+        }
+
+        return answers;
+    }
+
+    private static ArrayList<Question> loadQuestions(JSONArray jQuestions){
+        ArrayList<Question> questions = new ArrayList<>();
+        for (int i = 0; i < jQuestions.size(); i++){
+            JSONObject jQuestion = (JSONObject)jQuestions.get(i);
+            questions.add(new Question(
+                (String)jQuestion.get(DataConstants.QUESTION),
+                loadAnswers((JSONArray)jQuestion.get(DataConstants.ANSWERS)),
+                (int)jQuestion.get(DataConstants.CORRECT_ANSWER)
+            ));    
+        }
+        return questions;
+    }
+
+    private static ArrayList<Content> loadContent(JSONArray contentArray) {
         ArrayList<Content> content = new ArrayList<>();
         for (int c = 0; c < contentArray.size(); c++){
             JSONObject contentObject = (JSONObject)contentArray.get(c);
-            
+            content.add(new Content(
+                (String)contentObject.get(DataConstants.TITLE),
+                (String)contentObject.get(DataConstants.LESSON),
+                (float)contentObject.get(DataConstants.PASSING_GRADE),
+                ContentType.fromString((String)contentObject.get(DataConstants.CONTENT_TYPE)),
+                loadQuestions((JSONArray)contentObject.get(DataConstants.QUESTIONS))
+            ));
         }     
 
         return content;
@@ -119,7 +143,6 @@ public class CourseDataProcessor {
                     modules)); 
             }
 
-            
         }catch(Exception e){
             e.printStackTrace();
         }

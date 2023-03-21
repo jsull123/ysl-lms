@@ -8,7 +8,7 @@ public class UserList {
     private HashMap<UUID, User> users;
     private HashMap<UUID, String> passwordMap;
     private User currentUser;
-    private static UserList userList; 
+    private static UserList userList = null; 
 
     private UserList(ArrayList<User> users){
         this.users = new HashMap<>();
@@ -20,7 +20,11 @@ public class UserList {
     }
 
     public static UserList getInstance(ArrayList<User> users){
-        return new UserList(users);
+        if (userList != null) {
+            return userList;
+        }
+        userList = new UserList(users);
+        return userList;
     }
 
     public void setCurrentUser(User currentUser){

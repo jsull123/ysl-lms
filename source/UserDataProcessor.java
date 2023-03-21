@@ -136,7 +136,6 @@ public class UserDataProcessor {
 
             // User to JSONArray of users
             jUsers.add(jUser);
-
         }
     
         // Write JSONArray to file

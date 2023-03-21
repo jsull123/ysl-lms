@@ -126,6 +126,7 @@ public class LMSFacade{
         System.out.println("3. Enroll in C course");
         System.out.println("4. Go back");
     }
+    
     public Comment makeComment() {
         clearScreen();
         System.out.println("Please type your comment below:");

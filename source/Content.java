@@ -1,11 +1,39 @@
 package source;
 
-public abstract class Content {
-    protected ContentType contentType;
+import java.util.ArrayList;
+
+public class Content {
+    private String title;
+    private String lesson;
+    private float passingGrade;
+    private ContentType contentType;
+    private ArrayList<Question> questions;
+
+    public Content(String title, String lesson, float passingGrade, ContentType contentType, ArrayList<Question> questions){
+        this.lesson = lesson;
+        this.title = title;
+        this.passingGrade = passingGrade;
+        this.contentType = contentType;
+        this.questions = questions;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getLesson(){
+        return lesson;
+    }
 
     public ContentType getContentType(){
         return contentType;
     }
 
-    public abstract boolean take();
+    public ArrayList<Question> getQuestions(){
+        return questions;
+    }
+
+    public float getPassingGrade(){
+        return passingGrade;
+    }
 }

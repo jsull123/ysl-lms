@@ -41,22 +41,23 @@
                 "title":"Variables",
                 "topic":"Variables in Java",
                 "content":[{
-                    "contentType":"LESSON",
                     "title":"Data types",
                     "lesson":"There are 8 primitive data types in Java: boolean, byte, char, short, int, long, float and double.",
-                    "question":{
+                    "passingGrade":0.8,
+                    "contentType":"LESSON",
+                    "questions":[{
                             "question":"Which of the following is not a primitive data type?",
                             "answers":[{
-                                "text":"boolean"
+                                "answer":"boolean"
                             },{
-                                "text":"char"
+                                "answer":"char"
                             },{
-                                "text":"String"
+                                "answer":"String"
                             },{
-                                "text":"int"
+                                "answer":"int"
                             }],
                             "correctAnswer":3
-                        }
+                        }]
                     }
                 ]
             }

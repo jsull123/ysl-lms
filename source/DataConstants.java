@@ -36,4 +36,15 @@ public abstract class DataConstants {
     protected static final String MODULES = "modules";
     protected static final String RATING = "rating";
     protected static final String REVIEW = "review";
+    protected static final String TOPIC = "topic";
+    protected static final String CONTENT = "content";
+    protected static final String CONTENT_TYPE = "contentType";
+    protected static final String LESSON = "lesson";
+    protected static final String PASSING_GRADE = "passingGrade";
+    protected static final String ANSWER = "answer";
+    protected static final String QUESTION = "question";
+    protected static final String QUESTIONS = "questions";
+    protected static final String ANSWERS = "answers";
+    protected static final String CORRECT_ANSWER = "correctAnswer";
+
 }

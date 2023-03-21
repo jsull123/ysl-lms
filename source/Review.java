@@ -1,10 +1,9 @@
 package source;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.UUID;
 
 public class Review { 
-
     private UUID authorID;
     private float rating;
     private String review;

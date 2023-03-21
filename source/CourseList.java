@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CourseList {
     
     private HashMap<UUID, Course> courses;
-    private static CourseList courseList;
+    private static CourseList courseList = null;
 
     private CourseList(ArrayList<Course> courses) {
         this.courses = new HashMap<>();
@@ -20,7 +20,8 @@ public class CourseList {
         if (courseList != null) {
             return courseList;
         }
-        return new CourseList(courses);
+        courseList = new CourseList(courses);
+        return courseList;
     }
 
     public Course getCourse(UUID courseID) {

@@ -17,8 +17,7 @@ public class Course{
     public Course(UUID courseID, String title,
     String language, float rating, String description,
     UUID authorID, ArrayList<Review> reviews,
-    ArrayList<Comment> comments, ArrayList<Module> modules) {
-        
+    ArrayList<Comment> comments, ArrayList<Module> modules) { 
         this.courseID = courseID;
         this.title = title;
         this.language = language;
