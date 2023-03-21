@@ -15,10 +15,10 @@ public class WelcomeMenu extends Menu {
                 facade.logIn();
                 break;
             case 2:
-                // facade.createAccount();
+                facade.createAccount();
                 break;
             case 3:
-                // facade.exit();
+                System.exit(0);
                 break;
         }
     }

@@ -26,9 +26,12 @@ public class Date {
         Date date = new Date();
         String[] ints = s.split("/");
 
-        if (ints.length == 3){
-            date = new Date(Integer.parseInt(ints[0]), Integer.parseInt(ints[1]), Integer.parseInt(ints[2]));
-        }
+        try{
+            if (ints.length == 3){
+                date = new Date(Integer.parseInt(ints[0]), Integer.parseInt(ints[1]), Integer.parseInt(ints[2]));
+                }    
+        }catch (Exception e){}
+        
         return date;
     }
 

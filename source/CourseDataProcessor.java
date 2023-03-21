@@ -249,8 +249,7 @@ public class CourseDataProcessor {
 
           // Write JSONArray to file
         try{
-            // Will be DataConstants.COURSES_FILE_NAME
-            FileWriter file = new FileWriter("json/testcourses.json");
+            FileWriter file = new FileWriter(DataConstants.COURSES_FILE_NAME);
             file.write(jCourses.toJSONString());
             file.flush();
         }catch(Exception e){

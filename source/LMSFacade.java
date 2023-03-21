@@ -15,7 +15,6 @@ public class LMSFacade{
     private Menu currentMenu;
     private LMSUI lmsui;
 
-    private User user;
     private EnrolledCourse currentlyEnrolledCourse;
     private UserDataProcessor userProcessor;
     private CourseDataProcessor courseProcessor;
@@ -86,6 +85,51 @@ public class LMSFacade{
         currentMenu.getSelection();
     }
 
+    public void createAccount() {
+
+        LMSUI.clearScreen();
+        int accountType = LMSUI.promptInt(
+            "What kind of account would you like to create?\n"+
+            "1. Author\n"+
+            "2. Student\n"+
+            "Enter a number to choose", true);
+
+        if (accountType != 1 && accountType != 2){
+            currentMenu.getSelection("Invalid choice");
+            return;
+        }
+
+        String firstName = LMSUI.promptString("Enter your first name:", false);
+        String lastName = LMSUI.promptString("Enter your last name:", false);
+        String username = LMSUI.promptString("Enter your username \n(this is how other users will identify you):", false);
+
+        if (userList.getUser(username) != null){
+            currentMenu.getSelection("Username \""+username+"\" is taken");
+            return;
+        }
+
+        String email = LMSUI.promptString("Enter your email:", false);
+        String password = LMSUI.promptString("Choose a password:", false);
+        String dob = LMSUI.promptString("Enter your date of birth:", false);
+
+        User user = new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(accountType),
+            firstName,
+            lastName,
+            username,
+            email,
+            password,
+            Date.fromString(dob),
+            new ArrayList<>(),
+            new ArrayList<>()
+        );
+
+        userList.addUser(user);
+        currentMenu = new MainMenu(this, user);
+        currentMenu.getSelection();
+    }
+
     public void login(String password, User user) {
         if (password.equals(user.getPassword())){
             LMSUI.clearScreen();
@@ -144,44 +188,4 @@ public class LMSFacade{
         ArrayList<Comment> replies = new ArrayList<Comment>();
         return new Comment(uuid, comment, date, replies);
     }
-
-    public User createAccount() {
-        UUID uuid = UUID.randomUUID();
-        ArrayList<UUID> createdCourses = new ArrayList<>();
-        ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        lmsui.clearScreen();
-        System.out.println("What kind of account would you like to create?\n(Enter a number to choose)");
-        System.out.println("1. Author");
-        System.out.println("2. Student");
-        int accountType = scanner.nextInt();
-        AccountType type = AccountType.AUTHOR;
-        if ( accountType == 1) {
-            type = AccountType.fromString("AUTHOR");
-        } else if ( accountType == 2) {
-            type = AccountType.fromString("STUDENT");
-        } else {
-            System.out.println("Invalid choice");
-            createAccount();
-        }
-        lmsui.clearScreen();
-        System.out.println("Enter your first name");
-        String firstName = scanner.nextLine();
-        System.out.println("Enter your last name");
-        String lastName = scanner.nextLine();
-        System.out.println("Enter your username \n(this is how other users will identify you)");
-        String username = scanner.nextLine();
-        System.out.println("Enter your email");
-        String email = scanner.nextLine();
-        System.out.println("Choose a password");
-        String password = scanner.nextLine();
-        System.out.println("Enter your date of birth");
-        String birthday = scanner.nextLine();
-        Date date = Date.fromString(birthday);
-
-        User user = new User(uuid, type, firstName, lastName,
-        username, email, password, date, createdCourses, enrolledCourses);
-        return user;
-    }
-
 }

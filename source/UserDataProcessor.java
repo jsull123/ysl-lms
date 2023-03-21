@@ -139,8 +139,7 @@ public class UserDataProcessor {
     
         // Write JSONArray to file
         try{
-            // Will be DataConstants.USERS_FILE_NAME
-            FileWriter file = new FileWriter("json/testusers.json");
+            FileWriter file = new FileWriter(DataConstants.USERS_FILE_NAME);
             file.write(jUsers.toJSONString());
             file.flush();
         }catch(Exception e){
