@@ -6,7 +6,7 @@ public class MainMenu extends Menu{
     
     public MainMenu(LMSFacade facade, User user){
         header = "***Logged in as "+user.getUsername()+"***";
-        options = new String[]{"My courses", "Other stuff", "Log out"};
+        options = new String[]{"My registered courses", "My created courses","Other stuff", "Log out"};
         this.facade = facade;
     }
 
