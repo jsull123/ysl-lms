@@ -2,6 +2,7 @@ package source;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -93,6 +94,7 @@ public class UserDataProcessor {
                     createdCourses.add(UUID.fromString((String)((JSONObject)jCreatedCourses.get(c)).get(DataConstants.COURSE_ID)));
                 }   
 
+                SimpleDateFormat format = new SimpleDateFormat("MM/DD/YYYY");
                 users.add(new User(
                     UUID.fromString((String)jUser.get(DataConstants.USER_ID)),
                     AccountType.fromString((String)jUser.get(DataConstants.ACCOUNT_TYPE)),
@@ -101,12 +103,11 @@ public class UserDataProcessor {
                     (String)jUser.get(DataConstants.USERNAME),
                     (String)jUser.get(DataConstants.EMAIL),
                     (String)jUser.get(DataConstants.PASSWORD),
-                    Date.fromString((String)jUser.get(DataConstants.DOB)),
+                    format.parse((String)jUser.get(DataConstants.DOB)),
                     createdCourses,
                     enrolledCourses
                 ));
             }
-            
         }catch(Exception e){
             e.printStackTrace();
         }

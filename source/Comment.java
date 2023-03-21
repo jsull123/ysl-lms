@@ -1,6 +1,7 @@
 package source;
 
 import java.util.UUID;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Comment {
@@ -9,10 +10,10 @@ public class Comment {
     private Date dateAdded;
     private ArrayList<Comment> replies;
 
-    public Comment(UUID authorID, String comment, Date date, ArrayList<Comment> replies){
+    public Comment(UUID authorID, String comment, Date dateAdded, ArrayList<Comment> replies){
         this.authorID = authorID;
         this.comment = comment;
-        this.dateAdded = date;
+        this.dateAdded = dateAdded;
         this.replies = replies;
     }
 
