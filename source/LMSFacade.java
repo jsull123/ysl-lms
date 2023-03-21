@@ -138,7 +138,7 @@ public class LMSFacade{
         ArrayList<Comment> replies = new ArrayList<Comment>();
         return new Comment(uuid, comment, date, replies);
     }
-    public User createAccount() {
+    public void createAccount() {
         UUID uuid = UUID.randomUUID();
         ArrayList<UUID> createdCourses = new ArrayList<UUID>;
         ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<EnrolledCourse>;
@@ -179,7 +179,19 @@ public class LMSFacade{
 
         User user = new User(uuid, type, firstName, lastName,
         username, email, password, date, createdCourses, enrolledCourses);
-        return user;
+        UserList.setCurrentUser(user);
+    }
+    public void enrollInJava(User user, Course course){
+        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID);
+        user.addEC(Ecourse);
+    }
+    public void enrollInPython(User user, Course course){
+        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID);
+        user.addEC(Ecourse);
+    }
+    public void enrollInC(User user, Course course){
+        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID);
+        user.addEC(Ecourse);
     }
 
 }
