@@ -137,5 +137,48 @@ public class LMSFacade{
         ArrayList<Comment> replies = new ArrayList<Comment>();
         return new Comment(uuid, comment, date, replies);
     }
+    public User createAccount() {
+        UUID uuid = UUID.randomUUID();
+        ArrayList<UUID> createdCourses = new ArrayList<UUID>;
+        ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<EnrolledCourse>;
+        Scanner scanner = new Scanner(System.in);
+        lmsui.clearScreen();
+        System.out.println("What kind of account would you like to create? \n
+        (Enter a number to choose)");
+        System.out.println("1. Author");
+        System.out.println("2. Student");
+        int accountType = scanner.nextInt();
+        if ( accountType == 1) {
+            AccountType type = fromString("AUTHOR");
+        } else if ( accountType == 2) {
+            AccountType type = fromString("STUDENT");
+        } else {
+            System.out.println("Invalid choice");
+            createAccount();
+        }
+        lmsui.clearScreen();
+        System.out.println("Enter your first name");
+        String firstName = scanner.nextLine();
+        nextLine();
+        System.out.println("Enter your last name");
+        String lastName = scanner.nextLine();
+        nextLine();
+        System.out.println("Enter your username \n
+        (this is how other users will identify you)");
+        String username = scanner.nextLine();
+        nextLine();
+        System.out.println("Enter your email");
+        String email = scanner.nextLine();
+        System.out.println("Choose a password");
+        String password = scanner.nextLine();
+        System.out.println("Enter your date of birth");
+        String birthday = scanner.nextLine();
+        SimpleDateFormat format = new SimpleDateFormat("MM/DD/YYYY");
+        Date date = format.parse(birthday);
+
+        User user = new User(uuid, type, firstName, lastName,
+        username, email, password, date, createdCourses, enrolledCourses);
+        return user;
+    }
 
 }
