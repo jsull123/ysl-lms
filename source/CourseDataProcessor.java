@@ -53,7 +53,12 @@ public class CourseDataProcessor {
                 SimpleDateFormat format = new SimpleDateFormat("MM/DD/YYYY");
                 for (int r = 0; r < jReviews.size(); r++){
                     JSONObject reviewObject = (JSONObject)jReviews.get(r);
-                    Review review = new Review(UUID.fromString((String)course.get(DataConstants.AUTHOR_ID)), 
+                    UUID id = UUID.fromString((String)course.get(DataConstants.AUTHOR_ID));
+                    float rating = (float)reviewObject.get(DataConstants.RATING);
+                    String string = (String)reviewObject.get(DataConstants.REVIEW);
+                    
+                    Review review = new Review(
+                    UUID.fromString((String)course.get(DataConstants.AUTHOR_ID)), 
                     (float)reviewObject.get(DataConstants.RATING), 
                     (String)reviewObject.get(DataConstants.REVIEW), 
                     format.parse((String)reviewObject.get(DataConstants.DATE_ADDED)));
