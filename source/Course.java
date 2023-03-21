@@ -28,6 +28,10 @@ public class Course{
         this.comments = comments;
         this.modules = modules;
     }
+
+    public String getTitle(){
+        return title;
+    }
     
     public int numReviews() {
         return reviews.size();
