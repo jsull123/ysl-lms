@@ -35,6 +35,15 @@ public class LMSFacade{
         currentMenu.getSelection();
     }
 
+    public ArrayList<Course> getCoursesFromUUID(ArrayList<UUID> uuids) {
+        ArrayList<Course> courses = new ArrayList<Course>();
+        for(int i = 0; i < uuids.size(); i++) {
+            Course currCourse = courseList.getCourse(uuids.get(i));
+            courses.add(currCourse);
+        }
+        return courses;
+    }
+
     public Menu getCurrentMenu(){
         return currentMenu;
     }
