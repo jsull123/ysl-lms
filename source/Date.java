@@ -1,5 +1,8 @@
 package source;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 // Temporary date class because I couldn't figure out how to use the java date class
 public class Date {
     private int m;
@@ -7,9 +10,10 @@ public class Date {
     private int y;
 
     public Date(){
-        this.m = 0;
-        this.y = 0;
-        this.d = 0;
+        LocalDateTime now = LocalDateTime.now();
+        this.m = now.getMonthValue();
+        this.d = now.getDayOfMonth();
+        this.y = now.getYear();
     }
 
     public Date(int m, int d, int y){

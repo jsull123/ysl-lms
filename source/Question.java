@@ -17,6 +17,18 @@ public class Question {
         return "";
     }
 
+    public int getCorrectAnswer(){
+        return correctAnswer;
+    }
+
+    public ArrayList<String> getAnswers(){
+        return answers;
+    }
+
+    public String getQuestion(){
+        return question;
+    }
+
     public boolean isCorrect(int answer){
         return answer == correctAnswer;
     }

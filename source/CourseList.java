@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.ArrayList;
 
-public class CourseList {
-    
+public class CourseList { 
     private HashMap<UUID, Course> courses;
     private static CourseList courseList = null;
 

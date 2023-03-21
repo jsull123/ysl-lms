@@ -8,8 +8,6 @@ import source.Menus.Menu;
 import source.Menus.WelcomeMenu;
 
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class LMSFacade{
     private UserList userList;
@@ -133,7 +131,6 @@ public class LMSFacade{
         Scanner keyboard = new Scanner(System.in);
         String comment = keyboard.nextLine();
         UUID uuid = UUID.randomUUID();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         ArrayList<Comment> replies = new ArrayList<Comment>();
         return new Comment(uuid, comment, date, replies);
@@ -171,11 +168,7 @@ public class LMSFacade{
         String password = scanner.nextLine();
         System.out.println("Enter your date of birth");
         String birthday = scanner.nextLine();
-        SimpleDateFormat format = new SimpleDateFormat("MM/DD/YYYY");
-        Date date = new Date();
-        try{
-            date = format.parse(birthday);
-        }catch(Exception e){}
+        Date date = Date.fromString(birthday);
 
         User user = new User(uuid, type, firstName, lastName,
         username, email, password, date, createdCourses, enrolledCourses);
