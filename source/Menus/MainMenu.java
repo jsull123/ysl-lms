@@ -16,7 +16,7 @@ public class MainMenu extends Menu{
     public void select(int selection){
         switch (selection){
             case 1:
-                facade.setCurrentMenu(new EnrolledCoursesMenu(facade, facade.getCurrentMenu(), user.getAllEC()));
+                facade.setCurrentMenu(new EnrolledCoursesMenu(facade, this, user.getAllEC()));
                 facade.getCurrentMenu().getSelection();
                 break;
             case 2:

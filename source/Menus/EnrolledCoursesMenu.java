@@ -12,11 +12,17 @@ public class EnrolledCoursesMenu extends Menu{
     private Menu prevMenu;
 
     public EnrolledCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<EnrolledCourse> courses) {
+        if (courses.size() == 0){
+            facade.setCurrentMenu(prevMenu);
+            facade.getCurrentMenu().getSelection("You are not enrolled in any courses");
+        }else{
+            header = courses.get(courseIndex).toString();
+        }
+      
         this.facade = facade;
         this.courseIndex = 0;
         this.prevMenu = prevMenu;
         numCourses = courses.size();
-        header = courses.get(courseIndex).toString();
         options = new String[]{"Next Course", "Previous Course", "View Comments", "Back"};
     }
 

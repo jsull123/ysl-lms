@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class CreatedCoursesMenu extends Menu{
-
     private ArrayList<Course> courses;
     private int courseIndex;
     private int numCourses;
     private Menu prevMenu;
+    
     public CreatedCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<UUID> coursesUUID) {
         this.courses = facade.getCoursesFromUUID(coursesUUID);
         this.facade = facade;
