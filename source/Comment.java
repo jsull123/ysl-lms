@@ -28,7 +28,20 @@ public class Comment {
         return dateAdded;
     }
 
+    public void addReply(Comment reply){
+        replies.add(reply);
+    }
+
     public ArrayList<Comment> getReplies(){
         return replies;
+    }
+
+    public String toString(){
+        String plurality = "replies";
+        if (replies.size() == 1) plurality = "reply";
+
+        return UserList.getInstance(null).getUser(authorID).getUsername()+
+        ": "+comment+
+        "\n("+replies.size()+" "+plurality+")\n";
     }
 }

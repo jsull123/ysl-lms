@@ -2,7 +2,6 @@ package source;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -183,14 +182,13 @@ public class CourseDataProcessor {
 
             question.put(DataConstants.QUESTION, questions.get(i).getQuestion());
             question.put(DataConstants.ANSWERS, saveAnswers(questions.get(i).getAnswers()));
-            question.put(DataConstants.CORRECT_ANSWER, questions.get(i).getCorrectAnswer());
+            question.put(DataConstants.CORRECT_ANSWER, Integer.valueOf(questions.get(i).getCorrectAnswer()).toString());
 
             jQuestions.add(question);
         }
 
         return jQuestions;
     }
-
 
     private static JSONArray saveContent(ArrayList<Content> contents){
         JSONArray jContents = new JSONArray();

@@ -128,7 +128,7 @@ public class UserDataProcessor {
             jUser.put(DataConstants.LAST_NAME, users[i].getLastName()); 
             jUser.put(DataConstants.USERNAME, users[i].getUsername()); 
             jUser.put(DataConstants.EMAIL, users[i].getEmail()); 
-            jUser.put(DataConstants.PASSWORD, users[i].getPassword()); 
+            jUser.put(DataConstants.PASSWORD, users[i].getPassword());
             jUser.put(DataConstants.DOB, users[i].getDOB().toString());
             jUser.put(DataConstants.ENROLLED_COURSES, ecToJson(users[i].getAllEC()));
             jUser.put(DataConstants.CREATED_COURSES, ccToJson(users[i].getAllCC()));

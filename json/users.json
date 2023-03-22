@@ -1,1 +1,54 @@
-[{"firstName":"Matt","lastName":"Johnson","password":"matt$$123","dob":"5\/12\/1960","accountType":"STUDENT","enrolledCourses":[],"createdCourses":[{"courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55"},{"courseID":"ad09ac27-354d-4ccd-a8ac-4573e7bbc7f0"}],"userID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002","email":"mattjohnson@gmail.com","username":"mjohnson12"},{"firstName":"test","lastName":"test","password":"test","dob":"1\/1\/2000","accountType":"STUDENT","enrolledCourses":[],"createdCourses":[],"userID":"c0341bbd-ba97-475f-8d7b-c970925d798c","email":"test","username":"test"}]
+[
+  {
+    "firstName": "Matt",
+    "lastName": "Johnson",
+    "password": "matt$$123",
+    "dob": "5/12/1960",
+    "accountType": "AUTHOR",
+    "enrolledCourses": [],
+    "createdCourses": [
+      {
+        "courseID": "747c0b82-35a2-4d38-ace3-5ea7febcec55"
+      }
+    ],
+    "userID": "f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
+    "email": "mattjohnson@gmail.com",
+    "username": "mjohnson12"
+  },
+  {
+    "firstName": "fwef",
+    "lastName": "ofjw0e",
+    "password": "123",
+    "dob": "1/1/1000",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "29b4a241-bb6e-42bc-80c0-5f3f7409f5a8",
+    "email": "fef",
+    "username": "newAccount"
+  },
+  {
+    "firstName": "test",
+    "lastName": "test",
+    "password": "test",
+    "dob": "1/1/2000",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+    "email": "test",
+    "username": "test"
+  },
+  {
+    "firstName": "a",
+    "lastName": "a",
+    "password": "123",
+    "dob": "1/1/2000",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "e475890a-2aca-4359-8f1c-cf4dfe39da1a",
+    "email": "a",
+    "username": "author"
+  }
+]

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CourseList { 
     private HashMap<UUID, Course> courses;
-    private static CourseList courseList = null;
+    private static CourseList courseList;
 
     private CourseList(ArrayList<Course> courses) {
         this.courses = new HashMap<>();
@@ -29,11 +29,13 @@ public class CourseList {
 
     public void addCourse(Course course) {
         courses.put(course.getCourseID(), course);
+        CourseDataProcessor.saveData(this);
     }
 
     public void updateCourse(Course course) {
         courses.remove(course.getCourseID());
         courses.put(course.getCourseID(), course);
+        CourseDataProcessor.saveData(this);
     }
 
     public int numCourses() {

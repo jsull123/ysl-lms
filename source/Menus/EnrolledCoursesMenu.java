@@ -1,6 +1,5 @@
 package source.Menus;
 import source.LMSFacade;
-import source.User;
 import source.EnrolledCourse;
 import java.util.ArrayList;
 
@@ -15,10 +14,10 @@ public class EnrolledCoursesMenu extends Menu{
         if (courses.size() == 0){
             facade.setCurrentMenu(prevMenu);
             facade.getCurrentMenu().getSelection("You are not enrolled in any courses");
-        }else{
-            header = courses.get(courseIndex).toString();
+            return;
         }
-      
+
+        header = courses.get(courseIndex).toString(); 
         this.facade = facade;
         this.courseIndex = 0;
         this.prevMenu = prevMenu;

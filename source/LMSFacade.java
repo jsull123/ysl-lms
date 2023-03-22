@@ -13,7 +13,6 @@ public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
     private Menu currentMenu;
-    private LMSUI lmsui;
 
     private EnrolledCourse currentlyEnrolledCourse;
     private UserDataProcessor userProcessor;
@@ -35,7 +34,7 @@ public class LMSFacade{
     }
 
     public ArrayList<Course> getCoursesFromUUID(ArrayList<UUID> uuids) {
-        ArrayList<Course> courses = new ArrayList<Course>();
+        ArrayList<Course> courses = new ArrayList<>();
         for(int i = 0; i < uuids.size(); i++) {
             Course currCourse = courseList.getCourse(uuids.get(i));
             courses.add(currCourse);
@@ -47,8 +46,9 @@ public class LMSFacade{
         return currentMenu;
     }
 
-    public void setCurrentMenu(Menu menu){
+    public Menu setCurrentMenu(Menu menu){
         currentMenu = menu;
+        return currentMenu;
     }
 
     public void logOut(){
@@ -125,6 +125,8 @@ public class LMSFacade{
         );
 
         userList.addUser(user);
+        userList.setCurrentUser(user);
+        UserDataProcessor.saveData(userList);
         currentMenu = new MainMenu(this, user);
         currentMenu.getSelection();
     }
@@ -182,10 +184,9 @@ public class LMSFacade{
         System.out.println("Please type your comment below:");
         Scanner keyboard = new Scanner(System.in);
         String comment = keyboard.nextLine();
-        UUID uuid = UUID.randomUUID();
         Date date = new Date();
         ArrayList<Comment> replies = new ArrayList<Comment>();
-        return new Comment(uuid, comment, date, replies);
+        return new Comment(userList.getCurrentUser().getID(), comment, date, replies);
     }
 
     public void enrollInJava(User user, Course course){

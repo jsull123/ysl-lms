@@ -5,7 +5,7 @@ public enum AccountType{
     STUDENT;
 
     public static AccountType fromString(String s){
-        if (s == "AUTHOR")
+        if (s.equals("AUTHOR"))
             return AUTHOR;
         return STUDENT;
     }

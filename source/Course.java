@@ -26,8 +26,7 @@ public class Course{
         this.comments = comments;
         this.modules = modules;
     }
-
-    
+  
     public UUID getAuthorID(){
         return authorID;
     }

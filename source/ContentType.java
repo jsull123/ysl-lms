@@ -5,7 +5,7 @@ public enum ContentType {
     ASSESMENT;
 
     public static ContentType fromString(String s){
-        if (s == "LESSON"){
+        if (s.equals("LESSON")){
             return LESSON;
         }else{
             return ASSESMENT;

@@ -8,7 +8,7 @@ public class UserList {
     private HashMap<UUID, User> users;
     private HashMap<UUID, String> passwordMap;
     private User currentUser;
-    private static UserList userList = null; 
+    private static UserList userList; 
 
     private UserList(ArrayList<User> users){
         this.users = new HashMap<>();
@@ -58,7 +58,6 @@ public class UserList {
     public void addUser(User user){
         users.put(user.getID(), user);
         passwordMap.put(user.getID(), user.getPassword());
-        UserDataProcessor.saveData(this);
     }
     
     public User getCurrentUser(){
