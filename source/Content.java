@@ -36,4 +36,8 @@ public class Content {
     public float getPassingGrade(){
         return passingGrade;
     }
+
+    public String toString(){
+        return "Title: "+title+"\nLesson: "+lesson;
+    }
 }

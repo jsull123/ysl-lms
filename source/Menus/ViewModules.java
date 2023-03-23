@@ -19,8 +19,8 @@ public class ViewModules extends Menu {
         index = 0;
 
         this.enrolledCourse = enrolledCourse;
-        header = "***Viewing module "+(index+1)+" of "+
-        modules.size()+"***"+"\n\n"+modules.get(index).toString();
+
+        updateHeader();
 
         this.facade = facade;
         this.pMenu = pMenu;
@@ -28,24 +28,23 @@ public class ViewModules extends Menu {
         this.options = new String[]{"Next", "Previous", "View Content", "Back"};
     }
 
-    private void prev(){
-        index--;
-        if (index < 0) index = modules.size()-1;
-
+    private void updateHeader(){
         header = "***Viewing module "+(index+1)+" of "+
         modules.size()+"***"+"\n\n"+modules.get(index).toString()+
         "\n"+enrolledCourse.getModuleProgress(index)*100+"% complete";
         getSelection();
     }
 
+    private void prev(){
+        index--;
+        if (index < 0) index = modules.size()-1;
+        updateHeader();
+    }
+
     private void next(){
         index++;
         if (index >= modules.size()) index = 0;
-
-        header = "***Viewing module "+(index+1)+" of "+
-        modules.size()+"***"+"\n\n"+modules.get(index).toString()+
-        "\n"+enrolledCourse.getModuleProgress(index)*100+"% complete";
-        getSelection();
+        updateHeader();
     }
 
     public void select(int selection){
@@ -57,7 +56,9 @@ public class ViewModules extends Menu {
                 prev();        
                 break;
             case 3:
-                // view content menu
+                facade.setCurrentMenu(new ViewContent(
+                    facade, this, modules.get(index).getAllContent(), 
+                    enrolledCourse.getModuleProgress().get(index))).getSelection();
                 break;
             case 4:
                 facade.setCurrentMenu(pMenu).getSelection();

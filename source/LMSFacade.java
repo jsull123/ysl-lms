@@ -8,18 +8,6 @@ import source.Menus.*;
 import java.util.ArrayList;
 
 
-/*
- * Recent Changes:
- *      Created a menu for viewing comments
- * 
- *      Changed the user class so getCC and getAllCC methods return the actual course not the UUID. (Made the getCoursesFromUUID method a private method of User)
- * 
- *      Added view replies facade method for comments
- * 
- *      The facade setCurrentMenu() returns the new menu now instead of void.
- *      So you can now save 1 line of code by doing facade.setCurrentMenu(menu).getSelection()
- */
-
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;

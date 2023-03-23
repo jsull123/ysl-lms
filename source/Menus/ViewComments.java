@@ -17,21 +17,22 @@ public class ViewComments extends Menu {
 
         index = 0;
 
-        header = "***Viewing comment "+(index+1)+" of "+
-        comments.size()+"***"+"\n\n"+comments.get(index).toString();
-
         this.facade = facade;
         this.pMenu = pMenu;
         this.comments = comments;
         this.options = new String[]{"Next", "Previous", "View Replies", "Add Reply", "Back"};
     }
 
+    private void updateHeader(){
+        header = "***Viewing comment "+(index+1)+" of "+
+        comments.size()+"***"+"\n\n"+comments.get(index).toString();
+    }
+
     private void prev(){
         index--;
         if (index < 0) index = comments.size()-1;
 
-        header = "***Viewing comment "+(index+1)+" of "+
-        comments.size()+"***"+"\n\n"+comments.get(index).toString();
+        updateHeader();
         getSelection();
     }
 
@@ -39,8 +40,7 @@ public class ViewComments extends Menu {
         index++;
         if (index >= comments.size()) index = 0;
 
-        header = "***Viewing comment "+(index+1)+" of "+
-        comments.size()+"***"+"\n\n"+comments.get(index).toString();
+        updateHeader();
         getSelection();
     }
 
