@@ -142,6 +142,22 @@ public class LMSFacade{
         }
         currentMenu.getSelection("This comment has no replies");
     }
+    
+    public void addModule(ArrayList<Module> modules) {
+        System.out.println("What is the title of the module");
+        Scanner keyboard = new Scanner(System.in);
+        String title = keyboard.nextLine();
+        System.out.println("What is the topic");
+        String topic = keyboard.nextLine();
+        ArrayList<Content> content = new ArrayList<Content>();
+        modules.add(new Module(title, topic, content));
+        keyboard.close();
+        System.out.println("Module added, select Modify module on the next screen to add content");
+    }
+
+    public void setModuleTitle(Module module) {
+        module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
+    }
 /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");

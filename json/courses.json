@@ -108,5 +108,115 @@
         ]
       }
     ]
+  },
+  {
+      "comments": [
+        {
+          "replies": [
+            {
+              "replies": [
+                {
+                  "replies": [
+                    {
+                      "replies": [
+                        {
+                          "replies": [],
+                          "comment": "crqr",
+                          "authorID": "f4bc4e2a-c2bb-11ed-afa1-0242ac120002",
+                          "dateAdded": "3/22/2023"
+                        }
+                      ],
+                      "comment": "fqwfwqwf",
+                      "authorID": "29b4a341-bb6e-42bc-80c0-5f3f7409f5a8",
+                      "dateAdded": "3/22/2023"
+                    }
+                  ],
+                  "comment": "Thank you",
+                  "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+                  "dateAdded": "2/24/2023"
+                }
+              ],
+              "comment": "A string is a sequence of characters",
+              "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+              "dateAdded": "2/23/2023"
+            },
+            {
+              "replies": [
+                {
+                  "replies": [],
+                  "comment": "fqfjiqwpfj",
+                  "authorID": "29b4a341-bb6e-42bc-80c0-5f3f7409f5a8",
+                  "dateAdded": "3/22/2023"
+                }
+              ],
+              "comment": "new comment",
+              "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+              "dateAdded": "3/22/2023"
+            },
+            {
+              "replies": [],
+              "comment": "String string",
+              "authorID": "29b4a341-bb6e-42bc-80c0-5f3f7409f5a8",
+              "dateAdded": "3/22/2023"
+            }
+          ],
+          "comment": "What is a String?",
+          "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+          "dateAdded": "2/22/2023"
+        }
+      ],
+      "reviews": [
+        {
+          "review": "This course is very bad",
+          "rating": "0.0",
+          "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+          "dateAdded": "2/22/2023"
+        },
+        {
+          "review": "This course is very good",
+          "rating": "9.8",
+          "authorID": "c0141bbd-ba97-475f-8d7b-c970925d798c",
+          "dateAdded": "2/27/2023"
+        }
+      ],
+      "description": "Learn C for beginners",
+      "language": "C",
+      "title": "C Course",
+      "authorID": "f4bc4e2a-c2bb-11ed-afa1-0242ac120002",
+      "courseID": "757c0b82-35a2-4d38-ace3-5ea7febcec55",
+      "modules": [
+        {
+          "topic": "Pointers in C",
+          "title": "Pointers",
+          "content": [
+            {
+              "passingGrade": "0.8",
+              "lesson": null,
+              "questions": [
+                {
+                  "question": "Which is the reference operator?",
+                  "answers": [
+                    {
+                      "answer": "."
+                    },
+                    {
+                      "answer": "!"
+                    },
+                    {
+                      "answer": "?"
+                    },
+                    {
+                      "answer": "*"
+                    }
+                  ],
+                  "correctAnswer": "&"
+                }
+              ],
+              "title": "Pointers",
+              "contentType": "ASSESMENT"
+            }
+          ]
+        }
+      ]
   }
 ]
