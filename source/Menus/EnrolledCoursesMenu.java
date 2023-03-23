@@ -51,8 +51,7 @@ public class EnrolledCoursesMenu extends Menu{
                   UserList.getInstance(null);
                 break;
             case 4:
-                facade.setCurrentMenu(prevMenu);
-                prevMenu.getSelection();
+                facade.setCurrentMenu(prevMenu).getSelection();
                 break;
         }
     }
