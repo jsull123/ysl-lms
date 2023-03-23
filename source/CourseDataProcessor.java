@@ -148,7 +148,7 @@ public class CourseDataProcessor {
         for (int i = 0; i < reviews.size(); i++){
             JSONObject jReview = new JSONObject();
 
-            jReview.put(DataConstants.AUTHOR_ID, reviews.get(i).getAuthorID().toString());
+            jReview.put(DataConstants.AUTHOR_ID, reviews.get(i).getAuthor().getID().toString());
             jReview.put(DataConstants.RATING, Float.valueOf(reviews.get(i).getRating()).toString());
             jReview.put(DataConstants.REVIEW, reviews.get(i).getReview());
             jReview.put(DataConstants.DATE_ADDED, reviews.get(i).getDateAdded().toString());
@@ -197,7 +197,7 @@ public class CourseDataProcessor {
             JSONObject content = new JSONObject();
 
             content.put(DataConstants.TITLE, contents.get(i).getTitle());
-            content.put(DataConstants.ANSWERS, contents.get(i).getLesson());
+            content.put(DataConstants.LESSON, contents.get(i).getLesson());
             content.put(DataConstants.PASSING_GRADE, Float.valueOf(contents.get(i).getPassingGrade()).toString());
             content.put(DataConstants.CONTENT_TYPE, contents.get(i).getContentType().toString());
             content.put(DataConstants.QUESTIONS, saveQuestions(contents.get(i).getQuestions()));

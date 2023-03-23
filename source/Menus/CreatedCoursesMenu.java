@@ -46,8 +46,7 @@ public class CreatedCoursesMenu extends Menu{
                 //modify course
                 break;
             case 5:
-                facade.setCurrentMenu(prevMenu);
-                facade.getCurrentMenu().getSelection();
+                facade.setCurrentMenu(prevMenu).getSelection();
                 break;
         }
     }

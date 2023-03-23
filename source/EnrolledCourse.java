@@ -29,11 +29,21 @@ public class EnrolledCourse {
     }
 
     public float getModuleProgress(int index){
-        return 0.0f;
+        float ret = 0;
+        for (int i = 0; i < moduleProgress.get(index).size(); i++){
+            if(moduleProgress.get(index).get(i) == true){
+                ret++;
+            }
+        }
+        return ret/moduleProgress.get(index).size();
     }
 
     public float getCourseProgress(){
-        return 0.0f;
+        float ret = 0;
+        for (int i = 0; i < moduleProgress.size(); i++){
+            ret+=getModuleProgress(i);
+        }
+        return ret/moduleProgress.size();
     }
 
     public String toString(){

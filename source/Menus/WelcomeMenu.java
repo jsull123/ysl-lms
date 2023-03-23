@@ -1,6 +1,4 @@
 package source.Menus;
-import source.Course;
-import source.CourseList;
 import source.LMSFacade;
 
 public class WelcomeMenu extends Menu {

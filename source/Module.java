@@ -32,4 +32,8 @@ public class Module {
     public Content getContent(int index){
         return content.get(index);
     }
+
+    public String toString(){
+        return "Title: "+title+"\nTopic: "+topic+"\n";
+    }
 }
