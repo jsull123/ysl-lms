@@ -10,11 +10,10 @@ public class EnrolledCoursesMenu extends Menu{
     private ArrayList<EnrolledCourse> enrolledCourses;
     private int courseIndex;
     private int numCourses;
-    private Menu prevMenu;
 
-    public EnrolledCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<EnrolledCourse> courses) {
+    public EnrolledCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<EnrolledCourse> courses) {
         if (courses.size() == 0){
-            facade.setCurrentMenu(prevMenu);
+            facade.setCurrentMenu(pMenu);
             facade.getCurrentMenu().getSelection("You are not enrolled in any courses");
             return;
         }
@@ -22,9 +21,9 @@ public class EnrolledCoursesMenu extends Menu{
         header = courses.get(courseIndex).toString(); 
         this.facade = facade;
         this.courseIndex = 0;
-        this.prevMenu = prevMenu;
+        this.pMenu = pMenu;
         numCourses = courses.size();
-        options = new String[]{"Next Course", "Previous Course", "View Comments", "Back"};
+        options = new String[]{"Next Course", "Previous Course", "View Comments", "View Modules", "Back"};
     }
 
     public void select(int selection) {
@@ -51,7 +50,9 @@ public class EnrolledCoursesMenu extends Menu{
                   UserList.getInstance(null);
                 break;
             case 4:
-                facade.setCurrentMenu(prevMenu).getSelection();
+                facade.setCurrentMenu(new ViewModules(facade, pMenu));
+            case 5:
+                facade.setCurrentMenu(pMenu).getSelection();
                 break;
         }
     }
