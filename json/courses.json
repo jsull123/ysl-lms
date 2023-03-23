@@ -1,1 +1,112 @@
-[{"comments":[{"replies":[{"replies":[{"replies":[{"replies":[{"replies":[],"comment":"crqr","authorID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002","dateAdded":"3\/22\/2023"}],"comment":"fqwfwqwf","authorID":"29b4a241-bb6e-42bc-80c0-5f3f7409f5a8","dateAdded":"3\/22\/2023"}],"comment":"Thank you","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"2\/24\/2023"}],"comment":"A string is a sequence of characters","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"2\/23\/2023"},{"replies":[{"replies":[],"comment":"fqfjiqwpfj","authorID":"29b4a241-bb6e-42bc-80c0-5f3f7409f5a8","dateAdded":"3\/22\/2023"}],"comment":"new comment","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"3\/22\/2023"},{"replies":[],"comment":"String string","authorID":"29b4a241-bb6e-42bc-80c0-5f3f7409f5a8","dateAdded":"3\/22\/2023"}],"comment":"What is a String?","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"2\/22\/2023"}],"reviews":[{"review":"This course is very bad","rating":"0.0","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"2\/22\/2023"},{"review":"This course is very good","rating":"9.8","authorID":"c0341bbd-ba97-475f-8d7b-c970925d798c","dateAdded":"2\/27\/2023"}],"description":"Learn Java for beginners","language":"Java","title":"Java Course","authorID":"f4bc3e2a-c2bb-11ed-afa1-0242ac120002","courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55","modules":[{"topic":"Variables in Java","title":"Variables","content":[{"passingGrade":"0.8","answers":null,"questions":[{"question":"Which of the following is not a primitive data type?","answers":[{"answer":"boolean"},{"answer":"char"},{"answer":"String"},{"answer":"int"}],"correctAnswer":"1"}],"title":"Data types","contentType":"ASSESMENT"}]}]}]
+[
+  {
+    "comments": [
+      {
+        "replies": [
+          {
+            "replies": [
+              {
+                "replies": [
+                  {
+                    "replies": [
+                      {
+                        "replies": [],
+                        "comment": "crqr",
+                        "authorID": "f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
+                        "dateAdded": "3/22/2023"
+                      }
+                    ],
+                    "comment": "fqwfwqwf",
+                    "authorID": "29b4a241-bb6e-42bc-80c0-5f3f7409f5a8",
+                    "dateAdded": "3/22/2023"
+                  }
+                ],
+                "comment": "Thank you",
+                "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+                "dateAdded": "2/24/2023"
+              }
+            ],
+            "comment": "A string is a sequence of characters",
+            "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+            "dateAdded": "2/23/2023"
+          },
+          {
+            "replies": [
+              {
+                "replies": [],
+                "comment": "fqfjiqwpfj",
+                "authorID": "29b4a241-bb6e-42bc-80c0-5f3f7409f5a8",
+                "dateAdded": "3/22/2023"
+              }
+            ],
+            "comment": "new comment",
+            "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+            "dateAdded": "3/22/2023"
+          },
+          {
+            "replies": [],
+            "comment": "String string",
+            "authorID": "29b4a241-bb6e-42bc-80c0-5f3f7409f5a8",
+            "dateAdded": "3/22/2023"
+          }
+        ],
+        "comment": "What is a String?",
+        "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+        "dateAdded": "2/22/2023"
+      }
+    ],
+    "reviews": [
+      {
+        "review": "This course is very bad",
+        "rating": "0.0",
+        "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+        "dateAdded": "2/22/2023"
+      },
+      {
+        "review": "This course is very good",
+        "rating": "9.8",
+        "authorID": "c0341bbd-ba97-475f-8d7b-c970925d798c",
+        "dateAdded": "2/27/2023"
+      }
+    ],
+    "description": "Learn Java for beginners",
+    "language": "Java",
+    "title": "Java Course",
+    "authorID": "f4bc3e2a-c2bb-11ed-afa1-0242ac120002",
+    "courseID": "747c0b82-35a2-4d38-ace3-5ea7febcec55",
+    "modules": [
+      {
+        "topic": "Variables in Java",
+        "title": "Variables",
+        "content": [
+          {
+            "passingGrade": "0.8",
+            "answers": null,
+            "questions": [
+              {
+                "question": "Which of the following is not a primitive data type?",
+                "answers": [
+                  {
+                    "answer": "boolean"
+                  },
+                  {
+                    "answer": "char"
+                  },
+                  {
+                    "answer": "String"
+                  },
+                  {
+                    "answer": "int"
+                  }
+                ],
+                "correctAnswer": "1"
+              }
+            ],
+            "title": "Data types",
+            "contentType": "ASSESMENT"
+          }
+        ]
+      }
+    ]
+  }
+]
