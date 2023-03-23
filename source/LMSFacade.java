@@ -154,6 +154,10 @@ public class LMSFacade{
         }
         currentMenu.getSelection("This comment has no replies");
     }
+
+    public void setModuleTitle(Module module) {
+        module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
+    }
 /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
