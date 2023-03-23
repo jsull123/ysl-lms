@@ -1,5 +1,7 @@
 package source.Menus;
 import source.LMSFacade;
+import source.UserList;
+import source.CourseList;
 import source.EnrolledCourse;
 import java.util.ArrayList;
 
@@ -44,9 +46,13 @@ public class EnrolledCoursesMenu extends Menu{
                 getSelection();
                 break;
             case 3:
+                facade.setCurrentMenu(new ViewComments(facade, this,
+                  CourseList.getInstance(null).getCourse(enrolledCourses.get(courseIndex).getID()).getAllComments()));
+                  UserList.getInstance(null);
                 break;
             case 4:
-                facade.setCurrentMenu(prevMenu).getSelection();
+                facade.setCurrentMenu(prevMenu);
+                prevMenu.getSelection();
                 break;
         }
     }
