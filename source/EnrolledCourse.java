@@ -20,6 +20,10 @@ public class EnrolledCourse {
         return courseID;
     }
 
+    public Course getCourse(){
+        return CourseList.getInstance(null).getCourse(courseID);
+    }
+
     public void setModuleProgress(ArrayList<ArrayList<Boolean>> moduleProgress){
         this.moduleProgress = moduleProgress;
     }
