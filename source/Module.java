@@ -40,4 +40,8 @@ public class Module {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+    
+    public String toString(){
+        return "Title: "+title+"\nTopic: "+topic+"\n";
+    }
 }

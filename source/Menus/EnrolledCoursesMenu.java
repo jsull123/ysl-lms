@@ -50,7 +50,9 @@ public class EnrolledCoursesMenu extends Menu{
                   UserList.getInstance(null);
                 break;
             case 4:
-                facade.setCurrentMenu(new ViewModules(facade, pMenu));
+                facade.setCurrentMenu(new ViewModules(
+                    facade, pMenu, enrolledCourses.get(courseIndex).getCourse().getAllModules(),
+                    enrolledCourses.get(courseIndex))).getSelection();
             case 5:
                 facade.setCurrentMenu(pMenu).getSelection();
                 break;
