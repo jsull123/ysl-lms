@@ -11,7 +11,7 @@ public class CourseMenu extends Menu {
         "\n If you want to learn the most prolific langauge, start with Java\n"+
         "\n If you want to learn the most niche language, start with Python\n"+
         "\n If you want to learn the easiest language, start with C\n"+
-        "* mean course is already in progress";
+        "* means course is already in progress";
         options = new String[]{"Enroll in a Java course",
         "Enroll in Python", "Enroll in C course"};
         this.facade = facade;
