@@ -14,8 +14,8 @@ public class Review {
         this.dateAdded = dateAdded;
     }
 
-    public UUID getAuthorID(){
-        return authorID;
+    public User getAuthor(){
+        return UserList.getInstance(null).getUser(authorID);
     } 
        
     public Date getDateAdded(){

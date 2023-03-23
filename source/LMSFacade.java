@@ -167,6 +167,10 @@ public class LMSFacade{
         System.out.println("Module added, select Modify module on the next screen to add content");
     }
 
+    public void setModuleTitle(Module module) {
+        module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
+    }
+/* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
         System.out.println("***Enter a number to choose an option***");
@@ -174,7 +178,7 @@ public class LMSFacade{
         System.out.println("2. Sign up as author");
         System.out.println("3. Sign in");
     }
-
+    */
     public void displayPathOptions() {
         System.out.println("***Enter a number into the console to choose a path***");
         System.out.println("");
@@ -185,7 +189,7 @@ public class LMSFacade{
         System.out.println("5. Get certified to create a course");
         System.out.println("6. Go Back");
     }
-
+/* 
     public void displayNewCourseOptions() {
         System.out.println("Are you ready to learn? Look no further");
         System.out.println("Here are some option to start with based on attributes of each langauge");
@@ -204,16 +208,19 @@ public class LMSFacade{
         System.out.println("3. Enroll in C course");
         System.out.println("4. Go back");
     }
-
-    public void enrollInJava(User user, Course course){
+*/
+    public void enrollInJava(Course course){
+        User user = UserList getCurrentUser();
         EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
         user.addEC(Ecourse);
     }
-    public void enrollInPython(User user, Course course){
+    public void enrollInPython(Course course){
+        User user = UserList getCurrentUser();
         EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
         user.addEC(Ecourse);
     }
-    public void enrollInC(User user, Course course){
+    public void enrollInC(Course course){
+        User user = UserList getCurrentUser();
         EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
         user.addEC(Ecourse);
     }

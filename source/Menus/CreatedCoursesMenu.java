@@ -46,8 +46,7 @@ public class CreatedCoursesMenu extends Menu{
                 facade.setCurrentMenu(new ModifyCourse(facade, this, courses.get(courseIndex))).getSelection();
                 break;
             case 5:
-                facade.setCurrentMenu(prevMenu);
-                facade.getCurrentMenu().getSelection();
+                facade.setCurrentMenu(prevMenu).getSelection();
                 break;
         }
     }
