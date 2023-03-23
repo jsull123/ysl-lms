@@ -2,21 +2,20 @@ package source.Menus;
 import source.Course;
 import source.LMSFacade;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class CreatedCoursesMenu extends Menu{
     private ArrayList<Course> courses;
     private int courseIndex;
     private Menu prevMenu;
     
-    public CreatedCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<UUID> coursesUUID) {
-        if (coursesUUID.size() == 0){
+    public CreatedCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<Course> courses) {
+        if (courses.size() == 0){
             facade.setCurrentMenu(prevMenu);
             facade.getCurrentMenu().getSelection("You have not created any courses");
             return;
         }
 
-        this.courses = facade.getCoursesFromUUID(coursesUUID);
+        this.courses = courses;
         this.facade = facade;
         this.courseIndex = 0;
         this.prevMenu = prevMenu;

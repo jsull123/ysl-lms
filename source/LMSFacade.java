@@ -3,11 +3,22 @@ package source;
 import java.util.Scanner;
 import java.util.UUID;
 
-import source.Menus.MainMenu;
-import source.Menus.Menu;
-import source.Menus.WelcomeMenu;
+import source.Menus.*;
 
 import java.util.ArrayList;
+
+
+/*
+ * Recent Changes:
+ *      Created a menu for viewing comments
+ * 
+ *      Changed the user class so getCC and getAllCC methods return the actual course not the UUID. (Made the getCoursesFromUUID method a private method of User)
+ * 
+ *      Added view replies facade method for comments
+ * 
+ *      The facade setCurrentMenu() returns the new menu now instead of void.
+ *      So you can now save 1 line of code by doing facade.setCurrentMenu(menu).getSelection()
+ */
 
 public class LMSFacade{
     private UserList userList;
@@ -31,15 +42,6 @@ public class LMSFacade{
 
         currentMenu = new WelcomeMenu(this);
         currentMenu.getSelection();
-    }
-
-    public ArrayList<Course> getCoursesFromUUID(ArrayList<UUID> uuids) {
-        ArrayList<Course> courses = new ArrayList<>();
-        for(int i = 0; i < uuids.size(); i++) {
-            Course currCourse = courseList.getCourse(uuids.get(i));
-            courses.add(currCourse);
-        }
-        return courses;
     }
 
     public Menu getCurrentMenu(){
@@ -131,14 +133,26 @@ public class LMSFacade{
         currentMenu.getSelection();
     }
 
-    public void login(String password, User user) {
-        if (password.equals(user.getPassword())){
-            LMSUI.clearScreen();
-            System.out.println("Log in success!");
+    // Gets the users comment and adds it to the list passed. Saves the data
+    public void makeComment(ArrayList<Comment> comments) {
         LMSUI.clearScreen();
-        } else { 
-            System.out.println("Log in filed. Try again");
+        System.out.println("Please type your comment below:");
+        Scanner keyboard = new Scanner(System.in);
+        String comment = keyboard.nextLine();
+        Date date = new Date();
+        ArrayList<Comment> replies = new ArrayList<Comment>();
+        comments.add(new Comment(userList.getCurrentUser().getID(), comment, date, replies));
+        CourseDataProcessor.saveData(CourseList.getInstance(null));
+        currentMenu.getSelection("Comment added successfully");
+    }
+
+    // View replies on a comment
+    public void viewReplies(Comment comment){
+        if (comment.getReplies().size() > 0){
+            setCurrentMenu(new ViewComments(this, currentMenu, comment.getReplies())).getSelection();
+            return;
         }
+        currentMenu.getSelection("This comment has no replies");
     }
 
     public void displaySignInOptions() {
@@ -177,16 +191,6 @@ public class LMSFacade{
         System.out.println("2. Enroll in Python course");
         System.out.println("3. Enroll in C course");
         System.out.println("4. Go back");
-    }
-    
-    public Comment makeComment() {
-        LMSUI.clearScreen();
-        System.out.println("Please type your comment below:");
-        Scanner keyboard = new Scanner(System.in);
-        String comment = keyboard.nextLine();
-        Date date = new Date();
-        ArrayList<Comment> replies = new ArrayList<Comment>();
-        return new Comment(userList.getCurrentUser().getID(), comment, date, replies);
     }
 
     public void enrollInJava(User user, Course course){

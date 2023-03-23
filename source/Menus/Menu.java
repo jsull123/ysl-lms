@@ -6,8 +6,9 @@ public abstract class Menu {
     protected LMSFacade facade;
     protected String header;
     protected String[] options;
+    protected Menu pMenu;
 
-    public abstract void select(int selection);
+    protected abstract void select(int selection);
 
     public void getSelection(){
         getSelection("");

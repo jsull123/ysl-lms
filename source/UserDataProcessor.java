@@ -131,7 +131,7 @@ public class UserDataProcessor {
             jUser.put(DataConstants.PASSWORD, users[i].getPassword());
             jUser.put(DataConstants.DOB, users[i].getDOB().toString());
             jUser.put(DataConstants.ENROLLED_COURSES, ecToJson(users[i].getAllEC()));
-            jUser.put(DataConstants.CREATED_COURSES, ccToJson(users[i].getAllCC()));
+            jUser.put(DataConstants.CREATED_COURSES, ccToJson(users[i].getCreatedCoursesIDs()));
 
             // User to JSONArray of users
             jUsers.add(jUser);

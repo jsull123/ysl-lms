@@ -46,8 +46,7 @@ public class EnrolledCoursesMenu extends Menu{
             case 3:
                 break;
             case 4:
-                facade.setCurrentMenu(prevMenu);
-                facade.getCurrentMenu().getSelection();
+                facade.setCurrentMenu(prevMenu).getSelection();
                 break;
         }
     }

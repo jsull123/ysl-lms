@@ -44,7 +44,7 @@
     "lastName": "a",
     "password": "123",
     "dob": "1/1/2000",
-    "accountType": "STUDENT",
+    "accountType": "AUTHOR",
     "enrolledCourses": [],
     "createdCourses": [],
     "userID": "e475890a-2aca-4359-8f1c-cf4dfe39da1a",

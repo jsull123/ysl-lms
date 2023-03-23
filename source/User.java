@@ -67,11 +67,25 @@ public class User {
         createdCourses.add(course.getCourseID());
     }
 
-    public UUID getCC(int index) {
-        return createdCourses.get(index);
+    // Turn the UUID list into a list of courses
+    private ArrayList<Course> getCoursesFromUUID() {
+        ArrayList<Course> courses = new ArrayList<>();
+        for(int i = 0; i < createdCourses.size(); i++) {
+            Course currCourse = CourseList.getInstance(null).getCourse(createdCourses.get(i));
+            courses.add(currCourse);
+        }
+        return courses;
     }
 
-    public ArrayList<UUID> getAllCC() {
+    public Course getCC(int index) {
+        return getCoursesFromUUID().get(index);
+    }
+
+    public ArrayList<Course> getAllCreatedCourses() {
+        return getCoursesFromUUID();
+    }
+
+    public ArrayList<UUID> getCreatedCoursesIDs(){
         return createdCourses;
     }
 

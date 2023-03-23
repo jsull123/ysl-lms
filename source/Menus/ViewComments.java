@@ -1,8 +1,6 @@
 package source.Menus;
 import source.Comment;
 import source.LMSFacade;
-import source.CourseDataProcessor;
-import source.CourseList;
 
 import java.util.ArrayList;
 
@@ -34,6 +32,7 @@ public class ViewComments extends Menu {
 
         header = "***Viewing comment "+(index+1)+" of "+
         comments.size()+"***"+"\n\n"+comments.get(index).toString();
+        getSelection();
     }
 
     private void next(){
@@ -42,29 +41,21 @@ public class ViewComments extends Menu {
 
         header = "***Viewing comment "+(index+1)+" of "+
         comments.size()+"***"+"\n\n"+comments.get(index).toString();
+        getSelection();
     }
 
     public void select(int selection){
         switch (selection){
             case 1:
-                next();
-                getSelection();
+                next();              
                 break;
             case 2:
-                prev(); 
-                getSelection();
+                prev();        
                 break;
             case 3:
-                if (comments.get(index).getReplies().size() > 0){
-                    facade.setCurrentMenu(new ViewComments(
-                        facade, this, comments.get(index).getReplies())).getSelection();
-                    break;
-                }
-                getSelection("This comment has no replies");
+                facade.viewReplies(comments.get(index));
             case 4:
-                comments.get(index).getReplies().add(facade.makeComment());
-                CourseDataProcessor.saveData(CourseList.getInstance(null));
-                getSelection();
+                facade.makeComment(comments);
                 break;
             case 5:
                 facade.setCurrentMenu(pMenu).getSelection();
