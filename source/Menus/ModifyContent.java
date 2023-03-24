@@ -5,42 +5,40 @@ import java.util.ArrayList;
 import source.LMSFacade;
 
 public class ModifyContent extends ListMenu{
-    
-    private ArrayList<Content> content;
-    private int contentIndex;
 
     public ModifyContent(LMSFacade facade, Menu pMenu, ArrayList<Content> content) {
         super(facade, pMenu, content, "There is no content for this module");
-        this.content = content;
-        contentIndex = 0;
-        header = "Content: " + (contentIndex+1) + " of " + content.size() + "\n"
-        + "Content Type and Title: " + content.get(contentIndex).toString() + "\n"
-        + "Lesson: " + content.get(contentIndex).getLesson() + "\n"
-        + "Passing Grade: " + content.get(contentIndex).getPassingGrade();
-        options = new String[]{"Set lesson", "Set title", "Set passing grade", "Modify Questions", "back"};
+        this.list = content;
+        index = 0;
+        header = "Content: " + (index+1) + " of " + content.size() + "\n"
+        + "Content Type and Title: " + content.get(index).toString() + "\n"
+        + "Lesson: " + content.get(index).getLesson() + "\n"
+        + "Passing Grade: " + content.get(index).getPassingGrade();
+        options = new String[]{"Set lesson information", "Set title", "Set passing grade", "Modify Questions", "back"};
     }
 
     public void select(int selection) {
         switch(selection) {
             case 1:
-                facade.setContentLesson(content.get(contentIndex));
+                facade.setContentLesson((Content)list.get(index));
                 updateHeader();
-                getSelection("Content lesson changed.");
+                getSelection("Content lesson information changed.");
                 selection = 1;
                 break;
             case 2:
-                facade.setContentTitle(content.get(contentIndex));
+                facade.setContentTitle((Content)list.get(index));
                 updateHeader();
                 getSelection("Content title changed.");
                 selection = 1;
                 break;
             case 3:
-                facade.setPassingGrade(content.get(contentIndex));
+                facade.setPassingGrade((Content)list.get(index));
                 updateHeader();
                 getSelection("Content passing grade changed.");
                 selection = 1;
                 break;
             case 4:
+                //facade.setCurrentMenu(new ModifyQuestion()).getSelection();
                 break;
             case 5:
                 back();
@@ -51,9 +49,9 @@ public class ModifyContent extends ListMenu{
     }
 
     protected void updateHeader() {
-        header = "Content: " + (contentIndex+1) + " of " + content.size() + "\n"
-         + "Content Type and Title: " + content.get(contentIndex).toString() + "\n"
-         + "Lesson: " + content.get(contentIndex).getLesson() + "\n"
-         + "Passing Grade: " + content.get(contentIndex).getPassingGrade();
+        header = "Content: " + (index+1) + " of " + list.size() + "\n"
+         + "Content Type and Title: " + list.get(index).toString() + "\n"
+         + "Lesson: " + list.get(index).getLesson() + "\n"
+         + "Passing Grade: " + list.get(index).getPassingGrade();
     }
 }

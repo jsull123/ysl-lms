@@ -161,8 +161,8 @@ public class LMSFacade{
         content.setTitle(LMSUI.promptString("Enter a new title: ", true));
     }
 
-    public void setContentType(Content content) {
-        content.setContentType(LMSUI.promptString("Enter a new content type: ", true));
+    public void setPassingGrade(Content content) {
+        content.setPassingGrade(LMSUI.promptFloat("Enter a new passing grade: ", true));
     }
 /* 
     public void displaySignInOptions() {
