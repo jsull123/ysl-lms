@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import source.*;
 import source.Module;
 
-public class ViewModules extends View {
+public class ViewModules extends ListMenu {
 
     private EnrolledCourse enrolledCourse;
 

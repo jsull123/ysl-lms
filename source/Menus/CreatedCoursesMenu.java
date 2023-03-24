@@ -3,7 +3,7 @@ import source.Course;
 import source.LMSFacade;
 import java.util.ArrayList;
 
-public class CreatedCoursesMenu extends View {
+public class CreatedCoursesMenu extends ListMenu {
 
     public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
         super(facade, pMenu, (ArrayList<?>)courses, "You have not created any courses");
