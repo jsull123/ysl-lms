@@ -14,7 +14,7 @@ public class ModifyModules extends ListMenu{
         this.modules = modules;
         moduleIndex = 0;
         header = "Module: " + (moduleIndex+1) + " of " + modules.size() + "\n" + modules.get(moduleIndex).toString();
-        options = new String[]{"Set title", "Set Topic", "View Created Content", "back"};
+        options = new String[]{"Set title", "Set topic", "Modify content", "back"};
     }
 
     public void select(int selection) {
@@ -30,7 +30,7 @@ public class ModifyModules extends ListMenu{
                 getSelection("Module topic changed.");
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewContent(facade, pMenu, modules.get(moduleIndex).getAllContent() , new ArrayList<>())).getSelection();
+                facade.setCurrentMenu(new ModifyContent(facade, pMenu, modules.get(moduleIndex).getAllContent())).getSelection();
                 //switch to view contents menu
                 break;
             case 4:

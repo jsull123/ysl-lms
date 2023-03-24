@@ -152,6 +152,18 @@ public class LMSFacade{
     public void setModuleTopic(Module module) {
         module.setTopic(LMSUI.promptString("Enter a new module topic: ", true));
     }
+
+    public void setContentLesson(Content content) {
+        content.setLesson(LMSUI.promptString("Enter a new lesson name: ", true));
+    }
+
+    public void setContentTitle(Content content) {
+        content.setTitle(LMSUI.promptString("Enter a new title: ", true));
+    }
+
+    public void setContentType(Content content) {
+        content.setContentType(LMSUI.promptString("Enter a new content type: ", true));
+    }
 /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");

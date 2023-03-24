@@ -40,4 +40,16 @@ public class Content {
     public String toString(){
         return contentType.toString()+" on "+title;
     }
+
+    public void setLesson(String lesson) {
+        this.lesson = lesson;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = ContentType.fromString(contentType);
+    }
 }
