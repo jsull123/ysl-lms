@@ -16,6 +16,16 @@ public class LMSUI {
         return i;
     }
 
+    public static float promptFloat(String prompt, boolean cls){
+        if (cls) clearScreen();
+        System.out.println(prompt);
+        float f = 0;
+        try{
+            f = scanner.nextFloat();
+        } catch (Exception e){ f = 0; }
+        return f;
+    }
+
     // Prompt user for String
     public static String promptString(String prompt, boolean cls){
         if (cls) clearScreen();
