@@ -3,50 +3,36 @@ import source.Course;
 import source.LMSFacade;
 import java.util.ArrayList;
 
-public class CreatedCoursesMenu extends Menu{
-    private ArrayList<Course> courses;
-    private int courseIndex;
-    private Menu prevMenu;
-    
-    public CreatedCoursesMenu(LMSFacade facade, Menu prevMenu, ArrayList<Course> courses) {
-        if (courses.size() == 0){
-            facade.setCurrentMenu(prevMenu);
-            facade.getCurrentMenu().getSelection("You have not created any courses");
-            return;
-        }
+public class CreatedCoursesMenu extends View {
 
-        this.courses = courses;
-        this.facade = facade;
-        this.courseIndex = 0;
-        this.prevMenu = prevMenu;
-        header = courses.get(courseIndex).toString();
+    public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
+        super(facade, pMenu, (ArrayList<?>)courses, "You have not created any courses");
+
         options = new String[]{"Next Course", "Previous Course", "View Comments", "Modify course", "Back"};
+    }
+
+    protected void updateHeader(){
+        Course c = (Course)list.get(index);
+        header = "***Viewing course "+(index+1)+" of "+
+        list.size()+"***"+"\n\n"+c.toString();
     }
 
     public void select(int selection) {
         switch(selection) {
             case 1:
-                courseIndex++;
-                if (courseIndex >= courses.size() - 1) courseIndex = 0;
-                header = courses.get(courseIndex).toString();
-                getSelection();
+                next();
                 break;
             case 2:
-                if (courseIndex <= 0) {
-                    courseIndex = courses.size() - 1;
-                }
-                else courseIndex--;
-                header = courses.get(courseIndex).toString();
-                getSelection();
+                prev();
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewComments(facade, this, courses.get(courseIndex).getAllComments())).getSelection();
+                facade.setCurrentMenu(new ViewComments(facade, this, ((Course)(list.get(index))).getAllComments(), true)).getSelection();
                 break;
             case 4:
-                facade.setCurrentMenu(new ModifyCourse(facade, this, courses.get(courseIndex))).getSelection();
+                facade.setCurrentMenu(new ModifyCourse(facade, this, (Course)list.get(index))).getSelection();
                 break;
             case 5:
-                facade.setCurrentMenu(prevMenu).getSelection();
+                back();
                 break;
         }
     }

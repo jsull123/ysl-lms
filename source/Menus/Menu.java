@@ -1,4 +1,5 @@
 package source.Menus;
+
 import source.LMSFacade;
 import source.LMSUI;
 
@@ -8,6 +9,19 @@ public abstract class Menu {
     protected String[] options;
     protected Menu pMenu;
 
+    public Menu(LMSFacade facade, Menu pMenu){
+        this.facade = facade;
+        this.pMenu = pMenu;
+    }
+
+    protected void back(){
+        back("");
+    }
+
+    protected void back(String s){
+        facade.setCurrentMenu(pMenu).getSelection(s);
+    }
+    
     protected abstract void select(int selection);
 
     public void getSelection(){

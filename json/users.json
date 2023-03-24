@@ -1,5 +1,27 @@
 [
   {
+    "userID":"c13aeb96-c2bb-11ed-afa1-0242ac120002",
+    "accountType":"STUDENT",
+    "firstName":"Bob",
+    "lastName":"Smith",
+    "username":"bsmith1304",
+    "email":"bobsmith@gmail.com",
+    "password":"password123",
+    "dob":"2/27/1980",
+    "enrolledCourses": [{
+        "courseID":"747c0b82-35a2-4d38-ace3-5ea7febcec55",
+        "moduleProgess":[{
+                    "progress":[{
+                            "isComplete":true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],        
+    "createdCourses":[]
+  },
+  {
     "firstName": "Matt",
     "lastName": "Johnson",
     "password": "matt$$123",

@@ -1,7 +1,6 @@
 package source;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 // Temporary date class because I couldn't figure out how to use the java date class
 public class Date {

@@ -10,8 +10,8 @@ public class ModifyModules extends Menu{
     private int moduleIndex;
 
     public ModifyModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules) {
-        this.facade = facade;
-        this.pMenu = pMenu;
+        super(facade, pMenu);
+        
         this.modules = modules;
         moduleIndex = 0;
         options = new String[]{"Set title", "Set Topic", "View Created Content", "back"};

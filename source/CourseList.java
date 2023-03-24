@@ -29,7 +29,6 @@ public class CourseList {
 
     public void addCourse(Course course) {
         courses.put(course.getCourseID(), course);
-        CourseDataProcessor.saveData(this);
     }
 
     public void updateCourse(Course course) {

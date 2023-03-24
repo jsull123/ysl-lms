@@ -38,6 +38,6 @@ public class Content {
     }
 
     public String toString(){
-        return "Title: "+title+"\nLesson: "+lesson;
+        return contentType.toString()+" on "+title;
     }
 }

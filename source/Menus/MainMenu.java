@@ -7,9 +7,9 @@ public class MainMenu extends Menu{
     private User user;
 
     public MainMenu(LMSFacade facade, User user){
+        super(facade, null);
         header = "***Logged in as "+user.getUsername()+"***";
         options = new String[]{"Enrolled courses", "Created courses", "Log out"};
-        this.facade = facade;
         this.user = user;
     }
 

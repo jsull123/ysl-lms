@@ -133,15 +133,6 @@ public class LMSFacade{
         CourseDataProcessor.saveData(CourseList.getInstance(null));
         currentMenu.getSelection("Comment added successfully");
     }
-
-    // View replies on a comment
-    public void viewReplies(Comment comment){
-        if (comment.getReplies().size() > 0){
-            setCurrentMenu(new ViewComments(this, currentMenu, comment.getReplies())).getSelection();
-            return;
-        }
-        currentMenu.getSelection("This comment has no replies");
-    }
     
     public void addModule(ArrayList<Module> modules) {
         System.out.println("What is the title of the module");
@@ -152,7 +143,6 @@ public class LMSFacade{
         ArrayList<Content> content = new ArrayList<Content>();
         modules.add(new Module(title, topic, content));
         keyboard.close();
-        System.out.println("Module added, select Modify module on the next screen to add content");
     }
 
     public void setModuleTitle(Module module) {

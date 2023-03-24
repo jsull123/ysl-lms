@@ -4,47 +4,21 @@ import java.util.ArrayList;
 import source.*;
 import source.Module;
 
-public class ViewModules extends Menu {
-    private int index;
-    private ArrayList<Module> modules;
-    private Menu pMenu;
+public class ViewModules extends View {
+
     private EnrolledCourse enrolledCourse;
 
     public ViewModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules, EnrolledCourse enrolledCourse){
-        if (modules == null)
-            pMenu.getSelection();
-        if (modules.size() == 0) 
-            pMenu.getSelection("This course has no modules.");
-
-        index = 0;
+        super(facade, pMenu, (ArrayList<?>)modules, "This course has no modules.");
 
         this.enrolledCourse = enrolledCourse;
-
-        updateHeader();
-
-        this.facade = facade;
-        this.pMenu = pMenu;
-        this.modules = modules;
         this.options = new String[]{"Next", "Previous", "View Content", "Back"};
     }
 
-    private void updateHeader(){
+    protected void updateHeader(){
+        Module module = (Module)list.get(index);
         header = "***Viewing module "+(index+1)+" of "+
-        modules.size()+"***"+"\n\n"+modules.get(index).toString()+
-        "\n"+enrolledCourse.getModuleProgress(index)*100+"% complete";
-        getSelection();
-    }
-
-    private void prev(){
-        index--;
-        if (index < 0) index = modules.size()-1;
-        updateHeader();
-    }
-
-    private void next(){
-        index++;
-        if (index >= modules.size()) index = 0;
-        updateHeader();
+        list.size()+"***"+"\n\n"+module.toString();
     }
 
     public void select(int selection){
@@ -57,11 +31,11 @@ public class ViewModules extends Menu {
                 break;
             case 3:
                 facade.setCurrentMenu(new ViewContent(
-                    facade, this, modules.get(index).getAllContent(), 
+                    facade, this, ((Module)list.get(index)).getAllContent(), 
                     enrolledCourse.getModuleProgress().get(index))).getSelection();
                 break;
             case 4:
-                facade.setCurrentMenu(pMenu).getSelection();
+                back();
                 break;
         }
     }

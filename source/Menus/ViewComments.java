@@ -4,44 +4,27 @@ import source.LMSFacade;
 
 import java.util.ArrayList;
 
-public class ViewComments extends Menu {
-    private int index;
-    private ArrayList<Comment> comments;
-    private Menu pMenu;
+public class ViewComments extends ListMenu {
 
-    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
-        if (comments == null)
-            pMenu.getSelection();
-        if (comments.size() == 0) 
-            pMenu.getSelection("This course has no comments.");
-
-        index = 0;
-
-        this.facade = facade;
-        this.pMenu = pMenu;
-        this.comments = comments;
+    /*
+     * Two constructors because fail message will be differnet depending on what the user is viewing comments on (course vs another comment)
+     */
+    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments, Boolean b){
+        super(facade, pMenu, (ArrayList<?>)comments, "This course has no comments.");
+  
         this.options = new String[]{"Next", "Previous", "View Replies", "Add Reply", "Back"};
     }
 
-    private void updateHeader(){
+    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
+        super(facade, pMenu, (ArrayList<?>)comments, "This comment has no replies.");
+  
+        this.options = new String[]{"Next", "Previous", "View Replies", "Add Reply", "Back"};  
+    }
+
+    protected void updateHeader(){
+        Comment comment = (Comment)list.get(index);
         header = "***Viewing comment "+(index+1)+" of "+
-        comments.size()+"***"+"\n\n"+comments.get(index).toString();
-    }
-
-    private void prev(){
-        index--;
-        if (index < 0) index = comments.size()-1;
-
-        updateHeader();
-        getSelection();
-    }
-
-    private void next(){
-        index++;
-        if (index >= comments.size()) index = 0;
-
-        updateHeader();
-        getSelection();
+        list.size()+"***"+"\n\n"+comment.toString();
     }
 
     public void select(int selection){
@@ -53,12 +36,12 @@ public class ViewComments extends Menu {
                 prev();        
                 break;
             case 3:
-                facade.viewReplies(comments.get(index));
+                facade.setCurrentMenu(new ViewComments(facade, pMenu, ((Comment)list.get(index)).getReplies())).getSelection();
             case 4:
-                facade.makeComment(comments);
+                facade.makeComment((ArrayList<Comment>)list);
                 break;
             case 5:
-                facade.setCurrentMenu(pMenu).getSelection();
+                back();
                 break;
         }
     }

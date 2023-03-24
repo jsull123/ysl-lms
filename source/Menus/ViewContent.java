@@ -2,50 +2,26 @@ package source.Menus;
 import source.*;
 import java.util.ArrayList;
 
-public class ViewContent extends Menu{
-    private int index;
-    private ArrayList<Content> contents;
-    private Menu pMenu;
+public class ViewContent extends ListMenu {
+  
     private ArrayList<Boolean> contentCompletion;
 
     public ViewContent(LMSFacade facade, Menu pMenu, ArrayList<Content> contents, ArrayList<Boolean> contentCompletion){
-        if (contents == null)
-            pMenu.getSelection();
-        if (contents.size() == 0) 
-            pMenu.getSelection("This course has no content.");
-
-        index = 0;
+        super(facade, pMenu, (ArrayList<?>)contents, "This course has no content.");
 
         this.contentCompletion = contentCompletion;
-
-        updateHeader();
-
-        this.facade = facade;
-        this.pMenu = pMenu;
-        this.contents = contents;
         this.options = new String[]{"Next", "Previous", "Something else", "Back"};
     }
 
-    private void updateHeader(){
+    protected void updateHeader(){
+        Content c = (Content)list.get(index);
         header = "***Viewing content "+(index+1)+" of "+
-        contents.size()+"***"+"\n\n"+contents.get(index).toString()+
-        "Completed: "+contentCompletion.get(index);
-    }
-
-    private void prev(){
-        index--;
-        if (index < 0) index = contents.size()-1;
-
-        updateHeader();
-        getSelection(); 
-    }
-
-    private void next(){
-        index++;
-        if (index >= contents.size()) index = 0;
-
-        updateHeader();
-        getSelection();
+        list.size()+"***"+"\n\n"+c.toString();
+        if (contentCompletion.get(index)){
+            header += "\nYou have completed this "+c.getContentType().toString()+"\n";
+        }else{
+            header += "\nYou have not completed this "+c.getContentType().toString()+"\n";
+        }
     }
 
     public void select(int selection){
@@ -61,7 +37,7 @@ public class ViewContent extends Menu{
                 getSelection("Didnt make this yet");
                 break;
             case 4:
-                facade.setCurrentMenu(pMenu).getSelection();
+                back();
                 break;
         }
     }

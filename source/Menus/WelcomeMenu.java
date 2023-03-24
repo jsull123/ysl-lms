@@ -4,9 +4,9 @@ import source.LMSFacade;
 public class WelcomeMenu extends Menu {
 
     public WelcomeMenu(LMSFacade facade){
+        super(facade, null);
         header = "***Welcome to the YSL programming LMS***";
         options = new String[]{"Log In", "Sign Up", "Exit"};
-        this.facade = facade;
     }
 
     public void select(int selection){

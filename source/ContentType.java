@@ -2,13 +2,21 @@ package source;
 
 public enum ContentType {
     LESSON,
-    ASSESMENT;
+    ASSESSMENT;
 
     public static ContentType fromString(String s){
         if (s.equals("LESSON")){
             return LESSON;
         }else{
-            return ASSESMENT;
+            return ASSESSMENT;
         }
+    }  
+
+    @Override
+    public String toString(){
+        if (this == LESSON){
+            return "Lesson";
+        }
+        return "Assessment";
     }
 }
