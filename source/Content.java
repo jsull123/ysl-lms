@@ -49,7 +49,7 @@ public class Content {
         this.title = title;
     }
 
-    public void setContentType(String contentType) {
-        this.contentType = ContentType.fromString(contentType);
+    public void setPassingGrade(float num) {
+        this.passingGrade = num;
     }
 }

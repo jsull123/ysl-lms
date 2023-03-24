@@ -26,18 +26,22 @@ public class ModifyContent extends ListMenu{
                 facade.setContentLesson(content.get(contentIndex));
                 updateHeader();
                 getSelection("Content lesson changed.");
+                selection = 1;
                 break;
             case 2:
                 facade.setContentTitle(content.get(contentIndex));
                 updateHeader();
                 getSelection("Content title changed.");
+                selection = 1;
                 break;
             case 3:
-                //facade.setCurrentMenu(new ModifyContent();
-                //switch to view contents menu
+                facade.setPassingGrade(content.get(contentIndex));
+                updateHeader();
+                getSelection("Content passing grade changed.");
+                selection = 1;
                 break;
             case 4:
-                
+                break;
             case 5:
                 back();
                 break;
