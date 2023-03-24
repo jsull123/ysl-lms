@@ -23,6 +23,7 @@ public class LMSUI {
         try{
             f = scanner.nextFloat();
         } catch (Exception e){ f = 0; }
+        scanner.nextLine();
         return f;
     }
 

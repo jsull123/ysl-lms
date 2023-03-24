@@ -36,7 +36,7 @@ public class ModifyCourse extends ListMenu {
                 getSelection("Module Removed");
                 break;
             case 5:
-                // Modify Module
+                facade.setCurrentMenu(new ModifyModules(facade, pMenu, (ArrayList<Module>)this.list)).getSelection();
                 break;
             case 6:
                 back();
