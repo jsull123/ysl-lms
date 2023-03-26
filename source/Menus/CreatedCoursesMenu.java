@@ -19,7 +19,9 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
             header = "You have not created any courses. Choose option 1 to create a new course\n";
         }else{
             header = "***Viewing course "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"+get().toString()+"\n";
+            list.size()+"***"+"\n\n"+"Title: " + get().toString() +"\n"
+            + "Language: " + get().getLanguage() + "\n"
+            + "Description: " + get().getDescription()+ "\n";
         }    
     }
 

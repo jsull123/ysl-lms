@@ -50,7 +50,7 @@ public class ModifyModules extends ListMenu<Module>{
         if (list.size() == 0){
             header = "This course does not have any modules. Choose option 1 to create a new module.";
         }else{
-            header = "Module: " + (index+1) + " of " + list.size() + "\n" + get().toString();
+            header = "Module: " + (index+1) + " of " + list.size() + "\n\n" + get().toString();
         }       
     }
 }

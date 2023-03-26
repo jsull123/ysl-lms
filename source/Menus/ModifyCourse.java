@@ -9,14 +9,14 @@ public class ModifyCourse extends Menu {
     public ModifyCourse(LMSFacade facade, Menu pMenu, Course course) {
         super(facade, pMenu);
         this.course = course;
-
+        updateHeader();
         options = new String[]{"Change Title", "Change Language", "Change Description", "Modify Modules", "Back"};
     }
 
     public void updateHeader(){
-        header = "Title: "+course.getTitle()+"\n"+
-        "Language: "+course.getLanguage()+"\n"+
-        "Description: "+course.getDescription()+"\n";
+        header = "Title: " + course.toString() +"\n"
+        + "Language: " + course.getLanguage() + "\n"
+        + "Description: " + course.getDescription() + "\n";
     }
 
     public void select(int selection) {
