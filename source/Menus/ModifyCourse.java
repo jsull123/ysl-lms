@@ -9,7 +9,6 @@ public class ModifyCourse extends Menu {
     public ModifyCourse(LMSFacade facade, Menu pMenu, Course course) {
         super(facade, pMenu);
         this.course = course;
-        updateHeader();
 
         options = new String[]{"Change Title", "Change Language", "Change Description", "Modify Modules", "Back"};
     }

@@ -163,6 +163,14 @@ public class LMSFacade{
         currentMenu.getSelection("Content passing grade changed.");
     }
 
+    public void createNewModule(ArrayList<Module> modules){
+        modules.add(new Module(
+            LMSUI.promptString("Enter a title:", true),
+            LMSUI.promptString("Enter a topic:", false), 
+            new ArrayList<>()));
+        currentMenu.getSelection("Module added");
+    }
+
     public void setCourseTitle(Course course){
         course.setTitle(LMSUI.promptString("Enter a new course title:", true));
         currentMenu.getSelection("Title changed.");

@@ -7,6 +7,12 @@ import source.LMSFacade;
 public abstract class ListMenu<T> extends Menu {
     protected ArrayList<T> list;
     protected int index;
+
+    public ListMenu(LMSFacade facade, Menu pMenu, ArrayList<T> list){
+        super(facade, pMenu);
+        this.list = list;
+        index = 0;
+    }
     
     public ListMenu(LMSFacade facade, Menu pMenu, ArrayList<T> list, String failMsg){
         super(facade, pMenu);
