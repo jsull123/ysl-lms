@@ -29,7 +29,7 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
         if (list.size() == 0){
             switch(selection){
                 case 1:
-                    facade.createNewCourse(list);
+                    facade.createCourse(list);
                 case 2:
                     back();
             }
@@ -42,7 +42,7 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
                 prev();
                 break;
             case 3:
-                facade.createNewCourse(list);
+                facade.createCourse(list);
             case 4:
                 facade.setCurrentMenu(new ViewComments(facade, this, get().getAllComments())).getSelection();
                 break;
