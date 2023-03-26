@@ -42,7 +42,7 @@ public class ModifyContent extends ListMenu<Content>{
     protected void updateHeader() {
         header = "Content: " + (index+1) + " of " + list.size() + "\n\n"
          + "Content Type and Title: " + list.get(index).toString() + "\n"
-         + "Lesson: " + ((Content)list.get(index)).getLesson() + "\n"
-         + "Passing Grade: " + ((Content)list.get(index)).getPassingGrade() + "\n";
+         + "Lesson: " + get().getLesson() + "\n"
+         + "Passing Grade: " + get().getPassingGrade() + "\n";
     }
 }
