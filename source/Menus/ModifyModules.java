@@ -2,46 +2,55 @@ package source.Menus;
 import source.Module;
 import source.LMSFacade;
 import java.util.ArrayList;
-import source.LMSFacade;
 
-public class ModifyModules extends ListMenu{
+public class ModifyModules extends ListMenu<Module>{
     
-    private ArrayList<Module> modules;
-    private int moduleIndex;
-
     public ModifyModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules) {
-        super(facade, pMenu, modules, "There are no modules");
-        this.modules = modules;
-        moduleIndex = 0;
-        header = "Module: " + (moduleIndex+1) + " of " + modules.size() + "\n" + modules.get(moduleIndex).toString();
-        options = new String[]{"Set title", "Set topic", "Modify content", "back"};
+        super(facade, pMenu, modules);
+        
+        if (list.size() == 0){
+            options = new String[]{"Create Module", "Back"};
+        }else{
+            options = new String[]{"Next", "Previous", "Create Module", "Set title", "Set topic", "Modify content", "Back"};
+        }     
     }
 
     public void select(int selection) {
+        if (list.size() == 0){
+            switch(selection){
+                case 1:
+                    facade.createModule(list);
+                case 2:
+                    back();
+            }
+        }
         switch(selection) {
             case 1:
-                facade.setModuleTitle(modules.get(moduleIndex));
-                updateHeader();
-                getSelection("Module title changed.");
-                break;
+                next();
             case 2:
-                facade.setModuleTopic(modules.get(moduleIndex));
-                updateHeader();
-                getSelection("Module topic changed.");
-                break;
+                prev();
             case 3:
-                facade.setCurrentMenu(new ModifyContent(facade, pMenu, modules.get(moduleIndex).getAllContent())).getSelection();
-                //switch to view contents menu
-                break;
+                facade.createModule(list);
             case 4:
+                facade.setModuleTitle(get());    
+                break;
+            case 5:
+                facade.setModuleTopic(get());         
+                break;
+            case 6:
+                facade.setCurrentMenu(new ModifyContent(facade, this, get().getAllContent())).getSelection();
+                break;
+            case 7:
                 back();
                 break;
-
         }
-
     }
 
     protected void updateHeader() {
-        header = "Module: " + (moduleIndex+1) + " of " + modules.size() + "\n" + modules.get(moduleIndex).toString();
+        if (list.size() == 0){
+            header = "This course does not have any modules. Choose option 1 to create a new module.";
+        }else{
+            header = "Module: " + (index+1) + " of " + list.size() + "\n\n" + get().toString();
+        }       
     }
 }

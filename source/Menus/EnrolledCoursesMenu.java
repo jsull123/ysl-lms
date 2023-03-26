@@ -1,21 +1,23 @@
 package source.Menus;
 import source.LMSFacade;
-import source.CourseList;
 import source.EnrolledCourse;
 import java.util.ArrayList;
 
-public class EnrolledCoursesMenu extends ListMenu {
+public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
 
     public EnrolledCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<EnrolledCourse> enrolledCourses) {
-        super(facade, pMenu, (ArrayList<?>)enrolledCourses, "You are not enrolled in any courses");
+        super(facade, pMenu, enrolledCourses, "You are not enrolled in any courses");
 
-        options = new String[]{"Next Course", "Previous Course", "View Comments", "View Modules", "Back"};
+        options = new String[]{"Next Course", "Previous Course", "View Modules", "Back"};
     }
 
     protected void updateHeader(){
-        EnrolledCourse ec = (EnrolledCourse)list.get(index);
         header = "***Viewing enrolled course "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+ec.toString();
+        list.size()+"***"+"\n\n"
+        + "Title: " + get().toString() +"\n"
+        + "Language: " + get().getCourse().getLanguage() + "\n"
+        + "Description: " + get().getCourse().getDescription()+ "\n"
+        + get().getCourseProgress()*100+"% complete\n";
     }
 
     public void select(int selection) {
@@ -27,15 +29,10 @@ public class EnrolledCoursesMenu extends ListMenu {
                 prev();
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewComments(facade, this,
-                  CourseList.getInstance(null).getCourse(
-                    ((EnrolledCourse)list.get(index)).getID()).getAllComments(), true)).getSelection();
-                break;
-            case 4:
                 facade.setCurrentMenu(new ViewModules(
-                    facade, pMenu, ((EnrolledCourse)(list.get(index))).getCourse().getAllModules(),
-                    (EnrolledCourse)list.get(index))).getSelection();
-            case 5:
+                    facade, this, get().getCourse().getAllModules(),
+                    get())).getSelection();
+            case 4:
                 back();
                 break;
         }

@@ -13,6 +13,14 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
+    public void setQuestion(String question){
+        this.question = question;
+    }
+
+    public void setCorrectAnswer(int correctAnswer){
+        this.correctAnswer = correctAnswer;
+    }
+
     public String toString(){
         return "";
     }

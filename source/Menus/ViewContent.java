@@ -2,32 +2,41 @@ package source.Menus;
 import source.*;
 import java.util.ArrayList;
 
-public class ViewContent extends ListMenu {
+public class ViewContent extends ListMenu<Content> {
   
     private ArrayList<Boolean> contentCompletion;
 
     public ViewContent(LMSFacade facade, Menu pMenu, ArrayList<Content> contents, ArrayList<Boolean> contentCompletion){
-        super(facade, pMenu, (ArrayList<?>)contents, "This course has no content.");
+        super(facade, pMenu, contents, "This course has no content.");
 
         this.contentCompletion = contentCompletion;
-        this.options = new String[]{"Next", "Previous", "Something else", "Back"};
+        this.options = new String[]{"Next", "Previous", "Take Content", "Back"};
     }
 
     protected void updateHeader(){
-        Content c = (Content)list.get(index);
         header = "***Viewing content "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+c.toString();
+        list.size()+"***"+"\n\n"+get().toString();
         if (contentCompletion.get(index)){
-            header += "\nYou have completed this "+c.getContentType().toString()+"\n";
+            header = "***Viewing content "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"
+            + "Content Type and Title: " + get().toString() + "\n"
+            + "Lesson: " + get().getLesson() + "\n"
+            + "Passing Grade: " + get().getPassingGrade() + "\n"
+            + "\nYou have completed this "+get().getContentType().toString()+"\n";
         }else{
-            header += "\nYou have not completed this "+c.getContentType().toString()+"\n";
+            header = "***Viewing content "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"
+            + "Content Type and Title: " + get().toString() + "\n"
+            + "Lesson: " + get().getLesson() + "\n"
+            + "Passing Grade: " + get().getPassingGrade() + "\n"
+            + "\nYou have not completed this "+get().getContentType().toString()+"\n";
         }
     }
 
     public void select(int selection){
         switch (selection){
             case 1:
-                next();              
+                next();           
                 break;
             case 2:
                 prev();        

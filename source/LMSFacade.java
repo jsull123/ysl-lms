@@ -7,22 +7,10 @@ import source.Menus.*;
 
 import java.util.ArrayList;
 
-
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
     private Menu currentMenu;
-
-    private EnrolledCourse currentlyEnrolledCourse;
-    private UserDataProcessor userProcessor;
-    private CourseDataProcessor courseProcessor;
-    private Question question;
-    //private Lesson lesson;
-    //private Assessment assessment;
-    private Module module;
-    private Course course;
-    private Review review;
-    private Comment comment;
     
     public LMSFacade(){
         userList = UserDataProcessor.loadData();
@@ -41,12 +29,6 @@ public class LMSFacade{
         return currentMenu;
     }
 
-    public void logOut(){
-        userList.setCurrentUser(null);
-        currentMenu = new WelcomeMenu(this);
-        currentMenu.getSelection();
-    }
-    
     public void logIn(){
         // Get username
         String username = LMSUI.promptString("Enter your username: ", true);
@@ -121,50 +103,117 @@ public class LMSFacade{
         currentMenu.getSelection();
     }
 
-    // Gets the users comment and adds it to the list passed. Saves the data
-    public void makeComment(ArrayList<Comment> comments) {
-        LMSUI.clearScreen();
-        System.out.println("Please type your comment below:");
-        Scanner keyboard = new Scanner(System.in);
-        String comment = keyboard.nextLine();
-        Date date = new Date();
-        ArrayList<Comment> replies = new ArrayList<Comment>();
-        comments.add(new Comment(userList.getCurrentUser().getID(), comment, date, replies));
-        CourseDataProcessor.saveData(CourseList.getInstance(null));
-        currentMenu.getSelection("Comment added successfully");
+    public void exit(){
+        UserDataProcessor.saveData(userList);
+        CourseDataProcessor.saveData(courseList);
+        System.exit(0);
+    }
+
+    public void logOut(){
+        userList.setCurrentUser(null);
+        currentMenu = new WelcomeMenu(this);
+        currentMenu.getSelection();
     }
     
-    public void addModule(ArrayList<Module> modules) {
-        System.out.println("What is the title of the module");
-        Scanner keyboard = new Scanner(System.in);
-        String title = keyboard.nextLine();
-        System.out.println("What is the topic");
-        String topic = keyboard.nextLine();
-        ArrayList<Content> content = new ArrayList<Content>();
-        modules.add(new Module(title, topic, content));
-        keyboard.close();
+    public void makeComment(ArrayList<Comment> comments) {
+        comments.add(new Comment(
+            userList.getCurrentUser().getID(),
+            LMSUI.promptString("Type your comment:", true),
+            new Date(),
+            new ArrayList<>()
+            ));
+        currentMenu.getSelection("Comment added successfully");
     }
 
     public void setModuleTitle(Module module) {
         module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
+        currentMenu.getSelection("Module title changed.");
     }
 
     public void setModuleTopic(Module module) {
         module.setTopic(LMSUI.promptString("Enter a new module topic: ", true));
+        currentMenu.getSelection("Module topic changed.");
     }
 
     public void setContentLesson(Content content) {
         content.setLesson(LMSUI.promptString("Enter a new lesson name: ", true));
+        currentMenu.getSelection("Content lesson information changed.");
     }
 
     public void setContentTitle(Content content) {
         content.setTitle(LMSUI.promptString("Enter a new title: ", true));
+        currentMenu.getSelection("Content title changed.");
     }
 
     public void setPassingGrade(Content content) {
         content.setPassingGrade(LMSUI.promptFloat("Enter a new passing grade: ", true));
+        currentMenu.getSelection("Content passing grade changed.");
     }
-/* 
+
+    public void createQuestion(ArrayList<Question> questions){
+        String question = LMSUI.promptString("Enter the questions question:", true);
+        ArrayList<String> answerChoices = new ArrayList<>();
+        answerChoices.add(LMSUI.promptString("Enter answer choice A:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice B:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice C:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice D:", false));
+        String correctStr = LMSUI.promptString("Which is the correct choice (A,B,C,D)?:", false);
+        int correct = -1;
+        if (correctStr.toUpperCase() == "A") correct = 0;
+        if (correctStr.toUpperCase() == "B") correct = 1;
+        if (correctStr.toUpperCase() == "C") correct = 2;
+        if (correctStr.toUpperCase() == "D") correct = 3;
+        
+        if (correct == -1) currentMenu.getSelection("Invalid choice! Must be A, B, C, or D");
+
+        questions.add(new Question(question, answerChoices, correct));
+
+        currentMenu.getSelection("Question added");
+    }
+
+    public void createCourse(ArrayList<Course> courses){
+        courses.add(new Course(UUID.randomUUID(),
+        LMSUI.promptString("Enter course title:", true), 
+        LMSUI.promptString("Enter course language:", false),
+        LMSUI.promptString("Enter course description:", false),
+        userList.getCurrentUser().getID(),
+        new ArrayList<>(),
+        new ArrayList<>(),
+        new ArrayList<>()));
+
+        currentMenu.getSelection("Course created");
+    }
+
+    public void createModule(ArrayList<Module> modules){
+        modules.add(new Module(
+            LMSUI.promptString("Enter a title:", true),
+            LMSUI.promptString("Enter a topic:", false), 
+            new ArrayList<>()));
+        currentMenu.getSelection("Module added");
+    }
+
+    public void setCourseTitle(Course course){
+        course.setTitle(LMSUI.promptString("Enter a new course title:", true));
+        currentMenu.getSelection("Title changed.");
+    }
+
+    public void setCourseLanguage(Course course){
+        course.setLanguage(LMSUI.promptString("Enter a new course language:", true));
+        currentMenu.getSelection("Language changed");
+    }
+
+    public void setCourseDescription(Course course){
+        course.setDescription(LMSUI.promptString("Enter a new course description:", true));
+        currentMenu.getSelection("Description changed.");
+    }
+
+    public void enrollInCourse(Course course){
+        User user = userList.getCurrentUser();
+        user.addEC(new EnrolledCourse(course.getCourseID()));
+        currentMenu.getSelection("Enrolled in: " + course.toString());
+    }
+
+    /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
         System.out.println("***Enter a number to choose an option***");
@@ -203,20 +252,5 @@ public class LMSFacade{
         System.out.println("4. Go back");
     }
 */
-    public void enrollInJava(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
-    public void enrollInPython(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
-    public void enrollInC(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
 
 }
