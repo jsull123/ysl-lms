@@ -194,20 +194,12 @@ public class LMSFacade{
         currentMenu.getSelection("Description changed.");
     }
 
-    public void createNewCourse(ArrayList<Course> courses){
-        courses.add(new Course(
-            UUID.randomUUID(),
-            LMSUI.promptString("Enter a title for your course:", true),
-            LMSUI.promptString("What language will your course be on? (Java, C, etc):", false),
-            LMSUI.promptString("Enter a description for your course:", false),
-            userList.getCurrentUser().getID(),
-            new ArrayList<>(),
-            new ArrayList<>(),
-            new ArrayList<>()
-            ));
-
-        currentMenu.getSelection("Course created");
+    public void enrollInCourse(Course course){
+        User user = userList.getCurrentUser();
+        user.addEC(new EnrolledCourse(course.getCourseID()));
+        currentMenu.getSelection("Enrolled in: " + course.toString());
     }
+
     /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
@@ -247,20 +239,5 @@ public class LMSFacade{
         System.out.println("4. Go back");
     }
 */
-    public void enrollInJava(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
-    public void enrollInPython(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
-    public void enrollInC(Course course){
-        User user = UserList getCurrentUser();
-        EnrolledCourse Ecourse = new EnrolledCourse(course.getCourseID());
-        user.addEC(Ecourse);
-    }
 
 }
