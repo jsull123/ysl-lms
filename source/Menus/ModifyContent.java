@@ -2,40 +2,25 @@ package source.Menus;
 import source.Content;
 import source.LMSFacade;
 import java.util.ArrayList;
-import source.LMSFacade;
 
-public class ModifyContent extends ListMenu{
+public class ModifyContent extends ListMenu<Content>{
 
     public ModifyContent(LMSFacade facade, Menu pMenu, ArrayList<Content> content) {
         super(facade, pMenu, content, "There is no content for this module");
-        this.list = content;
-        index = 0;
-        header = "Content: " + (index+1) + " of " + content.size() + "\n"
-        + "Content Type and Title: " + content.get(index).toString() + "\n"
-        + "Lesson: " + content.get(index).getLesson() + "\n"
-        + "Passing Grade: " + content.get(index).getPassingGrade();
-        options = new String[]{"Set lesson information", "Set title", "Set passing grade", "Modify Questions", "back"};
+       
+        options = new String[]{"Set lesson information", "Set title", "Set passing grade", "Modify Questions", "Back"};
     }
 
     public void select(int selection) {
         switch(selection) {
             case 1:
-                facade.setContentLesson((Content)list.get(index));
-                updateHeader();
-                getSelection("Content lesson information changed.");
-                selection = 1;
+                facade.setContentLesson(get());
                 break;
             case 2:
-                facade.setContentTitle((Content)list.get(index));
-                updateHeader();
-                getSelection("Content title changed.");
-                selection = 1;
+                facade.setContentTitle(get());   
                 break;
             case 3:
-                facade.setPassingGrade((Content)list.get(index));
-                updateHeader();
-                getSelection("Content passing grade changed.");
-                selection = 1;
+                facade.setPassingGrade(get());
                 break;
             case 4:
                 //facade.setCurrentMenu(new ModifyQuestion()).getSelection();
@@ -51,7 +36,7 @@ public class ModifyContent extends ListMenu{
     protected void updateHeader() {
         header = "Content: " + (index+1) + " of " + list.size() + "\n"
          + "Content Type and Title: " + list.get(index).toString() + "\n"
-         + "Lesson: " + list.get(index).getLesson() + "\n"
-         + "Passing Grade: " + list.get(index).getPassingGrade();
+         + "Lesson: " + ((Content)list.get(index)).getLesson() + "\n"
+         + "Passing Grade: " + ((Content)list.get(index)).getPassingGrade();
     }
 }

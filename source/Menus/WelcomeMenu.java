@@ -18,7 +18,7 @@ public class WelcomeMenu extends Menu {
                 facade.createAccount();
                 break;
             case 3:
-                System.exit(0);
+                facade.exit();
                 break;
         }
     }

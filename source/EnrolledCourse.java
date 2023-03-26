@@ -51,8 +51,6 @@ public class EnrolledCourse {
     }
 
     public String toString(){
-        CourseList list = CourseList.getInstance(null);
-        Course course = list.getCourse(courseID);
-        return course.getTitle();
+        return CourseList.getInstance(null).getCourse(courseID).getTitle();
     }
 }

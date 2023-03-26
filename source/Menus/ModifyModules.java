@@ -2,46 +2,37 @@ package source.Menus;
 import source.Module;
 import source.LMSFacade;
 import java.util.ArrayList;
-import source.LMSFacade;
 
-public class ModifyModules extends ListMenu{
+public class ModifyModules extends ListMenu<Module>{
     
-    private ArrayList<Module> modules;
-    private int moduleIndex;
-
     public ModifyModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules) {
         super(facade, pMenu, modules, "There are no modules");
-        this.modules = modules;
-        moduleIndex = 0;
-        header = "Module: " + (moduleIndex+1) + " of " + modules.size() + "\n" + modules.get(moduleIndex).toString();
-        options = new String[]{"Set title", "Set topic", "Modify content", "back"};
+
+        options = new String[]{"Next", "Previous", "Set title", "Set topic", "Modify content", "Back"};
     }
 
     public void select(int selection) {
         switch(selection) {
             case 1:
-                facade.setModuleTitle(modules.get(moduleIndex));
-                updateHeader();
-                getSelection("Module title changed.");
-                break;
+                next();
             case 2:
-                facade.setModuleTopic(modules.get(moduleIndex));
-                updateHeader();
-                getSelection("Module topic changed.");
-                break;
+                prev();
             case 3:
-                facade.setCurrentMenu(new ModifyContent(facade, pMenu, modules.get(moduleIndex).getAllContent())).getSelection();
-                //switch to view contents menu
+                facade.setModuleTitle(get());    
                 break;
             case 4:
+                facade.setModuleTopic(get());         
+                break;
+            case 5:
+                facade.setCurrentMenu(new ModifyContent(facade, pMenu, get().getAllContent())).getSelection();
+                break;
+            case 6:
                 back();
                 break;
-
         }
-
     }
 
     protected void updateHeader() {
-        header = "Module: " + (moduleIndex+1) + " of " + modules.size() + "\n" + modules.get(moduleIndex).toString();
+        header = "Module: " + (index+1) + " of " + list.size() + "\n" + get().toString();
     }
 }

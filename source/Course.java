@@ -26,7 +26,23 @@ public class Course{
         this.comments = comments;
         this.modules = modules;
     }
-  
+    
+    public String toString(){
+        return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setLanguage(String language){
+        this.language = language;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+     
     public UUID getAuthorID(){
         return authorID;
     }

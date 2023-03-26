@@ -12,17 +12,6 @@ public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
     private Menu currentMenu;
-
-    private EnrolledCourse currentlyEnrolledCourse;
-    private UserDataProcessor userProcessor;
-    private CourseDataProcessor courseProcessor;
-    private Question question;
-    //private Lesson lesson;
-    //private Assessment assessment;
-    private Module module;
-    private Course course;
-    private Review review;
-    private Comment comment;
     
     public LMSFacade(){
         userList = UserDataProcessor.loadData();
@@ -41,12 +30,6 @@ public class LMSFacade{
         return currentMenu;
     }
 
-    public void logOut(){
-        userList.setCurrentUser(null);
-        currentMenu = new WelcomeMenu(this);
-        currentMenu.getSelection();
-    }
-    
     public void logIn(){
         // Get username
         String username = LMSUI.promptString("Enter your username: ", true);
@@ -121,7 +104,18 @@ public class LMSFacade{
         currentMenu.getSelection();
     }
 
-    // Gets the users comment and adds it to the list passed. Saves the data
+    public void exit(){
+        UserDataProcessor.saveData(userList);
+        CourseDataProcessor.saveData(courseList);
+        System.exit(0);
+    }
+
+    public void logOut(){
+        userList.setCurrentUser(null);
+        currentMenu = new WelcomeMenu(this);
+        currentMenu.getSelection();
+    }
+    
     public void makeComment(ArrayList<Comment> comments) {
         LMSUI.clearScreen();
         System.out.println("Please type your comment below:");
@@ -130,7 +124,6 @@ public class LMSFacade{
         Date date = new Date();
         ArrayList<Comment> replies = new ArrayList<Comment>();
         comments.add(new Comment(userList.getCurrentUser().getID(), comment, date, replies));
-        CourseDataProcessor.saveData(CourseList.getInstance(null));
         currentMenu.getSelection("Comment added successfully");
     }
     
@@ -147,24 +140,45 @@ public class LMSFacade{
 
     public void setModuleTitle(Module module) {
         module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
+        currentMenu.getSelection("Module title changed.");
     }
 
     public void setModuleTopic(Module module) {
         module.setTopic(LMSUI.promptString("Enter a new module topic: ", true));
+        currentMenu.getSelection("Module topic changed.");
     }
 
     public void setContentLesson(Content content) {
         content.setLesson(LMSUI.promptString("Enter a new lesson name: ", true));
+        currentMenu.getSelection("Content lesson information changed.");
     }
 
     public void setContentTitle(Content content) {
         content.setTitle(LMSUI.promptString("Enter a new title: ", true));
+        currentMenu.getSelection("Content title changed.");
     }
 
     public void setPassingGrade(Content content) {
         content.setPassingGrade(LMSUI.promptFloat("Enter a new passing grade: ", true));
+        currentMenu.getSelection("Content passing grade changed.");
     }
-/* 
+
+    public void setCourseTitle(Course course){
+        course.setTitle(LMSUI.promptString("Enter a new course title:", true));
+        currentMenu.getSelection("Title changed.");
+    }
+
+    public void setCourseLanguage(Course course){
+        course.setLanguage(LMSUI.promptString("Enter a new course language:", true));
+        currentMenu.getSelection("Language changed.");
+    }
+
+    public void setCourseDescription(Course course){
+        course.setDescription(LMSUI.promptString("Enter a new course description:", true));
+        currentMenu.getSelection("Description changed.");
+    }
+
+    /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
         System.out.println("***Enter a number to choose an option***");

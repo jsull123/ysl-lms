@@ -4,17 +4,21 @@ import java.util.ArrayList;
 
 import source.LMSFacade;
 
-public abstract class ListMenu extends Menu {
-    protected ArrayList<?> list;
+public abstract class ListMenu<T> extends Menu {
+    protected ArrayList<T> list;
     protected int index;
     
-    public ListMenu(LMSFacade facade, Menu pMenu, ArrayList<?> list, String failMsg){
+    public ListMenu(LMSFacade facade, Menu pMenu, ArrayList<T> list, String failMsg){
         super(facade, pMenu);
         this.list = list;
         index = 0;
         if (list == null || list.size() == 0){
             back(failMsg);
         }
+    }
+
+    public T get(){
+        return list.get(index);
     }
 
     protected abstract void updateHeader();
@@ -34,7 +38,6 @@ public abstract class ListMenu extends Menu {
         index--;
         if (index < 0) index = list.size()-1;
 
-        updateHeader();
         getSelection();
     }
 
@@ -42,7 +45,6 @@ public abstract class ListMenu extends Menu {
         index++;
         if (index >= list.size()) index = 0;
 
-        updateHeader();
         getSelection();
     }
 

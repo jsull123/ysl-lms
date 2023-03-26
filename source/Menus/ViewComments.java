@@ -4,27 +4,17 @@ import source.LMSFacade;
 
 import java.util.ArrayList;
 
-public class ViewComments extends ListMenu {
+public class ViewComments extends ListMenu<Comment> {
 
-    /*
-     * Two constructors because fail message will be differnet depending on what the user is viewing comments on (course vs another comment)
-     */
-    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments, Boolean b){
-        super(facade, pMenu, (ArrayList<?>)comments, "This course has no comments.");
-  
+    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
+        super(facade, pMenu, comments, "No comments found");
+
         this.options = new String[]{"Next", "Previous", "View Replies", "Add Reply", "Back"};
     }
 
-    public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
-        super(facade, pMenu, (ArrayList<?>)comments, "This comment has no replies.");
-  
-        this.options = new String[]{"Next", "Previous", "View Replies", "Add Reply", "Back"};  
-    }
-
     protected void updateHeader(){
-        Comment comment = (Comment)list.get(index);
         header = "***Viewing comment "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+comment.toString();
+        list.size()+"***"+"\n\n"+get().toString();
     }
 
     public void select(int selection){
@@ -36,9 +26,9 @@ public class ViewComments extends ListMenu {
                 prev();        
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewComments(facade, pMenu, ((Comment)list.get(index)).getReplies())).getSelection();
+                facade.setCurrentMenu(new ViewComments(facade, pMenu, get().getReplies())).getSelection();
             case 4:
-                facade.makeComment((ArrayList<Comment>)list);
+                facade.makeComment(list);
                 break;
             case 5:
                 back();
