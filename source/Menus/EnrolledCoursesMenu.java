@@ -13,8 +13,11 @@ public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
 
     protected void updateHeader(){
         header = "***Viewing enrolled course "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+get().toString()+
-        " "+get().getCourseProgress()*100+"% complete\n";
+        list.size()+"***"+"\n\n"
+        + "Title: " + get().toString() +"\n"
+        + "Language: " + get().getCourse().getLanguage() + "\n"
+        + "Description: " + get().getCourse().getDescription()+ "\n"
+        + get().getCourseProgress()*100+"% complete\n";
     }
 
     public void select(int selection) {

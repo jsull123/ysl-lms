@@ -17,9 +17,19 @@ public class ViewContent extends ListMenu<Content> {
         header = "***Viewing content "+(index+1)+" of "+
         list.size()+"***"+"\n\n"+get().toString();
         if (contentCompletion.get(index)){
-            header += "\nYou have completed this "+get().getContentType().toString()+"\n";
+            header = "***Viewing content "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"
+            + "Content Type and Title: " + get().toString() + "\n"
+            + "Lesson: " + get().getLesson() + "\n"
+            + "Passing Grade: " + get().getPassingGrade() + "\n"
+            + "\nYou have completed this "+get().getContentType().toString()+"\n";
         }else{
-            header += "\nYou have not completed this "+get().getContentType().toString()+"\n";
+            header = "***Viewing content "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"
+            + "Content Type and Title: " + get().toString() + "\n"
+            + "Lesson: " + get().getLesson() + "\n"
+            + "Passing Grade: " + get().getPassingGrade() + "\n"
+            + "\nYou have not completed this "+get().getContentType().toString()+"\n";
         }
     }
 

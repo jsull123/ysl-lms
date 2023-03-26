@@ -7,25 +7,31 @@ public class ModifyContent extends ListMenu<Content>{
 
     public ModifyContent(LMSFacade facade, Menu pMenu, ArrayList<Content> content) {
         super(facade, pMenu, content, "There is no content for this module");
-        
-        options = new String[]{"Set lesson information", "Set title", "Set passing grade", "Modify Questions", "Back"};
+       
+        options = new String[]{"Next", "Previous", "Set lesson information", "Set title", "Set passing grade", "Modify Questions", "Back"};
     }
 
     public void select(int selection) {
         switch(selection) {
             case 1:
-                facade.setContentLesson(get());
+                next();
                 break;
             case 2:
-                facade.setContentTitle(get());   
+                prev();
                 break;
             case 3:
-                facade.setPassingGrade(get());
+                facade.setContentLesson(get());
                 break;
             case 4:
-                //facade.setCurrentMenu(new ModifyQuestion()).getSelection();
+                facade.setContentTitle(get());   
                 break;
             case 5:
+                facade.setPassingGrade(get());
+                break;
+            case 6:
+                facade.setCurrentMenu(new ModifyQuestions(facade, this, get().getQuestions())).getSelection();
+                break;
+            case 7:
                 back();
                 break;
 
@@ -34,9 +40,9 @@ public class ModifyContent extends ListMenu<Content>{
     }
 
     protected void updateHeader() {
-        header = "Content: " + (index+1) + " of " + list.size() + "\n"
+        header = "Content: " + (index+1) + " of " + list.size() + "\n\n"
          + "Content Type and Title: " + list.get(index).toString() + "\n"
          + "Lesson: " + ((Content)list.get(index)).getLesson() + "\n"
-         + "Passing Grade: " + ((Content)list.get(index)).getPassingGrade();
+         + "Passing Grade: " + ((Content)list.get(index)).getPassingGrade() + "\n";
     }
 }
