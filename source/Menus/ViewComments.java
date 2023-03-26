@@ -26,7 +26,7 @@ public class ViewComments extends ListMenu<Comment> {
                 prev();        
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewComments(facade, pMenu, get().getReplies())).getSelection();
+                facade.setCurrentMenu(new ViewComments(facade, this, get().getReplies())).getSelection();
             case 4:
                 facade.makeComment(list);
                 break;

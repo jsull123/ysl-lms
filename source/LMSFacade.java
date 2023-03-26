@@ -7,7 +7,6 @@ import source.Menus.*;
 
 import java.util.ArrayList;
 
-
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
@@ -117,25 +116,13 @@ public class LMSFacade{
     }
     
     public void makeComment(ArrayList<Comment> comments) {
-        LMSUI.clearScreen();
-        System.out.println("Please type your comment below:");
-        Scanner keyboard = new Scanner(System.in);
-        String comment = keyboard.nextLine();
-        Date date = new Date();
-        ArrayList<Comment> replies = new ArrayList<Comment>();
-        comments.add(new Comment(userList.getCurrentUser().getID(), comment, date, replies));
+        comments.add(new Comment(
+            userList.getCurrentUser().getID(),
+            LMSUI.promptString("Type your comment:", true),
+            new Date(),
+            new ArrayList<>()
+            ));
         currentMenu.getSelection("Comment added successfully");
-    }
-    
-    public void addModule(ArrayList<Module> modules) {
-        System.out.println("What is the title of the module");
-        Scanner keyboard = new Scanner(System.in);
-        String title = keyboard.nextLine();
-        System.out.println("What is the topic");
-        String topic = keyboard.nextLine();
-        ArrayList<Content> content = new ArrayList<Content>();
-        modules.add(new Module(title, topic, content));
-        keyboard.close();
     }
 
     public void setModuleTitle(Module module) {
@@ -163,7 +150,28 @@ public class LMSFacade{
         currentMenu.getSelection("Content passing grade changed.");
     }
 
-    public void createNewModule(ArrayList<Module> modules){
+    public void createQuestion(ArrayList<Question> questions){
+        String question = LMSUI.promptString("Enter the questions question:", true);
+        ArrayList<String> answerChoices = new ArrayList<>();
+        answerChoices.add(LMSUI.promptString("Enter answer choice A:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice B:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice C:", false));
+        answerChoices.add(LMSUI.promptString("Enter answer choice D:", false));
+        String correctStr = LMSUI.promptString("Which is the correct choice (A,B,C,D)?:", false);
+        int correct = -1;
+        if (correctStr.toUpperCase() == "A") correct = 0;
+        if (correctStr.toUpperCase() == "B") correct = 1;
+        if (correctStr.toUpperCase() == "C") correct = 2;
+        if (correctStr.toUpperCase() == "D") correct = 3;
+        
+        if (correct == -1) currentMenu.getSelection("Invalid choice! Must be A, B, C, or D");
+
+        questions.add(new Question(question, answerChoices, correct));
+
+        currentMenu.getSelection("Question added");
+    }
+
+    public void createModule(ArrayList<Module> modules){
         modules.add(new Module(
             LMSUI.promptString("Enter a title:", true),
             LMSUI.promptString("Enter a topic:", false), 
@@ -178,7 +186,7 @@ public class LMSFacade{
 
     public void setCourseLanguage(Course course){
         course.setLanguage(LMSUI.promptString("Enter a new course language:", true));
-        currentMenu.getSelection("Language changed.");
+        currentMenu.getSelection("Language changed");
     }
 
     public void setCourseDescription(Course course){
@@ -186,6 +194,20 @@ public class LMSFacade{
         currentMenu.getSelection("Description changed.");
     }
 
+    public void createNewCourse(ArrayList<Course> courses){
+        courses.add(new Course(
+            UUID.randomUUID(),
+            LMSUI.promptString("Enter a title for your course:", true),
+            LMSUI.promptString("What language will your course be on? (Java, C, etc):", false),
+            LMSUI.promptString("Enter a description for your course:", false),
+            userList.getCurrentUser().getID(),
+            new ArrayList<>(),
+            new ArrayList<>(),
+            new ArrayList<>()
+            ));
+
+        currentMenu.getSelection("Course created");
+    }
     /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");

@@ -7,7 +7,7 @@ import source.Review;
 public class ViewReviews extends ListMenu<Review> {
 
     public ViewReviews(LMSFacade facade, Menu pMenu, ArrayList<Review> reviews) {
-        super(facade, pMenu, reviews, "This couse has no reviews");
+        super(facade, pMenu, reviews, "This course has no reviews");
 
         options = new String[]{"Next", "Previous", "Back"};
     }

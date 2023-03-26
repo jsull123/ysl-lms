@@ -7,18 +7,30 @@ public class ModifyModules extends ListMenu<Module>{
     
     public ModifyModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules) {
         super(facade, pMenu, modules);
-
-        options = new String[]{"Next", "Previous", "Add Module", "Set title", "Set topic", "Modify content", "Back"};
+        
+        if (list.size() == 0){
+            options = new String[]{"Create Module", "Back"};
+        }else{
+            options = new String[]{"Next", "Previous", "Create Module", "Set title", "Set topic", "Modify content", "Back"};
+        }     
     }
 
     public void select(int selection) {
+        if (list.size() == 0){
+            switch(selection){
+                case 1:
+                    facade.createModule(list);
+                case 2:
+                    back();
+            }
+        }
         switch(selection) {
             case 1:
                 next();
             case 2:
                 prev();
             case 3:
-                
+                facade.createModule(list);
             case 4:
                 facade.setModuleTitle(get());    
                 break;
@@ -26,7 +38,7 @@ public class ModifyModules extends ListMenu<Module>{
                 facade.setModuleTopic(get());         
                 break;
             case 6:
-                facade.setCurrentMenu(new ModifyContent(facade, pMenu, get().getAllContent())).getSelection();
+                facade.setCurrentMenu(new ModifyContent(facade, this, get().getAllContent())).getSelection();
                 break;
             case 7:
                 back();
@@ -35,6 +47,10 @@ public class ModifyModules extends ListMenu<Module>{
     }
 
     protected void updateHeader() {
-        header = "Module: " + (index+1) + " of " + list.size() + "\n" + get().toString();
+        if (list.size() == 0){
+            header = "This course does not have any modules. Choose option 1 to create a new module.";
+        }else{
+            header = "Module: " + (index+1) + " of " + list.size() + "\n" + get().toString();
+        }       
     }
 }
