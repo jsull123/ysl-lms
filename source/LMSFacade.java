@@ -171,6 +171,19 @@ public class LMSFacade{
         currentMenu.getSelection("Question added");
     }
 
+    public void createCourse(ArrayList<Course> courses){
+        courses.add(new Course(UUID.randomUUID(),
+        LMSUI.promptString("Enter course title:", true), 
+        LMSUI.promptString("Enter course language:", false),
+        LMSUI.promptString("Enter course description:", false),
+        userList.getCurrentUser().getID(),
+        new ArrayList<>(),
+        new ArrayList<>(),
+        new ArrayList<>()));
+
+        currentMenu.getSelection("Course created");
+    }
+
     public void createModule(ArrayList<Module> modules){
         modules.add(new Module(
             LMSUI.promptString("Enter a title:", true),

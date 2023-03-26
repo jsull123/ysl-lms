@@ -11,8 +11,8 @@ public class ModifyQuestions extends ListMenu<Question>{
         if (list.size() == 0){
             options = new String[]{"Create New Question", "Back"};
         }else{
-            options = new String[]{"Next", "Previous", "Create New Question", "Change Question", "Change Correct Answer", "Modify Answers", "Back"};
-        } 
+            options = new String[]{"Next", "Previous", "Create New Question", "Remove This Question", "Back"};
+        }
     }
 
     public void select(int selection) {
@@ -32,16 +32,13 @@ public class ModifyQuestions extends ListMenu<Question>{
                 prev();      
                 break;
             case 3:
-                get().setQuestion(LMSUI.promptString("Enter a new question:", true));
-                getSelection();
+                facade.createQuestion(list);
                 break;
             case 4:
-                // Change correct answer, must be 1-4
+                list.remove(get());
+                getSelection("Question Removed");
             case 5:
-                // ModifyAnswers menu
-            case 6:
                 back();
-                break;
         }
     }
 

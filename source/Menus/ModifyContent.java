@@ -7,7 +7,7 @@ public class ModifyContent extends ListMenu<Content>{
 
     public ModifyContent(LMSFacade facade, Menu pMenu, ArrayList<Content> content) {
         super(facade, pMenu, content, "There is no content for this module");
-       
+        
         options = new String[]{"Set lesson information", "Set title", "Set passing grade", "Modify Questions", "Back"};
     }
 
