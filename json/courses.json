@@ -304,22 +304,22 @@
           "lesson":"Lesson",
           "questions": [
             {
-              "question": "Which is the reference operator?",
+              "question": "How many variables can you assign on the same line?",
               "answers": [
                 {
-                  "answer": "$"
+                  "answer": "1"
                 },
                 {
-                  "answer": "!"
+                  "answer": "3"
                 },
                 {
-                  "answer": "?"
+                  "answer": "4"
                 },
                 {
-                  "answer": "*"
+                  "answer": "9"
                 }
               ],
-              "correctAnswer": "&"
+              "correctAnswer": "As many as you want"
             }
           ],
           "title": "Pointers",
