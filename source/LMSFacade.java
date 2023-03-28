@@ -213,6 +213,10 @@ public class LMSFacade{
         currentMenu.getSelection("Enrolled in: " + course.toString());
     }
 
+    public boolean answerQuestion(Question question) {
+        return question.isCorrect(LMSUI.promptInt(question.toString(), true));
+    }
+
     /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");
