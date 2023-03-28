@@ -213,6 +213,16 @@ public class LMSFacade{
         currentMenu.getSelection("Enrolled in: " + course.toString());
     }
 
+    public void createReview(ArrayList<Review> reviews){
+        reviews.add(new Review(
+            userList.getCurrentUser().getID(), 
+            LMSUI.promptFloat("How do you rate this course, 0-5?: ", true), 
+            LMSUI.promptString("What do you have to say about this course?", false), 
+            new Date()));
+
+        currentMenu.getSelection("Review added");
+    }
+
     /* 
     public void displaySignInOptions() {
         System.out.println("***Welcome to the YSL programming LMS***");

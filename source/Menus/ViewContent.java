@@ -16,21 +16,19 @@ public class ViewContent extends ListMenu<Content> {
     protected void updateHeader(){
         header = "***Viewing content "+(index+1)+" of "+
         list.size()+"***"+"\n\n"+get().toString();
+        header = "***Viewing content "+(index+1)+" of "+
+        list.size()+"***"+"\n\n"
+        + "Content Type and Title: " + get().toString() + "\n"
+        + "Lesson: " + get().getLesson() + "\n"
+        + "Passing Grade: " + get().getPassingGrade() + "\n";
+
         if (contentCompletion.get(index)){
-            header = "***Viewing content "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"
-            + "Content Type and Title: " + get().toString() + "\n"
-            + "Lesson: " + get().getLesson() + "\n"
-            + "Passing Grade: " + get().getPassingGrade() + "\n"
-            + "\nYou have completed this "+get().getContentType().toString()+"\n";
+            header += "\nYou have completed this "+get().getContentType().toString()+"\n";
+      
         }else{
-            header = "***Viewing content "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"
-            + "Content Type and Title: " + get().toString() + "\n"
-            + "Lesson: " + get().getLesson() + "\n"
-            + "Passing Grade: " + get().getPassingGrade() + "\n"
-            + "\nYou have not completed this "+get().getContentType().toString()+"\n";
+            header += "\nYou have not completed this "+get().getContentType().toString()+"\n";
         }
+      
     }
 
     public void select(int selection){

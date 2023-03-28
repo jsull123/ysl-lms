@@ -86,6 +86,7 @@ public class Course{
     public Review getReview(int index) {      
         return reviews.get(index);
     }
+
     public Comment getComment(int index) {
         return this.comments.get(index);
     }
@@ -104,6 +105,16 @@ public class Course{
     
     public UUID getCourseID() {
         return this.courseID;
+    }
+
+    public float getAvgRating(){
+        float ret = 0.0f;
+
+        for (int i = 0; i < reviews.size(); i++){
+            ret += reviews.get(i).getRating();
+        }
+
+        return ret/reviews.size();
     }
 }
 
