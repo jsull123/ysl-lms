@@ -206,10 +206,10 @@
                     "answer": "?"
                   },
                   {
-                    "answer": "*"
+                    "answer": "&"
                   }
                 ],
-                "correctAnswer": "&"
+                "correctAnswer": "4"
               }
             ],
             "title": "Pointers",
@@ -316,10 +316,10 @@
                   "answer": "4"
                 },
                 {
-                  "answer": "9"
+                  "answer": "As many as you want"
                 }
               ],
-              "correctAnswer": "As many as you want"
+              "correctAnswer": "4"
             }
           ],
           "title": "Pointers",

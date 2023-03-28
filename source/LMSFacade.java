@@ -216,6 +216,16 @@ public class LMSFacade{
     public boolean answerQuestion(Question question) {
         return question.isCorrect(LMSUI.promptInt(question.toString(), true));
     }
+    
+    public void createReview(ArrayList<Review> reviews){
+        reviews.add(new Review(
+            userList.getCurrentUser().getID(), 
+            LMSUI.promptFloat("How do you rate this course, 0-5?: ", true), 
+            LMSUI.promptString("What do you have to say about this course?", false), 
+            new Date()));
+
+        currentMenu.getSelection("Review added");
+    }
 
     /* 
     public void displaySignInOptions() {
