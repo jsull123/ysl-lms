@@ -213,6 +213,10 @@ public class LMSFacade{
         currentMenu.getSelection("Enrolled in: " + course.toString());
     }
 
+    public boolean answerQuestion(Question question) {
+        return question.isCorrect(LMSUI.promptInt(question.toString(), true));
+    }
+    
     public void createReview(ArrayList<Review> reviews){
         reviews.add(new Review(
             userList.getCurrentUser().getID(), 
