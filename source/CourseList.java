@@ -41,6 +41,20 @@ public class CourseList {
         return courses.size();
     }
 
+    public ArrayList<Course> getAllByLanguage(String language){
+        Course[] c = new Course[courses.size()];
+        courses.values().toArray(c);
+
+        ArrayList<Course> ret = new ArrayList<>();
+        for (int i = 0; i < c.length; i++){
+            if (c[i].getLanguage().equals(language)){
+                ret.add(c[i]);
+            }
+        }
+
+        return ret;
+    }
+
     public Course[] toArray(){
         Course[] c = new Course[courses.size()];
         courses.values().toArray(c);
