@@ -7,6 +7,10 @@ import source.Menus.*;
 
 import java.util.ArrayList;
 
+import java.io.FileWriter;
+import java.io.File;
+import java.io.IOException;
+
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
@@ -225,6 +229,20 @@ public class LMSFacade{
             new Date()));
 
         currentMenu.getSelection("Review added");
+    }
+
+    public void printCertificate(User user, EnrolledCourse enrolledCourse) {
+        Course course = enrolledCourse.getCourse();
+        try {
+            File file = new File(""+course.getTitle()+"Certificate.txt");
+            FileWriter writer = new FileWriter(file);
+            writer.write(""+user.getFirstName()+" "+user.getLastName()+" completed the course "+course.getTitle()+"");
+            writer.close();
+            System.out.println("Successfully created certificate");
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
     }
 
     /* 
