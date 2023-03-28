@@ -4,9 +4,9 @@ import source.LMSUI;
 import source.Course;
 import java.util.ArrayList;
 
-public class SearchCourseMenu extends ListMenu<Course> {
+public class EnrollCourseMenu extends ListMenu<Course> {
 
-    public SearchCourseMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
+    public EnrollCourseMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
         super(facade, pMenu, courses);
         this.list = courses;
         this.index = 0;
