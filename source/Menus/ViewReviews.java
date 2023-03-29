@@ -7,17 +7,36 @@ import source.Review;
 public class ViewReviews extends ListMenu<Review> {
 
     public ViewReviews(LMSFacade facade, Menu pMenu, ArrayList<Review> reviews) {
-        super(facade, pMenu, reviews, "This course has no reviews");
+        super(facade, pMenu, reviews);  
+    }
 
-        options = new String[]{"Next", "Previous", "Back"};
+    private void updateOptions(){
+        if (list.size() == 0){
+            options = new String[]{"Add Review", "Back"};
+        }else{
+            options = new String[]{"Next", "Previous", "Add Review", "Back"};
+        } 
     }
 
     protected void updateHeader(){
-        header = "***Viewing review "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+get().toString();
+        if (list.size() == 0){
+            header = "This course has no reviews. Choose option 1 to add a review";
+        }else{
+            header = "***Viewing review "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"+get().toString();
+        }
+        updateOptions();
     }
 
     public void select(int selection) {
+        if (list.size() == 0){
+            switch(selection){
+                case 1:
+                    facade.createReview(list);
+                case 2:
+                    back();
+            }
+        }
         switch(selection) {
             case 1:
                 next();
@@ -26,9 +45,10 @@ public class ViewReviews extends ListMenu<Review> {
                 prev();
                 break;
             case 3:
-                back();
+                facade.createReview(list);
                 break;
+            case 4:
+                back();
         }
     }
-
 }

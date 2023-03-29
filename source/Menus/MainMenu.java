@@ -9,7 +9,7 @@ public class MainMenu extends Menu{
     public MainMenu(LMSFacade facade, User user){
         super(facade, null);
         header = "***Logged in as "+user.getUsername()+"***";
-        options = new String[]{"Enrolled courses", "Created courses", "Log out"};
+        options = new String[]{"My Enrolled Courses", "My Created Courses", "Search For Courses", "My Certificates", "Log out"};
         this.user = user;
     }
 
@@ -26,6 +26,10 @@ public class MainMenu extends Menu{
                 }
                 break;
             case 3:
+                // Search for courses
+            case 4:
+                // Certificates?
+            case 5:
                 facade.logOut();
                 break;
         }

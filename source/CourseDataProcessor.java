@@ -60,6 +60,23 @@ public class CourseDataProcessor {
         return reviews;
     }
 
+    private static ArrayList<String> loadLessons(JSONArray jLessons) {
+        ArrayList<String> lessons = new ArrayList<>();
+
+        for (int i = 0; i < jLessons.size(); i++){
+            JSONObject jLesson = (JSONObject)jLessons.get(i);
+            lessons.add((String)jLesson.get(DataConstants.LESSON));
+        }          
+        return lessons;
+    }
+    
+    private static Quiz loadQuiz(JSONObject jQuiz) {
+        ArrayList<Question> questions = loadQuestions((JSONArray)jQuiz.get(DataConstants.QUESTIONS));
+        float passingGrade = Float.valueOf((String)jQuiz.get(DataConstants.PASSING_GRADE));
+
+        return new Quiz(questions, passingGrade);
+    }
+
     private static ArrayList<Module> loadModules(JSONArray jModules) {
         ArrayList<Module> modules = new ArrayList<>();
     
@@ -69,7 +86,8 @@ public class CourseDataProcessor {
             Module module = new Module(
                 (String)moduleObject.get(DataConstants.TITLE),
                 (String)moduleObject.get(DataConstants.TOPIC),
-                loadContent((JSONArray)moduleObject.get(DataConstants.CONTENT))
+                loadLessons((JSONArray)moduleObject.get(DataConstants.LESSONS)),
+                loadQuiz((JSONObject)moduleObject.get(DataConstants.QUIZ))
             );
 
             modules.add(module);
@@ -100,22 +118,6 @@ public class CourseDataProcessor {
         return questions;
     }
 
-    private static ArrayList<Content> loadContent(JSONArray contentArray) {
-        ArrayList<Content> content = new ArrayList<>();
-        for (int c = 0; c < contentArray.size(); c++){
-            JSONObject contentObject = (JSONObject)contentArray.get(c);
-            content.add(new Content(
-                (String)contentObject.get(DataConstants.TITLE),
-                (String)contentObject.get(DataConstants.LESSON),
-                Float.valueOf((String)contentObject.get(DataConstants.PASSING_GRADE)),
-                ContentType.fromString((String)contentObject.get(DataConstants.CONTENT_TYPE)),
-                loadQuestions((JSONArray)contentObject.get(DataConstants.QUESTIONS))
-            ));
-        }     
-
-        return content;
-    }
-
     public static CourseList loadData() {
         ArrayList<Course> courses = new ArrayList<>();
         try{
@@ -127,7 +129,7 @@ public class CourseDataProcessor {
                 courses.add(new Course(
                     UUID.fromString(((String)jCourse.get(DataConstants.COURSE_ID))), 
                     (String)jCourse.get(DataConstants.TITLE), 
-                    (String)jCourse.get(DataConstants.LANGUAGE), 
+                    Language.fromString((String)jCourse.get(DataConstants.LANGUAGE)), 
                     (String)jCourse.get(DataConstants.DESCRIPTION),  
                     UUID.fromString(((String)jCourse.get(DataConstants.AUTHOR_ID))), 
                     loadReviews((JSONArray)jCourse.get(DataConstants.REVIEWS)),
@@ -159,7 +161,6 @@ public class CourseDataProcessor {
         return jReviews;
     }
 
-
     private static JSONArray saveAnswers(ArrayList<String> answers){
         JSONArray jAnswers = new JSONArray();
 
@@ -190,24 +191,27 @@ public class CourseDataProcessor {
         return jQuestions;
     }
 
-    private static JSONArray saveContent(ArrayList<Content> contents){
-        JSONArray jContents = new JSONArray();
+    private static JSONObject saveQuiz(Quiz quiz){
+        JSONObject jQuiz = new JSONObject();
+    
+        jQuiz.put(DataConstants.QUESTIONS, saveQuestions(quiz.getQuestions()));
+        jQuiz.put(DataConstants.PASSING_GRADE, quiz.getPassingGrade());
 
-        for (int i = 0; i < contents.size(); i++){
-            JSONObject content = new JSONObject();
+        return jQuiz;
+    }
 
-            content.put(DataConstants.TITLE, contents.get(i).getTitle());
-            content.put(DataConstants.LESSON, contents.get(i).getLesson());
-            content.put(DataConstants.PASSING_GRADE, Float.valueOf(contents.get(i).getPassingGrade()).toString());
-            content.put(DataConstants.CONTENT_TYPE, contents.get(i).getContentType().toString());
-            content.put(DataConstants.QUESTIONS, saveQuestions(contents.get(i).getQuestions()));
+    private static JSONArray saveLessons(ArrayList<String> lessons){
+        JSONArray jLessons = new JSONArray();
 
-            jContents.add(content);
+        for (int i = 0; i < lessons.size(); i++){
+            JSONObject jObject = new JSONObject();
+            jObject.put(DataConstants.LESSON, lessons.get(i));
+            jLessons.add(jObject);
         }
 
-        return jContents;
+        return jLessons;
     }
- 
+
     private static JSONArray saveModules(ArrayList<Module> modules){
         JSONArray jModules = new JSONArray();
 
@@ -216,7 +220,8 @@ public class CourseDataProcessor {
 
             module.put(DataConstants.TITLE, modules.get(i).getTitle());
             module.put(DataConstants.TOPIC, modules.get(i).getTopic());
-            module.put(DataConstants.CONTENT, saveContent(modules.get(i).getAllContent()));
+            module.put(DataConstants.LESSONS, saveLessons(modules.get(i).getLessons()));
+            module.put(DataConstants.QUIZ, saveQuiz(modules.get(i).getQuiz()));
          
             jModules.add(module);
         }

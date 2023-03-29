@@ -2,6 +2,9 @@ package source.Menus;
 import source.*;
 import java.util.ArrayList;
 
+/*
+ * Delete
+*/
 public class ViewContent extends ListMenu<Content> {
   
     private ArrayList<Boolean> contentCompletion;

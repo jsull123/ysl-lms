@@ -1,7 +1,5 @@
 package source.Menus;
-import source.LMSFacade;
-import source.CourseList;
-import source.EnrolledCourse;
+import source.*;
 import java.util.ArrayList;
 
 public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
@@ -9,7 +7,7 @@ public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
     public EnrolledCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<EnrolledCourse> enrolledCourses) {
         super(facade, pMenu, enrolledCourses, "You are not enrolled in any courses");
 
-        options = new String[]{"Next Course", "Previous Course", "Add Comment", "Add Review", "View Modules", "Back"};
+        options = new String[]{"Next Course", "Previous Course", "Comments", "Reviews", "Open Modules", "Back"};
     }
 
     protected void updateHeader(){
@@ -30,9 +28,13 @@ public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
                 prev();
                 break;
             case 3:
-                facade.makeComment(CourseList.getInstance(null).getCourse(get().getID()).getAllComments());
+                // view comments
+                ArrayList<Comment> comments = CourseList.getInstance(null).getCourse(get().getID()).getAllComments();
+                facade.setCurrentMenu(new ViewComments(facade, this, comments)).getSelection();
             case 4:
-                // add review
+                // view reviews
+                ArrayList<Review> reviews = CourseList.getInstance(null).getCourse(get().getID()).getAllReviews();
+                facade.setCurrentMenu(new ViewReviews(facade, this, reviews)).getSelection();
             case 5:
                 facade.setCurrentMenu(new ViewModules(
                     facade, this, get().getCourse().getAllModules(),

@@ -12,12 +12,13 @@ public class ViewModules extends ListMenu<Module> {
         super(facade, pMenu, modules, "This course has no modules.");
 
         this.enrolledCourse = enrolledCourse;
-        this.options = new String[]{"Next", "Previous", "View Content", "Back"};
+        this.options = new String[]{"Next", "Previous", "Start Module", "Back"};
     }
 
     protected void updateHeader(){
         header = "***Viewing module "+(index+1)+" of "+
         list.size()+"***"+"\n\n"+get().toString();
+        // Add "You have/haven't completed this module. You scored x% on the quiz"
     }
 
     public void select(int selection){
@@ -29,6 +30,7 @@ public class ViewModules extends ListMenu<Module> {
                 prev();        
                 break;
             case 3:
+                // Will lead to OpenModule
                 facade.setCurrentMenu(new ViewContent(
                     facade, this, get().getAllContent(), 
                     enrolledCourse.getModuleProgress().get(index))).getSelection();

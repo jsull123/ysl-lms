@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class EnrolledCourse {
     private UUID courseID;
-    private ArrayList<Float> moduleProgress;
+    private ArrayList<ModuleProgress> moduleProgress;
 
-    public EnrolledCourse(UUID courseID, ArrayList<Float> moduleProgress){
+    public EnrolledCourse(UUID courseID, ArrayList<ModuleProgress> moduleProgress){
         this.courseID = courseID;
         this.moduleProgress = moduleProgress;
     }
@@ -24,18 +24,20 @@ public class EnrolledCourse {
         return CourseList.getInstance(null).getCourse(courseID);
     }
 
-    public void setModuleProgress(ArrayList<Float> moduleProgress){
+    public void setModuleProgress(ArrayList<ModuleProgress> moduleProgress){
         this.moduleProgress = moduleProgress;
     }
 
-    public ArrayList<Float> getModuleProgress(){
+    public ArrayList<ModuleProgress> getModuleProgress(){
         return moduleProgress;
     }
 
     public float getCourseProgress(){
         float ret = 0;
         for (int i = 0; i < moduleProgress.size(); i++){
-            ret+=moduleProgress.get(i);
+            if (moduleProgress.get(i).getHasPassed()){
+                ret+=1;
+            }
         }
         return ret/moduleProgress.size();
     }

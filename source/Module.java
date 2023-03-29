@@ -3,24 +3,34 @@ package source;
 import java.util.ArrayList;
 
 public class Module {
-    public String title;
-    public String topic;
-    public ArrayList<String> lessons;
-    public ArrayList<Question> quiz;
+    private String title;
+    private String topic;
+    private ArrayList<String> lessons;
+    private Quiz quiz;
     //public ArrayList<Content> content;
 
-    public Module(String title, String topic, ArrayList<Content> content){
+    public Module(String title, String topic, ArrayList<String> lessons, Quiz quiz){
         this.title = title;
         this.topic = topic;
+        this.lessons = lessons;
+        this.quiz = quiz;
         //this.content = content;
     }
     
-    public ArrayList<Question> getQuiz(){
+    public Quiz getQuiz(){
         return quiz;
     }
 
     public ArrayList<String> getLessons(){
         return lessons;
+    }
+
+    public void removeLesson(int index){
+        lessons.remove(index);
+    }
+
+    public void addLesson(String lesson){
+        lessons.add(lesson);
     }
 
     /*

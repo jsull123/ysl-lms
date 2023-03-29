@@ -40,11 +40,14 @@ public abstract class DataConstants {
     protected static final String CONTENT = "content";
     protected static final String CONTENT_TYPE = "contentType";
     protected static final String LESSON = "lesson";
+    protected static final String LESSONS = "lessons";
     protected static final String PASSING_GRADE = "passingGrade";
     protected static final String ANSWER = "answer";
     protected static final String QUESTION = "question";
     protected static final String QUESTIONS = "questions";
     protected static final String ANSWERS = "answers";
     protected static final String CORRECT_ANSWER = "correctAnswer";
-
+    protected static final String QUIZ_GRADE = "quizGrade";
+    protected static final String HAS_PASSED = "hasPassed";
+    protected static final String QUIZ = "quiz";
 }

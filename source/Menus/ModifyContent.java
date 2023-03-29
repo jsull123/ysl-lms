@@ -3,6 +3,9 @@ import source.Content;
 import source.LMSFacade;
 import java.util.ArrayList;
 
+/*
+ * Delete
+ */
 public class ModifyContent extends ListMenu<Content>{
 
     public ModifyContent(LMSFacade facade, Menu pMenu, ArrayList<Content> content) {
@@ -29,7 +32,7 @@ public class ModifyContent extends ListMenu<Content>{
                 facade.setPassingGrade(get());
                 break;
             case 6:
-                facade.setCurrentMenu(new ModifyQuestions(facade, this, get().getQuestions())).getSelection();
+                facade.setCurrentMenu(new ModifyQuiz(facade, this, get().getQuestions())).getSelection();
                 break;
             case 7:
                 back();

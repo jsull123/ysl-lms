@@ -6,8 +6,11 @@ import java.util.ArrayList;
 public class CreatedCoursesMenu extends ListMenu<Course> {
 
     public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
-        super(facade, pMenu, courses);
-        if (courses.size() == 0){
+        super(facade, pMenu, courses);   
+    }
+
+    private void updateOptions(){   
+        if (list.size() == 0){
             options = new String[]{"Create a Course", "Back"};
         }else{
             options = new String[]{"Next Course", "Previous Course", "Create a Course", "View Comments", "View Reviews", "Modify Course", "Back"};
@@ -22,7 +25,8 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
             list.size()+"***"+"\n\n"+"Title: " + get().toString() +"\n"
             + "Language: " + get().getLanguage() + "\n"
             + "Description: " + get().getDescription()+ "\n";
-        }    
+        } 
+        updateOptions();
     }
 
     public void select(int selection) {

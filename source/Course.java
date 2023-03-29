@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Course{
     private UUID courseID;
     private String title;
-    private String language;
+    private Language language;
     private String description;
     private UUID authorID;
     private ArrayList<Review> reviews;
@@ -14,7 +14,7 @@ public class Course{
     private ArrayList<Module> modules;
     
     public Course(UUID courseID, String title,
-    String language, String description,
+    Language language, String description,
     UUID authorID, ArrayList<Review> reviews,
     ArrayList<Comment> comments, ArrayList<Module> modules) { 
         this.courseID = courseID;
@@ -35,7 +35,7 @@ public class Course{
         this.title = title;
     }
 
-    public void setLanguage(String language){
+    public void setLanguage(Language language){
         this.language = language;
     }
 
@@ -63,7 +63,7 @@ public class Course{
         return reviews;
     }
 
-    public String getLanguage(){
+    public Language getLanguage(){
         return language;
     }
 

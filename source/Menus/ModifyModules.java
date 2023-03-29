@@ -6,13 +6,24 @@ import java.util.ArrayList;
 public class ModifyModules extends ListMenu<Module>{
     
     public ModifyModules(LMSFacade facade, Menu pMenu, ArrayList<Module> modules) {
-        super(facade, pMenu, modules);
-        
+        super(facade, pMenu, modules);  
+    }
+
+    private void updateOptions(){   
         if (list.size() == 0){
-            options = new String[]{"Create Module", "Back"};
+            options = new String[]{"Create New Module", "Back"};
         }else{
-            options = new String[]{"Next", "Previous", "Create Module", "Set title", "Set topic", "Modify content", "Back"};
-        }     
+            options = new String[]{"Next", "Previous", "Create New Module", "Change Title", "Change Topic", "Modify Lessons", "Modify Quiz", "Back"};
+        }
+    }
+
+    protected void updateHeader() {
+        if (list.size() == 0){
+            header = "This course does not have any modules. Choose option 1 to create a new module.";
+        }else{
+            header = "Module: " + (index+1) + " of " + list.size() + "\n\n" + get().toString();
+        }
+        updateOptions();
     }
 
     public void select(int selection) {
@@ -38,19 +49,13 @@ public class ModifyModules extends ListMenu<Module>{
                 facade.setModuleTopic(get());         
                 break;
             case 6:
-                facade.setCurrentMenu(new ModifyContent(facade, this, get().getAllContent())).getSelection();
+                // Modify Lessons
                 break;
             case 7:
+                // Modify Quiz
+            case 8:
                 back();
                 break;
         }
-    }
-
-    protected void updateHeader() {
-        if (list.size() == 0){
-            header = "This course does not have any modules. Choose option 1 to create a new module.";
-        }else{
-            header = "Module: " + (index+1) + " of " + list.size() + "\n\n" + get().toString();
-        }       
     }
 }

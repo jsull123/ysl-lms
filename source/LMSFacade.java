@@ -11,6 +11,20 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 
+/*
+ * Added Quiz and ModuleProgress classes
+ * Removed Content and ContentType (no longer needed)
+ * Updated EnrolledCourse class
+ * 
+ * 
+ * TODO:
+ *  Update course and user data stuff to match the updated classes
+ *  Update the menus and facade methods related to creating a course to match the updated classes
+ *  Finish menus for taking and facade methods for taking a course
+ *  Certificates
+ *  Update UML
+ */
+
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
@@ -161,7 +175,7 @@ public class LMSFacade{
         answerChoices.add(LMSUI.promptString("Enter answer choice B:", false));
         answerChoices.add(LMSUI.promptString("Enter answer choice C:", false));
         answerChoices.add(LMSUI.promptString("Enter answer choice D:", false));
-        String correctStr = LMSUI.promptString("Which is the correct choice (A,B,C,D)?:", false);
+        String correctStr = LMSUI.promptString("Which is the correct choice. A, B, C, or D?:", false);
         int correct = -1;
         if (correctStr.toUpperCase() == "A") correct = 0;
         if (correctStr.toUpperCase() == "B") correct = 1;
@@ -175,10 +189,15 @@ public class LMSFacade{
         currentMenu.getSelection("Question added");
     }
 
+    public void createLesson(ArrayList<String> lessons){
+        lessons.add(LMSUI.promptString("Type your new lesson here: ", true));
+        currentMenu.getSelection("Lesson added");
+    }
+
     public void createCourse(ArrayList<Course> courses){
         courses.add(new Course(UUID.randomUUID(),
         LMSUI.promptString("Enter course title:", true), 
-        LMSUI.promptString("Enter course language:", false),
+        Language.fromString(LMSUI.promptString("Enter course language:", false)),
         LMSUI.promptString("Enter course description:", false),
         userList.getCurrentUser().getID(),
         new ArrayList<>(),
@@ -190,10 +209,11 @@ public class LMSFacade{
 
     public void createModule(ArrayList<Module> modules){
         modules.add(new Module(
-            LMSUI.promptString("Enter a title:", true),
-            LMSUI.promptString("Enter a topic:", false), 
-            new ArrayList<>()));
-        currentMenu.getSelection("Module added");
+            LMSUI.promptString("Enter module title: ", true), 
+            LMSUI.promptString("Enter module topic: ", false), 
+            new ArrayList<>(), 
+            new Quiz(null, 0)));
+        currentMenu.getSelection("Module created. Use Modify Lessons and Modify Quiz to add lessons and a quiz to your module.");
     }
 
     public void setCourseTitle(Course course){
@@ -202,7 +222,7 @@ public class LMSFacade{
     }
 
     public void setCourseLanguage(Course course){
-        course.setLanguage(LMSUI.promptString("Enter a new course language:", true));
+        course.setLanguage(Language.fromString(LMSUI.promptString("Enter a new course language:", true)));
         currentMenu.getSelection("Language changed");
     }
 
@@ -231,16 +251,25 @@ public class LMSFacade{
         currentMenu.getSelection("Review added");
     }
 
+    public void changePassingGrade(Quiz quiz){
+        float passingGrade = LMSUI.promptFloat("Enter the passing grade:", true);
+        if (passingGrade < 0){
+            currentMenu.getSelection("Passing grade cannot be less than 0");
+        }
+        quiz.setPassingGrade(passingGrade/100);
+        currentMenu.getSelection("Passing grade set to "+passingGrade+"%");
+    }
+
     public void printCertificate(User user, EnrolledCourse enrolledCourse) {
         Course course = enrolledCourse.getCourse();
         try {
             File file = new File(""+course.getTitle()+"Certificate.txt");
             FileWriter writer = new FileWriter(file);
-            writer.write(""+user.getFirstName()+" "+user.getLastName()+" completed the course "+course.getTitle()+"");
+            writer.write(user.getFirstName()+" "+user.getLastName()+" completed the course "+course.getTitle());
             writer.close();
-            System.out.println("Successfully created certificate");
+            currentMenu.getSelection("Successfully created certificate");
           } catch (IOException e) {
-            System.out.println("An error occurred.");
+            currentMenu.getSelection("An error occurred");
             e.printStackTrace();
           }
     }

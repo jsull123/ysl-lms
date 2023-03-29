@@ -8,11 +8,13 @@ public class ViewComments extends ListMenu<Comment> {
 
     public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
         super(facade, pMenu, comments);
+    }
 
+    private void updateOptions(){   
         if (list.size() == 0){
             options = new String[]{"Add Comment", "Back"};
         }else{
-            options = new String[]{"Next", "Previous", "View Replies", "Back"};
+            options = new String[]{"Next", "Previous", "Add Comment", "View Replies", "Back"};
         }     
     }
 
@@ -23,6 +25,7 @@ public class ViewComments extends ListMenu<Comment> {
             header = "***Viewing comment "+(index+1)+" of "+
             list.size()+"***"+"\n\n"+get().toString();
         }
+        updateOptions();
     }
 
     public void select(int selection){
@@ -42,11 +45,13 @@ public class ViewComments extends ListMenu<Comment> {
                 prev();        
                 break;
             case 3:
-                facade.setCurrentMenu(new ViewComments(facade, this, get().getReplies())).getSelection();
+                facade.makeComment(list);
             case 4:
+                facade.setCurrentMenu(new ViewComments(facade, this, get().getReplies())).getSelection();
+            case 5:
                 facade.makeComment(list);
                 break;
-            case 5:
+            case 6:
                 back();
                 break;
         }

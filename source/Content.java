@@ -2,6 +2,10 @@ package source;
 
 import java.util.ArrayList;
 
+/*
+ * Delete
+ */
+
 public class Content {
     private String title;
     private String lesson;

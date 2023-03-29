@@ -1,5 +1,9 @@
 package source;
 
+/*
+ * Delete
+ */
+
 public enum ContentType {
     LESSON,
     ASSESSMENT;

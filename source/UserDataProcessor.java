@@ -11,35 +11,38 @@ import org.json.simple.parser.JSONParser;
 
 public class UserDataProcessor {
 
-    // Load enrolled courses from a user into and array list
-    private static ArrayList<EnrolledCourse> loadEnrolledCourses(JSONObject jUser){
-        ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<>();
-        JSONArray jEnrolledCourses = (JSONArray)jUser.get(DataConstants.ENROLLED_COURSES);
-        
-        for (int i = 0; i < jEnrolledCourses.size(); i++){
-            ArrayList<ArrayList<Boolean>> moduleProgress = new ArrayList<>();
-            
-            JSONObject jEnrolledCourse = (JSONObject)jEnrolledCourses.get(i);
-            JSONArray jModProgress = (JSONArray)jEnrolledCourse.get(DataConstants.MODULE_PROGRESS);
+    private static ArrayList<ModuleProgress> loadModuleProgress(JSONArray jModuleProgress){
+        ArrayList<ModuleProgress> moduleProgress = new ArrayList<>();
+        try{
+            for (int i = 0; i < jModuleProgress.size(); i++){
+                JSONObject jObject = (JSONObject)jModuleProgress.get(i);
 
-            for (int j = 0; j < jModProgress.size(); j++){
-                ArrayList<Boolean> progress = new ArrayList<>();
-                JSONArray jProgress = (JSONArray)((JSONObject)jModProgress.get(j)).get(DataConstants.PROGRESS);
-                
-                for (int p = 0; p < jProgress.size(); p++){
-                    progress.add((Boolean)((JSONObject)(jProgress.get(p))).get(DataConstants.IS_COMPLETE));
-                }
-                moduleProgress.add(progress);
+                moduleProgress.add(new ModuleProgress(
+                    Float.valueOf((String)jObject.get(DataConstants.QUIZ_GRADE)),
+                    Boolean.valueOf((String)jObject.get(DataConstants.HAS_PASSED))
+                ));
             }
+        }catch(Exception e){};
+        return moduleProgress;
+    }
+    
+    private static ArrayList<EnrolledCourse> loadEnrolledCourses(JSONArray jEnrolledCourses){
+        ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<>();
+        try{
+            for (int i = 0; i < jEnrolledCourses.size(); i++){
+                JSONObject jEnrolledCourse = (JSONObject)jEnrolledCourses.get(i);
 
-            enrolledCourses.add(new EnrolledCourse(UUID.fromString((String)jEnrolledCourse.get(DataConstants.COURSE_ID)), moduleProgress));
-        }
-
-
+                enrolledCourses.add(new EnrolledCourse(
+                    UUID.fromString((String)jEnrolledCourse.get(DataConstants.COURSE_ID)),
+                    loadModuleProgress((JSONArray)jEnrolledCourse.get(DataConstants.MODULE_PROGRESS))
+                ));
+            }
+        }catch(Exception e){};
         return enrolledCourses;
     }
+
       // Create a JSONArray out of array list of UUID
-    private static JSONArray ccToJson(ArrayList<UUID> createdCourses){
+    private static JSONArray saveCreatedCourses(ArrayList<UUID> createdCourses){
         JSONArray jCreatedCourses = new JSONArray();
     
         for (int i = 0; i < createdCourses.size(); i++){
@@ -50,27 +53,26 @@ public class UserDataProcessor {
         return jCreatedCourses;
     }
 
+    private static JSONArray saveModuleProgress(ArrayList<ModuleProgress> moduleProgress){
+        JSONArray jModuleProgress = new JSONArray();
+    
+        for (int i = 0; i < moduleProgress.size(); i++){
+            JSONObject jObject = new JSONObject();
+            jObject.put(DataConstants.QUIZ_GRADE, Float.valueOf(moduleProgress.get(i).getQuizGrade()).toString());
+            jObject.put(DataConstants.HAS_PASSED, Boolean.valueOf(moduleProgress.get(i).getHasPassed()).toString());
+            jModuleProgress.add(jObject);
+        }
+        return jModuleProgress;
+    }
+
     // Create a JSONArray out of array list of EnrolledCourse
-    private static JSONArray ecToJson(ArrayList<EnrolledCourse> enrolledCourses){
+    private static JSONArray saveEnrolledCourses(ArrayList<EnrolledCourse> enrolledCourses){
         JSONArray jEnrolledCourses = new JSONArray();
 
         for (int i = 0; i < enrolledCourses.size(); i++){
             JSONObject jEnrolledCourse = new JSONObject();
             jEnrolledCourse.put(DataConstants.COURSE_ID, enrolledCourses.get(i).getID().toString());
-
-            JSONArray jModProgress = new JSONArray();
-            ArrayList<ArrayList<Boolean>> moduleProgress = enrolledCourses.get(i).getModuleProgress();
-
-            for (int j = 0; j < moduleProgress.size(); j++){
-                JSONArray jProgress = new JSONArray();
-                for (int l = 0; l < moduleProgress.get(j).size(); l++){
-                    JSONObject isComplete = new JSONObject();
-                    isComplete.put(DataConstants.IS_COMPLETE, moduleProgress.get(j).get(l));
-                    jProgress.add(isComplete);
-                }
-                jModProgress.add(jProgress);
-            }
-            jEnrolledCourse.put(DataConstants.MODULE_PROGRESS, jModProgress);
+            jEnrolledCourse.put(DataConstants.MODULE_PROGRESS, saveModuleProgress(enrolledCourses.get(i).getModuleProgress()));
             jEnrolledCourses.add(jEnrolledCourse);
         }
         return jEnrolledCourses;
@@ -85,7 +87,7 @@ public class UserDataProcessor {
             
             for (int i = 0; i < jUsers.size(); i++){
                 JSONObject jUser = (JSONObject)jUsers.get(i);
-                ArrayList<EnrolledCourse> enrolledCourses = loadEnrolledCourses(jUser);
+                ArrayList<EnrolledCourse> enrolledCourses = loadEnrolledCourses((JSONArray)jUser.get(DataConstants.ENROLLED_COURSES));
                 ArrayList<UUID> createdCourses = new ArrayList<>();
 
                 JSONArray jCreatedCourses = (JSONArray)jUser.get(DataConstants.CREATED_COURSES);
@@ -130,8 +132,8 @@ public class UserDataProcessor {
             jUser.put(DataConstants.EMAIL, users[i].getEmail()); 
             jUser.put(DataConstants.PASSWORD, users[i].getPassword());
             jUser.put(DataConstants.DOB, users[i].getDOB().toString());
-            jUser.put(DataConstants.ENROLLED_COURSES, ecToJson(users[i].getAllEC()));
-            jUser.put(DataConstants.CREATED_COURSES, ccToJson(users[i].getCreatedCoursesIDs()));
+            jUser.put(DataConstants.ENROLLED_COURSES, saveEnrolledCourses(users[i].getAllEC()));
+            jUser.put(DataConstants.CREATED_COURSES, saveCreatedCourses(users[i].getCreatedCoursesIDs()));
 
             // User to JSONArray of users
             jUsers.add(jUser);

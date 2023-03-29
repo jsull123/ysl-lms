@@ -30,12 +30,6 @@ public class Review {
         return rating;
     }
 
-    /*
-     * user123
-     * I dont like this course
-     * 1.2
-     * 1/3/2012
-     */
     public String toString() {
         return 
         UserList.getInstance(null).getUser(authorID).getUsername()+"\n"+
