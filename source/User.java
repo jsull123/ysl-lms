@@ -81,8 +81,8 @@ public class User {
         return getCoursesFromUUID().get(index);
     }
 
-    public ArrayList<Course> getAllCreatedCourses() {
-        return getCoursesFromUUID();
+    public ArrayList<UUID> getAllCreatedCourses() {
+        return createdCourses;
     }
 
     public ArrayList<UUID> getCreatedCoursesIDs(){

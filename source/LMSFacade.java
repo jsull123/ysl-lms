@@ -11,20 +11,6 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 
-/*
- * Added Quiz and ModuleProgress classes
- * Removed Content and ContentType (no longer needed)
- * Updated EnrolledCourse class
- * 
- * 
- * TODO:
- *  Update course and user data stuff to match the updated classes
- *  Update the menus and facade methods related to creating a course to match the updated classes
- *  Finish menus for taking and facade methods for taking a course
- *  Certificates
- *  Update UML
- */
-
 public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
@@ -116,7 +102,6 @@ public class LMSFacade{
 
         userList.addUser(user);
         userList.setCurrentUser(user);
-        UserDataProcessor.saveData(userList);
         currentMenu = new MainMenu(this, user);
         currentMenu.getSelection();
     }
@@ -153,21 +138,6 @@ public class LMSFacade{
         currentMenu.getSelection("Module topic changed.");
     }
 
-    public void setContentLesson(Content content) {
-        content.setLesson(LMSUI.promptString("Enter a new lesson name: ", true));
-        currentMenu.getSelection("Content lesson information changed.");
-    }
-
-    public void setContentTitle(Content content) {
-        content.setTitle(LMSUI.promptString("Enter a new title: ", true));
-        currentMenu.getSelection("Content title changed.");
-    }
-
-    public void setPassingGrade(Content content) {
-        content.setPassingGrade(LMSUI.promptFloat("Enter a new passing grade: ", true));
-        currentMenu.getSelection("Content passing grade changed.");
-    }
-
     public void createQuestion(ArrayList<Question> questions){
         String question = LMSUI.promptString("Enter the questions question:", true);
         ArrayList<String> answerChoices = new ArrayList<>();
@@ -177,10 +147,10 @@ public class LMSFacade{
         answerChoices.add(LMSUI.promptString("Enter answer choice D:", false));
         String correctStr = LMSUI.promptString("Which is the correct choice. A, B, C, or D?:", false);
         int correct = -1;
-        if (correctStr.toUpperCase() == "A") correct = 0;
-        if (correctStr.toUpperCase() == "B") correct = 1;
-        if (correctStr.toUpperCase() == "C") correct = 2;
-        if (correctStr.toUpperCase() == "D") correct = 3;
+        if (correctStr.toUpperCase().equals("A")) correct = 0;
+        if (correctStr.toUpperCase().equals("B")) correct = 1;
+        if (correctStr.toUpperCase().equals("C")) correct = 2;
+        if (correctStr.toUpperCase().equals("D")) correct = 3;
         
         if (correct == -1) currentMenu.getSelection("Invalid choice! Must be A, B, C, or D");
 
@@ -194,17 +164,20 @@ public class LMSFacade{
         currentMenu.getSelection("Lesson added");
     }
 
-    public void createCourse(ArrayList<Course> courses){
-        courses.add(new Course(UUID.randomUUID(),
+    public void createCourse(ArrayList<UUID> courses){
+        Course course = new Course(UUID.randomUUID(),
         LMSUI.promptString("Enter course title:", true), 
         Language.fromString(LMSUI.promptString("Enter course language:", false)),
         LMSUI.promptString("Enter course description:", false),
         userList.getCurrentUser().getID(),
         new ArrayList<>(),
         new ArrayList<>(),
-        new ArrayList<>()));
+        new ArrayList<>());
 
-        currentMenu.getSelection("Course created");
+        courses.add(course.getCourseID());
+        courseList.addCourse(course);
+
+        currentMenu.getSelection("Course created. Use Modify Course to add content to your course");
     }
 
     public void createModule(ArrayList<Module> modules){
@@ -212,23 +185,20 @@ public class LMSFacade{
             LMSUI.promptString("Enter module title: ", true), 
             LMSUI.promptString("Enter module topic: ", false), 
             new ArrayList<>(), 
-            new Quiz(null, 0)));
-        currentMenu.getSelection("Module created. Use Modify Lessons and Modify Quiz to add lessons and a quiz to your module.");
+            new Quiz(new ArrayList<>(), 0)));
+        currentMenu.getSelection("Module created. Use Modify Lessons and Modify Quiz to add lessons and a quiz to your module");
     }
 
     public void setCourseTitle(Course course){
         course.setTitle(LMSUI.promptString("Enter a new course title:", true));
-        currentMenu.getSelection("Title changed.");
     }
 
     public void setCourseLanguage(Course course){
         course.setLanguage(Language.fromString(LMSUI.promptString("Enter a new course language:", true)));
-        currentMenu.getSelection("Language changed");
     }
 
     public void setCourseDescription(Course course){
         course.setDescription(LMSUI.promptString("Enter a new course description:", true));
-        currentMenu.getSelection("Description changed.");
     }
 
     public void enrollInCourse(Course course){

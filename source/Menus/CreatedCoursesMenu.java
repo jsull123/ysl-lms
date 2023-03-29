@@ -1,11 +1,13 @@
 package source.Menus;
 import source.Course;
+import source.CourseList;
 import source.LMSFacade;
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class CreatedCoursesMenu extends ListMenu<Course> {
+public class CreatedCoursesMenu extends ListMenu<UUID> {
 
-    public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
+    public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<UUID> courses) {
         super(facade, pMenu, courses);   
     }
 
@@ -21,10 +23,11 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
         if (list.size() == 0) {
             header = "You have not created any courses. Choose option 1 to create a new course\n";
         }else{
+            CourseList cl = CourseList.getInstance(null);
             header = "***Viewing course "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"+"Title: " + get().toString() +"\n"
-            + "Language: " + get().getLanguage() + "\n"
-            + "Description: " + get().getDescription()+ "\n";
+            list.size()+"***"+"\n\n"+"Title: " + cl.getCourse(get()).getTitle() +"\n"
+            + "Language: " + cl.getCourse(get()).getLanguage() + "\n"
+            + "Description: " + cl.getCourse(get()).getDescription()+ "\n";
         } 
         updateOptions();
     }
@@ -48,13 +51,13 @@ public class CreatedCoursesMenu extends ListMenu<Course> {
             case 3:
                 facade.createCourse(list);
             case 4:
-                facade.setCurrentMenu(new ViewComments(facade, this, get().getAllComments())).getSelection();
+                facade.setCurrentMenu(new ViewComments(facade, this, CourseList.getInstance(null).getCourse(get()).getAllComments())).getSelection();
                 break;
             case 5:
-                facade.setCurrentMenu(new ViewReviews(facade, this, get().getAllReviews())).getSelection();
+                facade.setCurrentMenu(new ViewReviews(facade, this, CourseList.getInstance(null).getCourse(get()).getAllReviews())).getSelection();
                 break;
             case 6:
-                facade.setCurrentMenu(new ModifyCourse(facade, this, get())).getSelection();
+                facade.setCurrentMenu(new ModifyCourse(facade, this, CourseList.getInstance(null).getCourse(get()))).getSelection();
                 break;
             case 7:
                 back();

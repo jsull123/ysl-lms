@@ -239,7 +239,7 @@ public class CourseDataProcessor {
 
             jCourse.put(DataConstants.COURSE_ID, courses[i].getCourseID().toString());
             jCourse.put(DataConstants.TITLE, courses[i].getTitle());
-            jCourse.put(DataConstants.LANGUAGE, courses[i].getLanguage());
+            jCourse.put(DataConstants.LANGUAGE, courses[i].getLanguage().toString());
             jCourse.put(DataConstants.DESCRIPTION, courses[i].getDescription());
             jCourse.put(DataConstants.AUTHOR_ID, courses[i].getAuthorID().toString());
             jCourse.put(DataConstants.REVIEWS, saveReviews(courses[i].getAllReviews()));

@@ -19,7 +19,7 @@ public class ModifyModules extends ListMenu<Module>{
 
     protected void updateHeader() {
         if (list.size() == 0){
-            header = "This course does not have any modules. Choose option 1 to create a new module.";
+            header = "This course does not have any modules. Choose option 1 to create a new module.\n";
         }else{
             header = "Module: " + (index+1) + " of " + list.size() + "\n\n" + get().toString();
         }
@@ -49,10 +49,10 @@ public class ModifyModules extends ListMenu<Module>{
                 facade.setModuleTopic(get());         
                 break;
             case 6:
-                // Modify Lessons
+                facade.setCurrentMenu(new ModifyLessons(facade, this, get().getLessons())).getSelection();
                 break;
             case 7:
-                // Modify Quiz
+                facade.setCurrentMenu(new ModifyQuiz(facade, this, get().getQuiz())).getSelection();
             case 8:
                 back();
                 break;

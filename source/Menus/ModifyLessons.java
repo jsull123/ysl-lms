@@ -18,10 +18,10 @@ public class ModifyLessons extends ListMenu<String>{
 
     protected void updateHeader() {
         if (list.size() == 0){
-            header += "This module has no lessons. Choose option 1 to add a new lesson";
+            header = "This module has no lessons. Choose option 1 to add a new lesson\n";
         }else{
-            header += "***Viewing lesson "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"+get(); 
+            header = "***Viewing lesson "+(index+1)+" of "+
+            list.size()+"***"+"\n\n"+get()+"\n"; 
         }
         updateOptions();
     } 
@@ -46,8 +46,7 @@ public class ModifyLessons extends ListMenu<String>{
                 facade.createLesson(list);
                 break;
             case 4:
-                list.remove(get());
-                getSelection("Lesson Removed");
+                remove();
             case 5:
                 back();
         }

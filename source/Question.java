@@ -22,11 +22,14 @@ public class Question {
     }
 
     public String toString(){
-        String ret = ""+question+"\n";
-        for(int i = 0; i < answers.size(); i++) {
-            ret += ""+i+" "+answers.get(i)+"\n";
-        }
-        return ret;
+        if (answers.size() != 4) 
+            return "";
+
+        return question+"\n"+
+        "A. "+answers.get(0)+"\n"+
+        "B. "+answers.get(1)+"\n"+
+        "C. "+answers.get(2)+"\n"+
+        "D. "+answers.get(3);
     }
 
     public int getCorrectAnswer(){

@@ -54,4 +54,14 @@ public abstract class ListMenu<T> extends Menu {
         getSelection();
     }
 
+    protected void remove(){
+        list.remove(index);
+        index--;
+        if (index < 0){
+            index = 0;
+        }
+        
+        getSelection();
+    }
+
 }

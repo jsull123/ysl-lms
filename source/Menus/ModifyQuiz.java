@@ -1,6 +1,5 @@
 package source.Menus;
 
-import java.util.ArrayList;
 import source.*;
 
 public class ModifyQuiz extends ListMenu<Question>{
@@ -23,10 +22,10 @@ public class ModifyQuiz extends ListMenu<Question>{
     protected void updateHeader() {
         header = "Passing grade: "+quiz.getPassingGrade()*100+"%\n";
         if (list.size() == 0){
-            header += "This quiz has no questions. Choose option 1 to add a new question";
+            header += "This quiz has no questions. Choose option 1 to add a new question\n";
         }else{
             header += "***Viewing question "+(index+1)+" of "+
-            list.size()+"***"+"\n\n"+get().toString(); 
+            list.size()+"***"+"\n\n"+get().toString()+"\n"; 
         }
         updateOptions();
     } 
@@ -53,8 +52,7 @@ public class ModifyQuiz extends ListMenu<Question>{
                 facade.createQuestion(list);
                 break;
             case 4:
-                list.remove(get());
-                getSelection("Question Removed");
+                remove();
             case 5:
                 facade.changePassingGrade(quiz);
             case 6:

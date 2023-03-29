@@ -14,7 +14,7 @@ public class ModifyCourse extends Menu {
     }
 
     public void updateHeader(){
-        header = "Title: " + course.toString() +"\n"
+        header = "Title: " + course.getTitle() +"\n"
         + "Language: " + course.getLanguage() + "\n"
         + "Description: " + course.getDescription() + "\n";
     }
@@ -24,14 +24,17 @@ public class ModifyCourse extends Menu {
             case 1:
                 facade.setCourseTitle(course);
                 updateHeader();
+                getSelection("Title changed");
                 break;
             case 2:
                 facade.setCourseLanguage(course);
                 updateHeader();
+                getSelection("Language changed");
                 break;
             case 3:
                 facade.setCourseDescription(course);
                 updateHeader();
+                getSelection("Description changed");
                 break;
             case 4:
                 facade.setCurrentMenu(new ModifyModules(facade, this, course.getAllModules())).getSelection();

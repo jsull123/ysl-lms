@@ -9,7 +9,7 @@ public class EnrollCourseMenu extends ListMenu<Course> {
         super(facade, pMenu, courses);
         this.list = courses;
         this.index = 0;
-        options = new String[]{"Next", "Previous", "View Comments", "View Reviews", "Enroll in Course", "Back"};
+        options = new String[]{"Next", "Previous", "View Comments", "View Reviews", "Enroll in This Course", "Back"};
     }
 
     public void updateHeader(){

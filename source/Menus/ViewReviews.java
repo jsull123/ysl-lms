@@ -20,7 +20,7 @@ public class ViewReviews extends ListMenu<Review> {
 
     protected void updateHeader(){
         if (list.size() == 0){
-            header = "This course has no reviews. Choose option 1 to add a review";
+            header = "This course has no reviews. Choose option 1 to add a review\n";
         }else{
             header = "***Viewing review "+(index+1)+" of "+
             list.size()+"***"+"\n\n"+get().toString();

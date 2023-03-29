@@ -31,9 +31,6 @@ public class ViewModules extends ListMenu<Module> {
                 break;
             case 3:
                 // Will lead to OpenModule
-                facade.setCurrentMenu(new ViewContent(
-                    facade, this, get().getAllContent(), 
-                    enrolledCourse.getModuleProgress().get(index))).getSelection();
                 break;
             case 4:
                 back();

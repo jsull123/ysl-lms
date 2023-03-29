@@ -20,7 +20,7 @@ public class MainMenu extends Menu{
                 break;
             case 2:
                 if(user.getAccountType().equals(AccountType.AUTHOR)) {
-                    facade.setCurrentMenu(new CreatedCoursesMenu(facade, facade.getCurrentMenu(), user.getAllCreatedCourses())).getSelection();
+                    facade.setCurrentMenu(new CreatedCoursesMenu(facade, this, user.getAllCreatedCourses())).getSelection();
                 } else {
                     getSelection("Access denied. Must be an Author.");
                 }
