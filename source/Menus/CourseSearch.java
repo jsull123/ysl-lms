@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class CourseSearch extends Menu {
 
+    /**
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     */
     public CourseSearch(LMSFacade facade, Menu pMenu) {
         super(facade, pMenu);
         header = "***Enter a number to choose a course*** \n\n"+
