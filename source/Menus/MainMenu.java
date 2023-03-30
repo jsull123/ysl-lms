@@ -5,14 +5,21 @@ import source.User;
 
 public class MainMenu extends Menu{
     private User user;
-
+    /**
+     * Constructs a MainMenu object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: User user: The current user
+     */
     public MainMenu(LMSFacade facade, User user){
         super(facade, null);
         header = "***Logged in as "+user.getUsername()+"***";
         options = new String[]{"My Enrolled Courses", "My Created Courses", "Search For Courses", "My Certificates", "Log out"};
         this.user = user;
     }
-
+    /**
+     * Gives the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection){
         switch (selection){
             case 1:

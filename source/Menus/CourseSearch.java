@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class CourseSearch extends Menu {
 
     /**
+     * Constructs a CourseSearch object
      * @param: LMSFacade facade = object to use the Facade methods
      * @param: Menu pMenu = object to use the data members and methods of Menu class
      */
@@ -21,6 +22,7 @@ public class CourseSearch extends Menu {
         options = new String[]{"Search for Java Courses", "Search for Python Courses", "Search for C Courses", "Back"};
     }
     /**
+     * Give the user options to move through this screen of the LMS
      * @param: int selection = The choice that the user has made
      */
     public void select(int selection){

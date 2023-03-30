@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class CreatedCoursesMenu extends ListMenu<UUID> {
     /**
+     * Constructs a CreatedCourseMenu object
      * @param: LMSFacade facade = object to use Facade methods
      * @param: Menu pMEnu = objecy to use Menu methods and data members
      * @param: ArrayList<UUID> courses: The courses created by a user
@@ -14,7 +15,9 @@ public class CreatedCoursesMenu extends ListMenu<UUID> {
     public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<UUID> courses) {
         super(facade, pMenu, courses);   
     }
-
+    /**
+     * Gives the user options based on if they've created a course yet or not
+     */
     private void updateOptions(){   
         if (list.size() == 0){
             options = new String[]{"Create a Course", "Back"};
@@ -22,7 +25,9 @@ public class CreatedCoursesMenu extends ListMenu<UUID> {
             options = new String[]{"Next Course", "Previous Course", "Create a Course", "View Comments", "View Reviews", "Modify Course", "Back"};
         }
     }
-
+    /**
+     * Displays the options that the user will choose from
+     */
     protected void updateHeader(){
         if (list.size() == 0) {
             header = "You have not created any courses. Choose option 1 to create a new course\n";
@@ -36,6 +41,7 @@ public class CreatedCoursesMenu extends ListMenu<UUID> {
         updateOptions();
     }
     /**
+     * Gives the user options to move through this screen of the LMS
      * @param: int selection = The choice the user has made
      */
     public void select(int selection) {
