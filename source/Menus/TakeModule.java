@@ -5,9 +5,13 @@ import source.Module;
 
 public class TakeModule extends ListMenu<String>{
 
+    private Module module;
+    private ModuleProgress moduleProgress;
+
     public TakeModule(LMSFacade facade, Menu pMenu, Module module, ModuleProgress moduleProgress) {
         super(facade, pMenu, module.getLessons());
-
+        this.module = module;
+        this.moduleProgress = moduleProgress;
         if (list.size() == 0){
             options = new String[]{"Take Quiz", "Back"};
         }else{
