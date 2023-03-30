@@ -257,9 +257,6 @@ public class LMSFacade{
         String error = "";
         while (inProgress) {
             questionPrompt = error + "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + "\nEnter your answer choice\n";
-            for (int i = 0; i < questions.get(currentQuestion - 1).getAnswers().size(); i++) {
-                questionPrompt += questions.get(currentQuestion - 1).getAnswers().get(i) + "\n";
-            }
             while (!validResponse) {
                 userAnswer = LMSUI.promptString(questionPrompt, true).toLowerCase();
                 checkAnswerResult = checkAnswer(userAnswer, questions.get(currentQuestion - 1).getCorrectAnswer());
