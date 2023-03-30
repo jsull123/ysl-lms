@@ -26,7 +26,7 @@ public class MainMenu extends Menu{
                 }
                 break;
             case 3:
-                // Search for courses
+                facade.setCurrentMenu(new CourseSearch(facade, this)).getSelection();;
             case 4:
                 // Certificates?
             case 5:

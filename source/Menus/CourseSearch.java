@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class CourseSearch extends Menu {
 
-    public CourseSearch(LMSFacade facade) {
-        super(facade, null);
+    public CourseSearch(LMSFacade facade, Menu pMenu) {
+        super(facade, pMenu);
         header = "***Enter a number to choose a course*** \n"+
         "Don't know what to learn? No worries!\n"+
         "Here are some suggestions\n"+
