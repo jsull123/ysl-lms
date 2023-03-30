@@ -14,7 +14,7 @@ public class CourseSearch extends Menu {
         "\nIf you want to learn the most prolific langauge, start with Java\n"+
         "\nIf you want to learn the most niche language, start with Python\n"+
         "\nIf you want to learn the easiest language, start with C\n";
-        options = new String[]{"Search for Java Courses", "Search for Python Courses", "Search for C Courses", "Back"};
+        options = new String[]{"Search for Java Courses", "Search for Python Courses", "Search for C Courses", "Search for JavaScript Courses", "Back"};
     }
 
     public void select(int selection){
@@ -26,7 +26,9 @@ public class CourseSearch extends Menu {
             case 3:
                 facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("C"))).getSelection();
             case 4:
-                back();
+                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("JavaScript"))).getSelection();
+            case 5:
+            back();
         }
     }
 }

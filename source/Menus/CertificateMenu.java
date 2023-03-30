@@ -24,7 +24,7 @@ public class CertificateMenu extends ListMenu<Course> {
                 prev();
                 break;
             case 3:
-                String fileName = get().getTitle()+"Certificate.txt";
+                String fileName = get().getTitle()+"_Certificate.txt";
                 facade.outputToFile(facade.getCertificate(get()), fileName);
                 getSelection("Successfully created file "+fileName);
                 break;

@@ -12,7 +12,7 @@ public class ViewModules extends ListMenu<Module> {
         super(facade, pMenu, modules, "This course has no modules.");
 
         this.enrolledCourse = enrolledCourse;
-        this.options = new String[]{"Next", "Previous", "Start Module", "Back"};
+        this.options = new String[]{"Next", "Previous", "View Comments", "Start Module", "Back"};
     }
 
     protected void updateHeader(){
@@ -35,9 +35,11 @@ public class ViewModules extends ListMenu<Module> {
                 prev();        
                 break;
             case 3:
+                facade.setCurrentMenu(new ViewComments(facade, this, get().getAllComments())).getSelection();
+            case 4:
                 facade.setCurrentMenu(new TakeModule(facade, this, get(), enrolledCourse.getModuleProgress(index))).getSelection();
                 break;
-            case 4:
+            case 5:
                 back();
                 break;
         }

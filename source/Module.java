@@ -7,14 +7,20 @@ public class Module {
     private String topic;
     private ArrayList<String> lessons;
     private Quiz quiz;
+    private ArrayList<Comment> comments;
     //public ArrayList<Content> content;
 
-    public Module(String title, String topic, ArrayList<String> lessons, Quiz quiz){
+    public Module(String title, String topic, ArrayList<String> lessons, Quiz quiz, ArrayList<Comment> comments){
         this.title = title;
         this.topic = topic;
         this.lessons = lessons;
         this.quiz = quiz;
+        this.comments = comments;
         //this.content = content;
+    }
+
+    public ArrayList<Comment> getAllComments(){
+        return comments;
     }
     
     public Quiz getQuiz(){

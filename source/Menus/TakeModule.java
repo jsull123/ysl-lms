@@ -15,7 +15,7 @@ public class TakeModule extends ListMenu<String>{
         if (list.size() == 0){
             options = new String[]{"Take Quiz", "Back"};
         }else{
-            options = new String[]{"Next Lesson", "Previous Lesson", "Take Quiz", "Back"};
+            options = new String[]{"Next Lesson", "Previous Lesson", "Print Lesson", "Take Quiz", "Back"};
         }
     }
 
@@ -24,7 +24,7 @@ public class TakeModule extends ListMenu<String>{
             header = "This module has no lessons\n";
         }else{
             header = "***Viewing lesson "+(index+1)+" of "+
-            list.size()+"***\n" + get();
+            list.size()+"***\n\n" + get()+"\n";
         }
     }
 
@@ -46,9 +46,12 @@ public class TakeModule extends ListMenu<String>{
                 prev();
                 break;
             case 3:
+                facade.outputToFile(get(), "SavedLesson.txt");
+                getSelection("Printed lesson to \"SavedLesson.txt\"");
+            case 4:
                 facade.takeQuiz(module.getQuiz(), moduleProgress);
                 break;
-            case 4:
+            case 5:
                 back();
         }
     }
