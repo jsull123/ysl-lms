@@ -10,7 +10,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class CourseDataProcessor {
-
+    /**
+     * @return The json array with the course data saved on it
+     */
     private static JSONArray saveComments(ArrayList<Comment> comments){
         JSONArray ret = new JSONArray();
 
@@ -26,7 +28,10 @@ public class CourseDataProcessor {
         }
         return ret;
     }
-
+    /**
+     * @return The list of comments
+     * @param JSONArray comments = The comments that were on the json file
+     */
     private static ArrayList<Comment> loadComments(JSONArray comments){
         ArrayList<Comment> ret = new ArrayList<>();
         try{
@@ -43,7 +48,10 @@ public class CourseDataProcessor {
         }catch(Exception e){};
         return ret;
     }
-    
+    /**
+     * @return List of reviews that are save do the JSON file
+     * @param JSONArray
+     */
     private static ArrayList<Review> loadReviews(JSONArray jReviews) {
         ArrayList<Review> reviews = new ArrayList<>();
 
@@ -59,7 +67,10 @@ public class CourseDataProcessor {
         }          
         return reviews;
     }
-
+    /**
+     * @return All the lessons that are saved to the JSON file
+     * @param JSONArray jLessons = The lessons in the JSON
+     */
     private static ArrayList<String> loadLessons(JSONArray jLessons) {
         ArrayList<String> lessons = new ArrayList<>();
 
@@ -69,14 +80,20 @@ public class CourseDataProcessor {
         }          
         return lessons;
     }
-    
+    /**
+     * @return The Quiz from the json that the user is about to take
+     * @param JSONObject jQuiz = The quiz saved to json
+     */
     private static Quiz loadQuiz(JSONObject jQuiz) {
         ArrayList<Question> questions = loadQuestions((JSONArray)jQuiz.get(DataConstants.QUESTIONS));
         float passingGrade = Float.valueOf((String)jQuiz.get(DataConstants.PASSING_GRADE));
 
         return new Quiz(questions, passingGrade);
     }
-
+    /**
+     * @return List of the modules saved to the JSON file
+     * @param JSONArray jModules = The modules saved to the JSON
+     */
     private static ArrayList<Module> loadModules(JSONArray jModules) {
         ArrayList<Module> modules = new ArrayList<>();
     
@@ -95,7 +112,10 @@ public class CourseDataProcessor {
 
         return modules;
     }
-
+     /**
+     * @return List of the answers to questions saved to the JSON file
+     * @param JSONArray jAnswers = The answers/questions saved to the JSON
+     */
     private static ArrayList<String> loadAnswers(JSONArray jAnswers){
         ArrayList<String> answers = new ArrayList<>();
         for (int i = 0; i < jAnswers.size(); i++){
@@ -104,7 +124,10 @@ public class CourseDataProcessor {
 
         return answers;
     }
-
+     /**
+     * @return List of the questions saved to the JSON file
+     * @param JSONArray jQuestions = The questions saved to the JSON
+     */
     private static ArrayList<Question> loadQuestions(JSONArray jQuestions){
         ArrayList<Question> questions = new ArrayList<>();
         for (int i = 0; i < jQuestions.size(); i++){
@@ -117,7 +140,9 @@ public class CourseDataProcessor {
         }
         return questions;
     }
-
+    /**
+     * @return The data of a course (title, language, etc.)
+     */
     public static CourseList loadData() {
         ArrayList<Course> courses = new ArrayList<>();
         try{
@@ -143,7 +168,10 @@ public class CourseDataProcessor {
     
         return CourseList.getInstance(courses);
     }
-
+     /**
+     * @return List of the reviews to be saved to the JSON file
+     * @param JSONArray jModules = The reviews that need to be saved to the JSON
+     */
     private static JSONArray saveReviews(ArrayList<Review> reviews){
         JSONArray jReviews = new JSONArray();
 
@@ -160,7 +188,10 @@ public class CourseDataProcessor {
 
         return jReviews;
     }
-
+     /**
+     * @return List of the answers entered by the user saved to the JSON file
+     * @param JSONArray jModules = The answers to be saved to the JSON
+     */
     private static JSONArray saveAnswers(ArrayList<String> answers){
         JSONArray jAnswers = new JSONArray();
 
@@ -174,7 +205,10 @@ public class CourseDataProcessor {
 
         return jAnswers;
     }
-
+    /**
+     * @return Array of new questions to be saved to the JSON file
+     * @param ArrayList<Question> questions = The questions to be saved
+     */
     private static JSONArray saveQuestions(ArrayList<Question> questions){
         JSONArray jQuestions = new JSONArray();
 
@@ -190,7 +224,10 @@ public class CourseDataProcessor {
 
         return jQuestions;
     }
-
+    /**
+     * @return a quiz that has been saved to JSON
+     * @param Quiz quiz: The quiz to be saved
+     */
     private static JSONObject saveQuiz(Quiz quiz){
         JSONObject jQuiz = new JSONObject();
     
@@ -199,7 +236,10 @@ public class CourseDataProcessor {
 
         return jQuiz;
     }
-
+    /**
+     * @return a JSON array of new lessons
+     * @param ArrayList<String> lessons = The lessons to be added
+     */
     private static JSONArray saveLessons(ArrayList<String> lessons){
         JSONArray jLessons = new JSONArray();
 
@@ -211,7 +251,10 @@ public class CourseDataProcessor {
 
         return jLessons;
     }
-
+    /**
+     * @return a JSON array with new modules save in it
+     * @param ArrayList<Module> modules = the new module to be saved to JSON
+     */
     private static JSONArray saveModules(ArrayList<Module> modules){
         JSONArray jModules = new JSONArray();
 
@@ -229,7 +272,10 @@ public class CourseDataProcessor {
         return jModules;
     
     }
-
+    /**
+     * Saves all new data set
+     * @param CourseList courseList = object for the list we want to add the data to
+     */
     public static void saveData(CourseList courseList){
         JSONArray jCourses = new JSONArray();
         Course[] courses = courseList.toArray();
