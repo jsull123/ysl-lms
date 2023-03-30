@@ -104,7 +104,8 @@ public class CourseDataProcessor {
                 (String)moduleObject.get(DataConstants.TITLE),
                 (String)moduleObject.get(DataConstants.TOPIC),
                 loadLessons((JSONArray)moduleObject.get(DataConstants.LESSONS)),
-                loadQuiz((JSONObject)moduleObject.get(DataConstants.QUIZ))
+                loadQuiz((JSONObject)moduleObject.get(DataConstants.QUIZ)),
+                loadComments((JSONArray)moduleObject.get(DataConstants.COMMENTS))
             );
 
             modules.add(module);
@@ -265,6 +266,7 @@ public class CourseDataProcessor {
             module.put(DataConstants.TOPIC, modules.get(i).getTopic());
             module.put(DataConstants.LESSONS, saveLessons(modules.get(i).getLessons()));
             module.put(DataConstants.QUIZ, saveQuiz(modules.get(i).getQuiz()));
+            module.put(DataConstants.COMMENTS, saveComments(modules.get(i).getAllComments()));
          
             jModules.add(module);
         }

@@ -185,7 +185,9 @@ public class LMSFacade{
             LMSUI.promptString("Enter module title: ", true), 
             LMSUI.promptString("Enter module topic: ", false), 
             new ArrayList<>(), 
-            new Quiz(new ArrayList<>(), 0)));
+            new Quiz(new ArrayList<>(), 0),
+            new ArrayList<>()));
+
         currentMenu.getSelection("Module created. Use Modify Lessons and Modify Quiz to add lessons and a quiz to your module");
     }
 

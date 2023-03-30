@@ -19,7 +19,7 @@ public class CertificateMenu extends ListMenu<Course> {
      */
     protected void updateHeader(){
         header = "***Viewing certificate "+(index+1)+" of "+
-        list.size()+"***"+"\n\n"+get().toString();
+        list.size()+"***"+"\n\n"+get().toString()+"\n";
     }
     /**
      * Gives the user options to move through this screen of the LMS
@@ -34,7 +34,7 @@ public class CertificateMenu extends ListMenu<Course> {
                 prev();
                 break;
             case 3:
-                String fileName = get().getTitle()+"Certificate.txt";
+                String fileName = get().getTitle()+"_Certificate.txt";
                 facade.outputToFile(facade.getCertificate(get()), fileName);
                 getSelection("Successfully created file "+fileName);
                 break;
