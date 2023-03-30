@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class EnrollCourseMenu extends ListMenu<Course> {
 
     public EnrollCourseMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
-        super(facade, pMenu, courses);
+        super(facade, pMenu, courses, "No courses found");
         this.list = courses;
         this.index = 0;
         options = new String[]{"Next", "Previous", "View Comments", "View Reviews", "Enroll in This Course", "Back"};
