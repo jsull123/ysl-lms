@@ -7,14 +7,20 @@ import java.util.ArrayList;
 public class CourseList { 
     private HashMap<UUID, Course> courses;
     private static CourseList courseList;
-
+    /**
+     * Constructor for a CourseList object
+     * @param ArrayList<Course> courses = List of courses
+     */
     private CourseList(ArrayList<Course> courses) {
         this.courses = new HashMap<>();
         for (int c = 0; c < courses.size(); c++) {
             addCourse(courses.get(c));
         }
     }
-
+    /**
+     * @return Singleton instance for the CourseList constructor
+     * @param ArrayList<COurse> courses = List of courses
+     */
     public static CourseList getInstance(ArrayList<Course> courses) {
         if (courseList != null) {
             return courseList;
@@ -22,25 +28,39 @@ public class CourseList {
         courseList = new CourseList(courses);
         return courseList;
     }
-
+    /**
+     * @return Course at a specified ID
+     * @param UUID courseID = ID to find course at
+     */
     public Course getCourse(UUID courseID) {
         return courses.get(courseID);
     }
-
+    /**
+     * Adds a course to the course list
+     * @param Course course = course to be added
+     */
     public void addCourse(Course course) {
         courses.put(course.getCourseID(), course);
     }
-
+    /**
+     * Updates the information in a course
+     * @param Course course = The course to be modified
+     */
     public void updateCourse(Course course) {
         courses.remove(course.getCourseID());
         courses.put(course.getCourseID(), course);
         CourseDataProcessor.saveData(this);
     }
-
+    /**
+     * @return The number of courses in the list
+     */
     public int numCourses() {
         return courses.size();
     }
-
+    /**
+     * @return All the course of a given langauge
+     * @param String Language = The language to find course by
+     */
     public ArrayList<Course> getAllByLanguage(String language){
         Course[] c = new Course[courses.size()];
         courses.values().toArray(c);
@@ -54,7 +74,9 @@ public class CourseList {
 
         return ret;
     }
-
+    /**
+     * Constructor to turn courses from ArrayList to array
+     */
     public Course[] toArray(){
         Course[] c = new Course[courses.size()];
         courses.values().toArray(c);
