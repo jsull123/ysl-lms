@@ -20,7 +20,9 @@ public class CourseSearch extends Menu {
         "\nIf you want to learn the easiest language, start with C\n";
         options = new String[]{"Search for Java Courses", "Search for Python Courses", "Search for C Courses", "Back"};
     }
-
+    /**
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection){
         switch (selection){
             case 1:

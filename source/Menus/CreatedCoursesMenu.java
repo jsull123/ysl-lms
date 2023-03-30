@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class CreatedCoursesMenu extends ListMenu<UUID> {
-
+    /**
+     * @param: LMSFacade facade = object to use Facade methods
+     * @param: Menu pMEnu = objecy to use Menu methods and data members
+     * @param: ArrayList<UUID> courses: The courses created by a user
+     */
     public CreatedCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<UUID> courses) {
         super(facade, pMenu, courses);   
     }
@@ -31,7 +35,9 @@ public class CreatedCoursesMenu extends ListMenu<UUID> {
         } 
         updateOptions();
     }
-
+    /**
+     * @param: int selection = The choice the user has made
+     */
     public void select(int selection) {
         if (list.size() == 0){
             switch(selection){

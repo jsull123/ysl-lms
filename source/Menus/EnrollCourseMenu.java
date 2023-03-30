@@ -4,7 +4,12 @@ import source.Course;
 import java.util.ArrayList;
 
 public class EnrollCourseMenu extends ListMenu<Course> {
-
+    /**
+     * @param: LMSFacade facade = object to use Facade methods
+     * @param: Menu pMEnu = objecy to use Menu methods and data members
+     * @param: ArrayList<Course> courses = List of courses the user is able to take
+     *
+     */
     public EnrollCourseMenu(LMSFacade facade, Menu pMenu, ArrayList<Course> courses) {
         super(facade, pMenu, courses, "No courses found");
         this.list = courses;
@@ -18,7 +23,9 @@ public class EnrollCourseMenu extends ListMenu<Course> {
          + get().getLanguage() + "\n"
          + get().getDescription() + "\n";
     }
-
+    /**
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection) {
         switch(selection) {
             case 1:
