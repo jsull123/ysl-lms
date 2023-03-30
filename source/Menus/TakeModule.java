@@ -32,7 +32,8 @@ public class TakeModule extends ListMenu<String>{
         if (list.size() == 0){
             switch(selection){
                 case 1:
-                    // take quiz
+                    facade.takeQuiz(module.getQuiz(), moduleProgress);
+                    break;
                 case 2:
                     back();
             }
@@ -40,10 +41,13 @@ public class TakeModule extends ListMenu<String>{
         switch(selection){
             case 1:
                 next();
+                break;
             case 2:
                 prev();
+                break;
             case 3:
                 facade.takeQuiz(module.getQuiz(), moduleProgress);
+                break;
             case 4:
                 back();
         }

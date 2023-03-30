@@ -35,7 +35,7 @@ public class ViewModules extends ListMenu<Module> {
                 prev();        
                 break;
             case 3:
-                new TakeModule(facade, this, get(), enrolledCourse);
+                facade.setCurrentMenu(new TakeModule(facade, this, get(), enrolledCourse.getModuleProgress(index))).getSelection();
                 break;
             case 4:
                 back();
