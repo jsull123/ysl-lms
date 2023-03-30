@@ -16,6 +16,15 @@ public class EnrolledCourse {
         this.moduleProgress = new ArrayList<>();
     }
 
+    public ModuleProgress getModuleProgress(int index){
+        if (index >= moduleProgress.size()){
+            for (int i = moduleProgress.size()-1; i <= index; i++){
+                moduleProgress.add(new ModuleProgress(0.0f, false));
+            }
+        }
+        return moduleProgress.get(index);
+    }
+
     public UUID getID(){
         return courseID;
     }

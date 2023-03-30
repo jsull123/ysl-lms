@@ -195,7 +195,7 @@ public class CourseDataProcessor {
         JSONObject jQuiz = new JSONObject();
     
         jQuiz.put(DataConstants.QUESTIONS, saveQuestions(quiz.getQuestions()));
-        jQuiz.put(DataConstants.PASSING_GRADE, quiz.getPassingGrade());
+        jQuiz.put(DataConstants.PASSING_GRADE, Float.valueOf(quiz.getPassingGrade()).toString());
 
         return jQuiz;
     }

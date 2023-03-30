@@ -47,7 +47,7 @@ public class CourseList {
 
         ArrayList<Course> ret = new ArrayList<>();
         for (int i = 0; i < c.length; i++){
-            if (c[i].getLanguage().equals(language)){
+            if (c[i].getLanguage().toString().toLowerCase().equals(language)){
                 ret.add(c[i]);
             }
         }

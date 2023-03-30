@@ -200,7 +200,7 @@ public class LMSFacade{
     public void setCourseDescription(Course course){
         course.setDescription(LMSUI.promptString("Enter a new course description:", true));
     }
-
+    
     public void enrollInCourse(Course course){
         User user = userList.getCurrentUser();
         user.addEC(new EnrolledCourse(course.getCourseID()));
@@ -243,45 +243,4 @@ public class LMSFacade{
             e.printStackTrace();
           }
     }
-
-    /* 
-    public void displaySignInOptions() {
-        System.out.println("***Welcome to the YSL programming LMS***");
-        System.out.println("***Enter a number to choose an option***");
-        System.out.println("1. Sign up as student");
-        System.out.println("2. Sign up as author");
-        System.out.println("3. Sign in");
-    }
-    */
-    public void displayPathOptions() {
-        System.out.println("***Enter a number into the console to choose a path***");
-        System.out.println("");
-        System.out.println("1. Enroll in a new course");
-        System.out.println("2. Resume a course");
-        System.out.println("3. Search for a course");
-        System.out.println("4. Review a course");
-        System.out.println("5. Get certified to create a course");
-        System.out.println("6. Go Back");
-    }
-/* 
-    public void displayNewCourseOptions() {
-        System.out.println("Are you ready to learn? Look no further");
-        System.out.println("Here are some option to start with based on attributes of each langauge");
-        System.out.println("");
-        System.out.println("If you want to learn the most prolific langauge, start with Java");
-        System.out.println("");
-        System.out.println("If you want to learn the most niche language, start with Python");
-        System.out.println("");
-        System.out.println("If you want to learn the easiest language, start with C");
-        System.out.println("");
-        System.out.println("***Enter a number to choose an option***");
-        System.out.println("* mean course is already in progress");
-        System.out.println("");
-        System.out.println("1. Enroll in Java course");
-        System.out.println("2. Enroll in Python course");
-        System.out.println("3. Enroll in C course");
-        System.out.println("4. Go back");
-    }
-*/
-
 }

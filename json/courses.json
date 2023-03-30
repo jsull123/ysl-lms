@@ -1,0 +1,137 @@
+[
+  {
+    "comments": [],
+    "reviews": [],
+    "description": "how to code lms in java",
+    "language": "Java",
+    "title": "how to code lms",
+    "authorID": "6f456792-5278-4adc-839d-30005ef580be",
+    "courseID": "9dca3de0-3d29-483f-993a-f2e1d8cf7e02",
+    "modules": [
+      {
+        "quiz": {
+          "passingGrade": "1.0",
+          "questions": [
+            {
+              "question": "Of the following, which of the following is the following Java name for the following 3 data types: Variable, Class, Method, Integer?",
+              "answers": [
+                {
+                  "answer": "Java"
+                },
+                {
+                  "answer": "Float"
+                },
+                {
+                  "answer": "ArrayList<ArrayList<ArrayList<ArrayList<ArrayList<ArrayList<ArrayList<ArrayList<String>>>>>>>>>>>"
+                },
+                {
+                  "answer": "none of the above"
+                }
+              ],
+              "correctAnswer": "2"
+            },
+            {
+              "question": "How do you add two integers in Java?",
+              "answers": [
+                {
+                  "answer": "int1 + int2"
+                },
+                {
+                  "answer": "for (int i = 0; i < int2; i ++){ int1++; }"
+                },
+                {
+                  "answer": "while (false) { int1 + int2 }"
+                },
+                {
+                  "answer": "all of the above"
+                }
+              ],
+              "correctAnswer": "3"
+            },
+            {
+              "question": "What do you do when you get an error in Java?",
+              "answers": [
+                {
+                  "answer": "Ignore it"
+                },
+                {
+                  "answer": "Exit the program and delete all files and uninstall windows"
+                },
+                {
+                  "answer": "Ctrl z until it goes away"
+                },
+                {
+                  "answer": "Fix the error"
+                }
+              ],
+              "correctAnswer": "0"
+            }
+          ]
+        },
+        "topic": "Making classes in java",
+        "title": "Classes",
+        "lessons": [
+          {
+            "lesson": "To code the LMS, first you have to make classes. To make a java clas aldkjaof inhco[iqnfoi"
+          },
+          {
+            "lesson": "As I was saying, to make a java class all you have to do is create a new filrj lahjf oiwafhoIHiorh"
+          },
+          {
+            "lesson": "Sorry about that. As i was saying you have to make a new file with the name of your class and then put all the stuff"
+          }
+        ]
+      },
+      {
+        "quiz": {
+          "passingGrade": "0.7",
+          "questions": [
+            {
+              "question": "In C, which of the following is NOT not a data type?",
+              "answers": [
+                {
+                  "answer": "json"
+                },
+                {
+                  "answer": "number"
+                },
+                {
+                  "answer": "12"
+                },
+                {
+                  "answer": "gitub"
+                }
+              ],
+              "correctAnswer": "3"
+            },
+            {
+              "question": "Which of these is the most popular development environment?",
+              "answers": [
+                {
+                  "answer": "Eclipse"
+                },
+                {
+                  "answer": "Notepad++"
+                },
+                {
+                  "answer": "Pycharm"
+                },
+                {
+                  "answer": "Vim"
+                }
+              ],
+              "correctAnswer": "1"
+            }
+          ]
+        },
+        "topic": "Variables ",
+        "title": "Variables in Java",
+        "lessons": [
+          {
+            "lesson": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+          }
+        ]
+      }
+    ]
+  }
+]

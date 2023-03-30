@@ -18,7 +18,12 @@ public class ViewModules extends ListMenu<Module> {
     protected void updateHeader(){
         header = "***Viewing module "+(index+1)+" of "+
         list.size()+"***"+"\n\n"+get().toString();
-        // Add "You have/haven't completed this module. You scored x% on the quiz"
+        ModuleProgress progress = enrolledCourse.getModuleProgress(index);
+        if (progress.getHasPassed()){
+            header += "You have completed the module. "+"You scored a "+progress.getQuizGrade()*100+"% on the quiz.";
+        }else{
+            header += "You haven't completed this module.";
+        }
     }
 
     public void select(int selection){
@@ -30,7 +35,7 @@ public class ViewModules extends ListMenu<Module> {
                 prev();        
                 break;
             case 3:
-                // Will lead to OpenModule
+                new TakeModule(facade, this, get(), enrolledCourse);
                 break;
             case 4:
                 back();
