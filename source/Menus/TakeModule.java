@@ -5,7 +5,7 @@ import source.Module;
 
 public class TakeModule extends ListMenu<String>{
 
-    public TakeModule(LMSFacade facade, Menu pMenu, Module module, EnrolledCourse course) {
+    public TakeModule(LMSFacade facade, Menu pMenu, Module module, ModuleProgress moduleProgress) {
         super(facade, pMenu, module.getLessons());
 
         if (list.size() == 0){
@@ -39,7 +39,7 @@ public class TakeModule extends ListMenu<String>{
             case 2:
                 prev();
             case 3:
-                //take quiz
+                facade.takeQuiz(module.getQuiz(), moduleProgress);
             case 4:
                 back();
         }

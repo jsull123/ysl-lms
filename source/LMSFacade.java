@@ -243,4 +243,71 @@ public class LMSFacade{
             e.printStackTrace();
           }
     }
+
+    public void takeQuiz(Quiz quiz, ModuleProgress ModuleProgress) {
+        boolean inProgress = true;
+        boolean validResponse = false;
+        int numQuestions = quiz.getQuestions().size();
+        int currentQuestion = 1;
+        ArrayList<Question> questions = quiz.getQuestions();
+        String userAnswer = "";
+        String questionPrompt = "";
+        float score = 0;
+        int checkAnswerResult;
+        String error = "";
+        while (inProgress) {
+            questionPrompt = error + "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + "\nEnter your answer choice\n";
+            for (int i = 0; i < questions.get(currentQuestion - 1).getAnswers().size(); i++) {
+                questionPrompt += questions.get(currentQuestion - 1).getAnswers().get(i) + "\n";
+            }
+            while (!validResponse) {
+                userAnswer = LMSUI.promptString(questionPrompt, true).toLowerCase();
+                checkAnswerResult = checkAnswer(userAnswer, questions.get(currentQuestion - 1).getCorrectAnswer());
+                switch (checkAnswerResult) {
+                    case -1:
+                        error = "Invalid answer choice\n";
+                        break;
+                    case 0:
+                        validResponse = true;
+                        break;
+                    case 1:
+                        score++;
+                        validResponse = true;
+                }
+            }
+             currentQuestion++;
+             questionPrompt = "";
+             error = "";
+             if (currentQuestion > numQuestions) inProgress = false;
+        }
+        ModuleProgress.setQuizGrade(score/numQuestions);
+        if (ModuleProgress.getQuizGrade() >= quiz.getPassingGrade()) {
+            ModuleProgress.setHasPassed(true);
+            currentMenu.getSelection("You have passed this quiz with a score of " + ModuleProgress.getQuizGrade()*100 + "%");
+        }
+        else {
+            ModuleProgress.setHasPassed(false);
+            currentMenu.getSelection("Sorry, did not pass this quiz with a score of  " + ModuleProgress.getQuizGrade()*100 + "%");
+        }
+        
+    }
+
+    public int checkAnswer(String userAnswer, int correctAnswer) {
+        switch (userAnswer) {
+            case "a":
+                if (correctAnswer == 1) return 1;
+                return 0;
+            case "b":
+                if (correctAnswer == 2) return 1;
+                return 0;
+            case "c":
+                if (correctAnswer == 3) return 1;
+                return 0;
+            case "d":
+                if (correctAnswer == 4) return 1;
+                return 0;
+            default:
+                return -1;
+        }
+    }
 }
