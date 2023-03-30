@@ -8,7 +8,7 @@ public enum Language {
     public static Language fromString(String s){
         if (s.toUpperCase().equals("JAVA")){
             return JAVA;
-        }else if (s.equals("PYTHON")){
+        }else if (s.toUpperCase().equals("PYTHON")){
             return PYTHON;
         }
         return C;
