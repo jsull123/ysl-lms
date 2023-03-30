@@ -257,7 +257,7 @@ public class LMSFacade{
         String error = "";
         while (inProgress) {
             while (!validResponse) {
-                questionPrompt = error + "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + "\nEnter your answer choice\n";
+                questionPrompt = "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + error + "\nEnter your answer choice\n";
                 userAnswer = LMSUI.promptString(questionPrompt, true).toLowerCase();
                 checkAnswerResult = checkAnswer(userAnswer, questions.get(currentQuestion - 1).getCorrectAnswer());
                 switch (checkAnswerResult) {
@@ -273,11 +273,11 @@ public class LMSFacade{
                         break;
                 }
             }
-             currentQuestion++;
-             questionPrompt = "";
-             error = "";
-             validResponse = false;
-             if (currentQuestion > numQuestions) inProgress = false;
+            currentQuestion++;
+            questionPrompt = "";
+            error = "";
+            validResponse = false;
+            if (currentQuestion > numQuestions) inProgress = false;
         }
         ModuleProgress.setQuizGrade(score/numQuestions);
         if (ModuleProgress.getQuizGrade() >= quiz.getPassingGrade()) {

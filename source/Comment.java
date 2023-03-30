@@ -39,8 +39,9 @@ public class Comment {
     public String toString(){
         String plurality = "replies";
         if (replies.size() == 1) plurality = "reply";
+        User user = UserList.getInstance(null).getUser(authorID);
 
-        return UserList.getInstance(null).getUser(authorID).getUsername()+
+        return user.getFirstName()+" "+user.getLastName()+
         ": "+comment+
         "\n("+replies.size()+" "+plurality+")\n";
     }
