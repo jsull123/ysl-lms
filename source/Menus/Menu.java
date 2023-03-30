@@ -8,16 +8,25 @@ public abstract class Menu {
     protected String header;
     protected String[] options;
     protected Menu pMenu;
-
+    /**
+     * Constructs a Menu object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     */
     public Menu(LMSFacade facade, Menu pMenu){
         this.facade = facade;
         this.pMenu = pMenu;
     }
-
+    /**
+     * Goes to the previous screen
+     */
     protected void back(){
         back("");
     }
-
+    /**
+     * returns to a specified screen
+     * @param: String s = The screen to return to
+     */
     protected void back(String s){
         facade.setCurrentMenu(pMenu).getSelection(s);
     }
@@ -27,7 +36,9 @@ public abstract class Menu {
     public void getSelection(){
         getSelection("");
     }
-
+    /**
+     * Handles errors that may occur while the user is working with the LMS
+     */
     public void getSelection(String error){
         int selection = 1;
         do{
@@ -49,7 +60,10 @@ public abstract class Menu {
     
         select(selection); 
     }
-    
+    /**
+     * Prints the header and options
+     * @return: String representation of the user's options
+     */
     public String toString(){
         String ret = "";
         if (header != "") ret += header+"\n";

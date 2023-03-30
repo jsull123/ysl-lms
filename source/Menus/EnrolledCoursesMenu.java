@@ -3,13 +3,20 @@ import source.*;
 import java.util.ArrayList;
 
 public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
-
+    /**
+     * Constructs an EnrolledCoursesMenu object
+     * @param: LMSFacade facade = object to use Facade methods
+     * @param: Menu pMEnu = objecy to use Menu methods and data members
+     * @param: ArrayList<EnrolledCourse> enrolledCourses = List of courses that the user is currently enrolled in
+     */
     public EnrolledCoursesMenu(LMSFacade facade, Menu pMenu, ArrayList<EnrolledCourse> enrolledCourses) {
         super(facade, pMenu, enrolledCourses, "You are not enrolled in any courses");
 
         options = new String[]{"Next Course", "Previous Course", "Comments", "Reviews", "Open Modules", "Back"};
     }
-
+    /**
+     * Gives the user options to choose from
+     */
     protected void updateHeader(){
         header = "***Viewing enrolled course "+(index+1)+" of "+
         list.size()+"***"+"\n\n"
@@ -18,7 +25,10 @@ public class EnrolledCoursesMenu extends ListMenu<EnrolledCourse> {
         + "Description: " + get().getCourse().getDescription()+ "\n"
         + get().getCourseProgress()*100+"% complete\n";
     }
-
+    /**
+     * Give the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection) {
         switch(selection) {
             case 1:

@@ -5,11 +5,18 @@ import source.LMSFacade;
 import java.util.ArrayList;
 
 public class ViewComments extends ListMenu<Comment> {
-
+    /**
+     * Constructs a ViewComments object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     * @param: ArrayList<Comment> = List of the comments that have been created
+     */
     public ViewComments(LMSFacade facade, Menu pMenu, ArrayList<Comment> comments){
         super(facade, pMenu, comments);
     }
-
+    /**
+     * Gives the user options based on if they've created a course yet or not
+     */
     private void updateOptions(){   
         if (list.size() == 0){
             options = new String[]{"Add Comment", "Back"};
@@ -17,7 +24,9 @@ public class ViewComments extends ListMenu<Comment> {
             options = new String[]{"Next", "Previous", "Add Comment", "View Replies", "Back"};
         }     
     }
-
+     /**
+     * Gives the user options to choose from
+     */
     protected void updateHeader(){
         if (list.size() == 0){
             header = "No comments found\n";
@@ -27,7 +36,10 @@ public class ViewComments extends ListMenu<Comment> {
         }
         updateOptions();
     }
-
+     /**
+     * Gives the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection){
         if (list.size() == 0){
             switch (selection){

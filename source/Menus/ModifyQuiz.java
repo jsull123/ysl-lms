@@ -5,12 +5,19 @@ import source.*;
 public class ModifyQuiz extends ListMenu<Question>{
 
     private Quiz quiz;
-   
+    /**
+     * Constructs a ModifyQuiz object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     * @param: Quiz quiz = quiz to be modified
+     */
     public ModifyQuiz(LMSFacade facade, Menu pMenu, Quiz quiz) {
         super(facade, pMenu, quiz.getQuestions());
         this.quiz = quiz;
     }
-
+    /**
+     * Gives the user options based on if they've created a course yet or not
+     */
     private void updateOptions(){
         if (list.size() == 0){
             options = new String[]{"Create New Question", "Change Passing Grade", "Back"};
@@ -18,7 +25,9 @@ public class ModifyQuiz extends ListMenu<Question>{
             options = new String[]{"Next", "Previous", "Create New Question", "Remove This Question", "Change Passing Grade", "Back"};
         }
     }
-
+     /**
+     * Gives the user options to choose from
+     */
     protected void updateHeader() {
         header = "Passing grade: "+quiz.getPassingGrade()*100+"%\n";
         if (list.size() == 0){
@@ -29,7 +38,10 @@ public class ModifyQuiz extends ListMenu<Question>{
         }
         updateOptions();
     } 
-
+     /**
+     * Gives the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection) {
         if (list.size() == 0){
             switch(selection){

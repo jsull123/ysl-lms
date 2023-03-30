@@ -7,7 +7,13 @@ public class TakeModule extends ListMenu<String>{
 
     private Module module;
     private ModuleProgress moduleProgress;
-
+    /**
+     * Constructs a TakeModule object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     * @param: Module module = The module that the user is about to start
+     * @param: ModuleProgress moduleProgress = The user's progress in their current module
+     */
     public TakeModule(LMSFacade facade, Menu pMenu, Module module, ModuleProgress moduleProgress) {
         super(facade, pMenu, module.getLessons());
         this.module = module;
@@ -18,7 +24,9 @@ public class TakeModule extends ListMenu<String>{
             options = new String[]{"Next Lesson", "Previous Lesson", "Print Lesson", "Take Quiz", "Back"};
         }
     }
-
+     /**
+     * Gives the user options to choose from
+     */
     protected void updateHeader(){ 
         if (list.size() == 0){
             header = "This module has no lessons\n";
@@ -27,7 +35,10 @@ public class TakeModule extends ListMenu<String>{
             list.size()+"***\n\n" + get()+"\n";
         }
     }
-
+     /**
+     * Gives the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection){
         if (list.size() == 0){
             switch(selection){
