@@ -12,7 +12,7 @@ public enum Language {
             return PYTHON;
         }
         return C;
-    }  
+    }
 
     @Override
     public String toString(){

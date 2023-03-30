@@ -28,7 +28,7 @@ public class MainMenu extends Menu{
             case 3:
                 facade.setCurrentMenu(new CourseSearch(facade, this)).getSelection();;
             case 4:
-                // Certificates?
+                facade.setCurrentMenu(new CertificateMenu(facade, this, facade.getCompletedCourses())).getSelection();
             case 5:
                 facade.logOut();
                 break;

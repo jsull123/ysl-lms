@@ -63,17 +63,4 @@ public class UserList {
     public User getCurrentUser(){
         return currentUser;
     }
-
-     // Temporary toString for testing data loading
-    public String dbgToString(){
-        User[] u = new User[users.size()];
-        users.values().toArray(u);
-
-        String ret = "";
-        for (int i = 0; i < users.size(); i++){
-            ret += "User "+(i+1)+"\n"+u[i].dbgToString()+"\n";
-        }
-
-        return ret;
-    }
 }

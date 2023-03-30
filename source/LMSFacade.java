@@ -202,6 +202,7 @@ public class LMSFacade{
     }
     
     public void enrollInCourse(Course course){
+        // Doesn't check if they are already enrolled in the course
         User user = userList.getCurrentUser();
         user.addEC(new EnrolledCourse(course.getCourseID()));
         currentMenu.getSelection("Enrolled in: " + course.toString());
@@ -230,6 +231,7 @@ public class LMSFacade{
         currentMenu.getSelection("Passing grade set to "+passingGrade+"%");
     }
 
+    /*
     public void printCertificate(User user, EnrolledCourse enrolledCourse) {
         Course course = enrolledCourse.getCourse();
         try {
@@ -242,9 +244,12 @@ public class LMSFacade{
             currentMenu.getSelection("An error occurred");
             e.printStackTrace();
           }
-    }
+    }*/
 
     public void takeQuiz(Quiz quiz, ModuleProgress ModuleProgress) {
+        if (quiz.getQuestions().size() == 0){
+            currentMenu.getSelection("This quiz has not been created yet");
+        }
         boolean inProgress = true;
         boolean validResponse = false;
         int numQuestions = quiz.getQuestions().size();
@@ -309,4 +314,38 @@ public class LMSFacade{
                 return -1;
         }
     }
+
+    public String getCertificate(Course course){
+        User user = userList.getCurrentUser();
+        Date date = new Date();
+
+        return user.getFirstName()+" "+user.getLastName()+" completed the course "+course.getTitle()+"\n"+date;
+    }
+
+    public void outputToFile(String string, String path) {
+        try {
+            File file = new File(path);
+            FileWriter writer = new FileWriter(file);
+            writer.write(string);
+            writer.close();
+          } catch (IOException e) {
+            currentMenu.getSelection("An error occurred");
+            e.printStackTrace();
+          }
+    }
+
+    public ArrayList<Course> getCompletedCourses(){
+        User currentUser = userList.getCurrentUser();
+        ArrayList<Course> completedCourses = new ArrayList<>();
+        ArrayList<EnrolledCourse> enrolledCourses = currentUser.getAllEC(); 
+
+        for (int i = 0; i < enrolledCourses.size(); i++){
+            if (enrolledCourses.get(i).getCourseProgress() == 1.0f){
+                completedCourses.add(enrolledCourses.get(i).getCourse());
+            }
+        }
+        
+        return completedCourses;
+    }
+
 }

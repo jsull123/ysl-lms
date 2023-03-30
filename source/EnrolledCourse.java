@@ -13,7 +13,8 @@ public class EnrolledCourse {
 
     public EnrolledCourse(UUID courseID){
         this.courseID = courseID;
-        this.moduleProgress = new ArrayList<>();
+        int numModules = CourseList.getInstance(null).getCourse(courseID).numModules();
+        this.moduleProgress = new ArrayList<>(numModules);
     }
 
     public ModuleProgress getModuleProgress(int index){
@@ -42,6 +43,8 @@ public class EnrolledCourse {
     }
 
     public float getCourseProgress(){
+        if (moduleProgress.size() == 0) return 0;
+
         float ret = 0;
         for (int i = 0; i < moduleProgress.size(); i++){
             if (moduleProgress.get(i).getHasPassed()){

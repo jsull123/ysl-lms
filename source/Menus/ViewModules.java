@@ -20,9 +20,9 @@ public class ViewModules extends ListMenu<Module> {
         list.size()+"***"+"\n\n"+get().toString();
         ModuleProgress progress = enrolledCourse.getModuleProgress(index);
         if (progress.getHasPassed()){
-            header += "You have completed the module. "+"You scored a "+progress.getQuizGrade()*100+"% on the quiz.";
+            header += "You have completed the module. "+"You scored a "+progress.getQuizGrade()*100+"% on the quiz.\n";
         }else{
-            header += "You haven't completed this module.";
+            header += "You haven't completed this module.\n";
         }
     }
 
