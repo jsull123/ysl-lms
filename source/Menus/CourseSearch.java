@@ -21,11 +21,11 @@ public class CourseSearch extends Menu {
     public void select(int selection){
         switch (selection){
             case 1:
-                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("Java")));
+                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("Java"))).getSelection();
             case 2:
-                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("Python")));
+                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("Python"))).getSelection();
             case 3:
-                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("C")));
+                facade.setCurrentMenu(new EnrollCourseMenu(facade, this, CourseList.getInstance(null).getAllByLanguage("C"))).getSelection();
             case 4:
                 back();
         }
