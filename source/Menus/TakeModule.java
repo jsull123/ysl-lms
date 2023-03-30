@@ -24,7 +24,7 @@ public class TakeModule extends ListMenu<String>{
             header = "This module has no lessons\n";
         }else{
             header = "***Viewing lesson "+(index+1)+" of "+
-            list.size()+"***\n";
+            list.size()+"***\n" + get();
         }
     }
 
