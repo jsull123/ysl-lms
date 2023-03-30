@@ -5,11 +5,18 @@ import source.LMSFacade;
 import source.Review;
 
 public class ViewReviews extends ListMenu<Review> {
-
+    /**
+     * Constructs a ViewReviews object
+     * @param: LMSFacade facade = object to use the Facade methods
+     * @param: Menu pMenu = object to use the data members and methods of Menu class
+     * @param: ArrayList<Review> reviews = List of all the reviews that have been created
+     */
     public ViewReviews(LMSFacade facade, Menu pMenu, ArrayList<Review> reviews) {
         super(facade, pMenu, reviews);  
     }
-
+    /**
+     * Gives the user options based on if they've created a course yet or not
+     */
     private void updateOptions(){
         if (list.size() == 0){
             options = new String[]{"Add Review", "Back"};
@@ -17,7 +24,9 @@ public class ViewReviews extends ListMenu<Review> {
             options = new String[]{"Next", "Previous", "Add Review", "Back"};
         } 
     }
-
+     /**
+     * Gives the user options to choose from
+     */
     protected void updateHeader(){
         if (list.size() == 0){
             header = "This course has no reviews. Choose option 1 to add a review\n";
@@ -27,7 +36,10 @@ public class ViewReviews extends ListMenu<Review> {
         }
         updateOptions();
     }
-
+     /**
+     * Gives the user options to move through this screen of the LMS
+     * @param: int selection = The choice that the user has made
+     */
     public void select(int selection) {
         if (list.size() == 0){
             switch(selection){
