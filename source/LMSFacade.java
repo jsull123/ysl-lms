@@ -256,8 +256,8 @@ public class LMSFacade{
         int checkAnswerResult;
         String error = "";
         while (inProgress) {
-            questionPrompt = error + "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + "\nEnter your answer choice\n";
             while (!validResponse) {
+                questionPrompt = error + "Question " + currentQuestion + ": " + "\n" + questions.get(currentQuestion - 1) + "\nEnter your answer choice\n";
                 userAnswer = LMSUI.promptString(questionPrompt, true).toLowerCase();
                 checkAnswerResult = checkAnswer(userAnswer, questions.get(currentQuestion - 1).getCorrectAnswer());
                 switch (checkAnswerResult) {
@@ -270,11 +270,13 @@ public class LMSFacade{
                     case 1:
                         score++;
                         validResponse = true;
+                        break;
                 }
             }
              currentQuestion++;
              questionPrompt = "";
              error = "";
+             validResponse = false;
              if (currentQuestion > numQuestions) inProgress = false;
         }
         ModuleProgress.setQuizGrade(score/numQuestions);
@@ -292,16 +294,16 @@ public class LMSFacade{
     public int checkAnswer(String userAnswer, int correctAnswer) {
         switch (userAnswer) {
             case "a":
-                if (correctAnswer == 1) return 1;
+                if (correctAnswer == 0) return 1;
                 return 0;
             case "b":
-                if (correctAnswer == 2) return 1;
+                if (correctAnswer == 1) return 1;
                 return 0;
             case "c":
-                if (correctAnswer == 3) return 1;
+                if (correctAnswer == 2) return 1;
                 return 0;
             case "d":
-                if (correctAnswer == 4) return 1;
+                if (correctAnswer == 3) return 1;
                 return 0;
             default:
                 return -1;
