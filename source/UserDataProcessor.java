@@ -10,7 +10,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class UserDataProcessor {
-
+    /**
+     * @return A list of progressions through a module that a user has made
+     * @param JSONArray jModuleProgress = The array of progressions
+     */
     private static ArrayList<ModuleProgress> loadModuleProgress(JSONArray jModuleProgress){
         ArrayList<ModuleProgress> moduleProgress = new ArrayList<>();
         try{
@@ -25,7 +28,10 @@ public class UserDataProcessor {
         }catch(Exception e){};
         return moduleProgress;
     }
-    
+     /**
+     * @return A list of courses that a user has enrolled in
+     * @param JSONArray jEnrolledCourses = The array of courses
+     */
     private static ArrayList<EnrolledCourse> loadEnrolledCourses(JSONArray jEnrolledCourses){
         ArrayList<EnrolledCourse> enrolledCourses = new ArrayList<>();
         try{
@@ -40,7 +46,10 @@ public class UserDataProcessor {
         }catch(Exception e){};
         return enrolledCourses;
     }
-
+     /**
+     * @return An updated list of courses created by an author
+     * @param ArrayList<UUID> createdCourses = The unique IDs of the created courses to be saved
+     */
       // Create a JSONArray out of array list of UUID
     private static JSONArray saveCreatedCourses(ArrayList<UUID> createdCourses){
         JSONArray jCreatedCourses = new JSONArray();
@@ -52,7 +61,10 @@ public class UserDataProcessor {
         }
         return jCreatedCourses;
     }
-
+    /**
+     * @return An updated list of progressions through a module
+     * @param ArrayList<ModuleProgress> moduleProgress = The list of progressions to be saved
+     */
     private static JSONArray saveModuleProgress(ArrayList<ModuleProgress> moduleProgress){
         JSONArray jModuleProgress = new JSONArray();
     
@@ -64,7 +76,10 @@ public class UserDataProcessor {
         }
         return jModuleProgress;
     }
-
+    /**
+     * @return An updated list of courses that a user has enrolled in
+     * @param ArrayList<EnrolledCourse> enrolledCourses = The array of courses
+     */
     // Create a JSONArray out of array list of EnrolledCourse
     private static JSONArray saveEnrolledCourses(ArrayList<EnrolledCourse> enrolledCourses){
         JSONArray jEnrolledCourses = new JSONArray();
@@ -77,7 +92,9 @@ public class UserDataProcessor {
         }
         return jEnrolledCourses;
     }
-
+    /**
+     * @return A list of users from JSON
+     */
     // Load all users from users.json into UserList instance
     public static UserList loadData(){
         ArrayList<User> users = new ArrayList<>();
@@ -114,7 +131,10 @@ public class UserDataProcessor {
     
         return UserList.getInstance(users);
     }
-
+    /**
+     * Saves data to a JSON file
+     * @param UserList userList = List of users to save data from
+     */
     public static void saveData(UserList userList){
         JSONArray jUsers = new JSONArray();
         // Get all users

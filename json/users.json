@@ -1,1 +1,112 @@
-[{"firstName":"James","lastName":"Guy","password":"1","dob":"3\/30\/2023","accountType":"STUDENT","enrolledCourses":[],"createdCourses":[],"userID":"4657bd35-70f0-481d-a7a8-744292e8f3bd","email":"g","username":"jamesguy"},{"firstName":"Allie","lastName":"Anderson","password":"1","dob":"3\/30\/2023","accountType":"STUDENT","enrolledCourses":[],"createdCourses":[],"userID":"086f29ec-2b0f-48cf-9db0-dcdddb3ec742","email":"a","username":"allieanderson"},{"firstName":"John","lastName":"Wisdom","password":"1","dob":"1\/1\/1","accountType":"AUTHOR","enrolledCourses":[],"createdCourses":[{"courseID":"65b23a97-bd9f-4500-9d7b-e3242616198a"},{"courseID":"25c45349-5c9b-4f21-93f7-5e55b7203129"}],"userID":"2d868731-fc40-44b8-a2ac-65d9f5391a24","email":"email","username":"jwisdom"},{"firstName":"scout","lastName":"solace","password":"1","dob":"3\/30\/2023","accountType":"STUDENT","enrolledCourses":[{"moduleProgess":[{"hasPassed":"true","quizGrade":"1.0"},{"hasPassed":"true","quizGrade":"1.0"}],"courseID":"25c45349-5c9b-4f21-93f7-5e55b7203129"},{"moduleProgess":[{"hasPassed":"false","quizGrade":"0.0"},{"hasPassed":"false","quizGrade":"0.0"},{"hasPassed":"false","quizGrade":"0.0"},{"hasPassed":"false","quizGrade":"0.0"},{"hasPassed":"false","quizGrade":"0.0"},{"hasPassed":"false","quizGrade":"0.0"}],"courseID":"65b23a97-bd9f-4500-9d7b-e3242616198a"}],"createdCourses":[],"userID":"8a09943c-9973-4de5-b195-4ffa1b558b4e","email":"s","username":"scoutsolace"},{"firstName":"Robert","lastName":"Robert","password":"r","dob":"3\/30\/2023","accountType":"STUDENT","enrolledCourses":[],"createdCourses":[],"userID":"94f10637-b732-4dce-88fc-92adcfb59372","email":"","username":"robertrobert"}]
+[
+  {
+    "firstName": "James",
+    "lastName": "Guy",
+    "password": "1",
+    "dob": "3/30/2023",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "4657bd35-70f0-481d-a7a8-744292e8f3bd",
+    "email": "g",
+    "username": "jamesguy"
+  },
+  {
+    "firstName": "Allie",
+    "lastName": "Anderson",
+    "password": "1",
+    "dob": "3/30/2023",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "086f29ec-2b0f-48cf-9db0-dcdddb3ec742",
+    "email": "a",
+    "username": "allieanderson"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Wisdom",
+    "password": "1",
+    "dob": "1/1/1",
+    "accountType": "AUTHOR",
+    "enrolledCourses": [],
+    "createdCourses": [
+      {
+        "courseID": "65b23a97-bd9f-4500-9d7b-e3242616198a"
+      },
+      {
+        "courseID": "25c45349-5c9b-4f21-93f7-5e55b7203129"
+      }
+    ],
+    "userID": "2d868731-fc40-44b8-a2ac-65d9f5391a24",
+    "email": "email",
+    "username": "jwisdom"
+  },
+  {
+    "firstName": "scout",
+    "lastName": "solace",
+    "password": "1",
+    "dob": "3/30/2023",
+    "accountType": "STUDENT",
+    "enrolledCourses": [
+      {
+        "moduleProgess": [
+          {
+            "hasPassed": "true",
+            "quizGrade": "1.0"
+          },
+          {
+            "hasPassed": "true",
+            "quizGrade": "1.0"
+          }
+        ],
+        "courseID": "25c45349-5c9b-4f21-93f7-5e55b7203129"
+      },
+      {
+        "moduleProgess": [
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          },
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          },
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          },
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          },
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          },
+          {
+            "hasPassed": "false",
+            "quizGrade": "0.0"
+          }
+        ],
+        "courseID": "65b23a97-bd9f-4500-9d7b-e3242616198a"
+      }
+    ],
+    "createdCourses": [],
+    "userID": "8a09943c-9973-4de5-b195-4ffa1b558b4e",
+    "email": "s",
+    "username": "scoutsolace"
+  },
+  {
+    "firstName": "Robert",
+    "lastName": "Robert",
+    "password": "r",
+    "dob": "3/30/2023",
+    "accountType": "STUDENT",
+    "enrolledCourses": [],
+    "createdCourses": [],
+    "userID": "94f10637-b732-4dce-88fc-92adcfb59372",
+    "email": "",
+    "username": "robertrobert"
+  }
+]

@@ -9,7 +9,10 @@ public class UserList {
     private HashMap<UUID, String> passwordMap;
     private User currentUser;
     private static UserList userList; 
-
+    /**
+     * Singleton constructor for a user list
+     * @param ArrayList<User> users = the list of users
+     */
     private UserList(ArrayList<User> users){
         this.users = new HashMap<>();
         this.passwordMap = new HashMap<>();
@@ -18,7 +21,10 @@ public class UserList {
         }
         currentUser = null;
     }
-
+    /**
+     * @return An instance of UserList
+     * @param ArrayList<User> users = The list of users
+     */
     public static UserList getInstance(ArrayList<User> users){
         if (userList != null) {
             return userList;
@@ -30,7 +36,9 @@ public class UserList {
     public void setCurrentUser(User currentUser){
         this.currentUser = currentUser;
     }
-
+    /**
+     * @return The user from his username
+     */
     public User getUser(String username){
         for(User user : this.users.values()){
             if(username.equals(user.getUsername())){
@@ -39,13 +47,17 @@ public class UserList {
         }
         return null;
     }
-
+    /**
+     * @return an array form of the user list
+     */
     public User[] toArray(){
         User[] u = new User[users.size()];
         users.values().toArray(u);
         return u;
     }
-
+    /**
+     * @return The user from his ID
+     */
     public User getUser(UUID userID){
         return users.get(userID);
     }
@@ -54,12 +66,17 @@ public class UserList {
     public int numUsers(){
         return users.size();
     }
-
+    /**
+     * Adds a user to the password map
+     * @param User user = The user to be added
+     */
     public void addUser(User user){
         users.put(user.getID(), user);
         passwordMap.put(user.getID(), user.getPassword());
     }
-    
+    /**
+     * @return The current user
+     */
     public User getCurrentUser(){
         return currentUser;
     }
