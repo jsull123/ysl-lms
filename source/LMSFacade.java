@@ -15,7 +15,9 @@ public class LMSFacade{
     private UserList userList;
     private CourseList courseList;
     private Menu currentMenu;
-    
+    /**
+     * Constructor for the Facade
+     */
     public LMSFacade(){
         userList = UserDataProcessor.loadData();
         courseList = CourseDataProcessor.loadData();
@@ -23,16 +25,23 @@ public class LMSFacade{
         currentMenu = new WelcomeMenu(this);
         currentMenu.getSelection();
     }
-
+    /**
+     * @return The current menu
+     */
     public Menu getCurrentMenu(){
         return currentMenu;
     }
-
+    /**
+     * @return A new current menu
+     * @param Menu menu = The menu to set as the new current menu
+     */
     public Menu setCurrentMenu(Menu menu){
         currentMenu = menu;
         return currentMenu;
     }
-
+    /**
+     * Logs a user in
+     */
     public void logIn(){
         // Get username
         String username = LMSUI.promptString("Enter your username: ", true);
@@ -60,7 +69,9 @@ public class LMSFacade{
         currentMenu = new MainMenu(this, user);
         currentMenu.getSelection();
     }
-
+    /**
+     * Creates an account for a new user
+     */
     public void createAccount() {
         LMSUI.clearScreen();
         int accountType = LMSUI.promptInt(
@@ -105,19 +116,27 @@ public class LMSFacade{
         currentMenu = new MainMenu(this, user);
         currentMenu.getSelection();
     }
-
+    /**
+     * Exits the user out of the sytem and saves progress
+     */
     public void exit(){
         UserDataProcessor.saveData(userList);
         CourseDataProcessor.saveData(courseList);
         System.exit(0);
     }
-
+    /**
+     * Logs the user out of the current session
+     */
     public void logOut(){
         userList.setCurrentUser(null);
         currentMenu = new WelcomeMenu(this);
         currentMenu.getSelection();
     }
-    
+    /**
+     * creates and posts a comment from the user
+     * @param ArrayList<Comment> comments = The list that the new comment
+     * will be added to
+     */
     public void makeComment(ArrayList<Comment> comments) {
         comments.add(new Comment(
             userList.getCurrentUser().getID(),
@@ -127,17 +146,27 @@ public class LMSFacade{
             ));
         currentMenu.getSelection("Comment added successfully");
     }
-
+    /**
+     * Set a new module title
+     * @param Module module = The module who's title will be changed
+     */
     public void setModuleTitle(Module module) {
         module.setTitle(LMSUI.promptString("Enter a new module title: ", true));
         currentMenu.getSelection("Module title changed.");
     }
-
+    /**
+     * Set a new module topic
+     * @param Module module = The module who's topic will be changed
+     */
     public void setModuleTopic(Module module) {
         module.setTopic(LMSUI.promptString("Enter a new module topic: ", true));
         currentMenu.getSelection("Module topic changed.");
     }
-
+    /**
+     * Creates a new question
+     * @param ArrayList<Question> questions = The list of questions to which
+     * The new question will be added
+     */
     public void createQuestion(ArrayList<Question> questions){
         String question = LMSUI.promptString("Enter the questions question:", true);
         ArrayList<String> answerChoices = new ArrayList<>();
@@ -158,12 +187,20 @@ public class LMSFacade{
 
         currentMenu.getSelection("Question added");
     }
-
+    /**
+     * Create a new lesson
+     * @param ArrayList<String> lessons = The list to which the new
+     * lesson will be added
+     */
     public void createLesson(ArrayList<String> lessons){
         lessons.add(LMSUI.promptString("Type your new lesson here: ", true));
         currentMenu.getSelection("Lesson added");
     }
-
+    /**
+     * Create a new course
+     * @param ArrayList<UUID> courses = The list of courses to which
+     * the created course will be added
+     */
     public void createCourse(ArrayList<UUID> courses){
         Course course = new Course(UUID.randomUUID(),
         LMSUI.promptString("Enter course title:", true), 
@@ -179,7 +216,11 @@ public class LMSFacade{
 
         currentMenu.getSelection("Course created. Use Modify Course to add content to your course");
     }
-
+    /**
+     * Creates a new module
+     * @param ArrayList<Module> modules = The list of modules to which
+     * the created module will be added
+     */
     public void createModule(ArrayList<Module> modules){
         modules.add(new Module(
             LMSUI.promptString("Enter module title: ", true), 
@@ -190,30 +231,49 @@ public class LMSFacade{
 
         currentMenu.getSelection("Module created. Use Modify Lessons and Modify Quiz to add lessons and a quiz to your module");
     }
-
+    /**
+     * Sets a new course title
+     * @param Course course = The course who's title will be changed
+     */
     public void setCourseTitle(Course course){
         course.setTitle(LMSUI.promptString("Enter a new course title:", true));
     }
-
+    /**
+     * Sets a new Course Language
+     * @param Course course = The course who's language will be set
+     */
     public void setCourseLanguage(Course course){
         course.setLanguage(Language.fromString(LMSUI.promptString("Enter a new course language:", true)));
     }
-
+    /**
+     * Sets a new Course description
+     * @param Course course = The course who's description will be set
+     */
     public void setCourseDescription(Course course){
         course.setDescription(LMSUI.promptString("Enter a new course description:", true));
     }
-    
+    /**
+     * Enroll in a new course
+     * @param Course course = The course to be enrolled in
+     */
     public void enrollInCourse(Course course){
         // Doesn't check if they are already enrolled in the course
         User user = userList.getCurrentUser();
         user.addEC(new EnrolledCourse(course.getCourseID()));
         currentMenu.getSelection("Enrolled in: " + course.toString());
     }
-
+    /**
+     * @return Whether or not the answer to a question is correct
+     * @param Question question = The question that is being graded
+     */
     public boolean answerQuestion(Question question) {
         return question.isCorrect(LMSUI.promptInt(question.toString(), true));
     }
-    
+    /**
+     * Creates a new review of a course
+     * @param ArrayList<Review> reviews = The list to which the new 
+     * review will be added
+     */
     public void createReview(ArrayList<Review> reviews){
         reviews.add(new Review(
             userList.getCurrentUser().getID(), 
@@ -223,7 +283,10 @@ public class LMSFacade{
 
         currentMenu.getSelection("Review added");
     }
-
+    /**
+     * Changes the passing grade of a quiz
+     * @param Quiz quiz = The quiz who's passing grade will be changed
+     */
     public void changePassingGrade(Quiz quiz){
         float passingGrade = LMSUI.promptFloat("Enter the passing grade:", true);
         if (passingGrade < 0){
@@ -247,7 +310,12 @@ public class LMSFacade{
             e.printStackTrace();
           }
     }*/
-
+    /**
+     * Method that allows the user to take a quiz
+     * @param Quiz quiz = The quiz that the user is taking
+     * @param ModuleProgress ModuleProgress = The grade that the user passed/failed the quiz
+     * 
+     */
     public void takeQuiz(Quiz quiz, ModuleProgress ModuleProgress) {
         if (quiz.getQuestions().size() == 0){
             currentMenu.getSelection("This quiz has not been created yet");
@@ -297,7 +365,12 @@ public class LMSFacade{
         }
         
     }
-
+    /**
+     * @return A 1 if the user got it correct
+     * and a 0 if the user got it wrong
+     * @param String userAnswer = The answer the user entered
+     * @param int correctAnswer = The correct answer
+     */
     public int checkAnswer(String userAnswer, int correctAnswer) {
         switch (userAnswer) {
             case "a":
@@ -316,14 +389,22 @@ public class LMSFacade{
                 return -1;
         }
     }
-
+    /**
+     * @return The certificate the user earned
+     * @param Course course = the course that the user earned a
+     * certificate for
+     */
     public String getCertificate(Course course){
         User user = userList.getCurrentUser();
         Date date = new Date();
 
         return user.getFirstName()+" "+user.getLastName()+" completed the course "+course.getTitle()+"\n"+date;
     }
-
+    /**
+     * Print messgaes to a file
+     * @param String string = The message to be added
+     * @param String path = The path of the file that gets the message
+     */
     public void outputToFile(String string, String path) {
         try {
             File file = new File(path);
@@ -335,7 +416,9 @@ public class LMSFacade{
             e.printStackTrace();
           }
     }
-
+    /**
+     * @return A list of the user's completed courses
+     */
     public ArrayList<Course> getCompletedCourses(){
         User currentUser = userList.getCurrentUser();
         ArrayList<Course> completedCourses = new ArrayList<>();

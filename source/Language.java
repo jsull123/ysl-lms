@@ -5,7 +5,10 @@ public enum Language {
     PYTHON,
     JAVASCRIPT,
     C;
-    
+    /**
+     * @return The new language set through a given string
+     * @param String s = The language to set
+     */
     public static Language fromString(String s){
         if (s.toUpperCase().equals("JAVA")){
             return JAVA;

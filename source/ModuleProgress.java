@@ -3,7 +3,11 @@ package source;
 public class ModuleProgress {
     private float quizGrade;
     private boolean hasPassed;
-
+    /**
+     * Constructor for a ModuleProgress object
+     * @param float quizGrade = the user's grade on a quiz
+     * @param boolean hasPassed = Whether 
+     */
     public ModuleProgress(float quizGrade, boolean hasPassed){
         this.quizGrade = quizGrade;
         this.hasPassed = hasPassed;
