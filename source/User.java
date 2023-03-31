@@ -106,23 +106,34 @@ public class User {
         }
         return courses;
     }
-
+    /**
+     * @return current course
+     */
     public Course getCC(int index) {
         return getCoursesFromUUID().get(index);
     }
-
+    /**
+     * @return a list of created courses of an author
+     */
     public ArrayList<UUID> getAllCreatedCourses() {
         return createdCourses;
     }
-
+    /**
+     * @return list of IDs of created courses by an author
+     */
     public ArrayList<UUID> getCreatedCoursesIDs(){
         return createdCourses;
     }
-
+    /**
+     * @return the number of created courses of an author
+     */
     public int numCC() {
         return createdCourses.size();
     }
-
+    /**
+     * Adds an enrolled course to the list
+     * @param EnrolledCourse course = The course to be added
+     */
     public void addEC(EnrolledCourse course) {
         for (int i = 0; i < enrolledCourses.size(); i++){
             if (enrolledCourses.get(i).getID() == course.getID())
