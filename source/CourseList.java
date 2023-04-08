@@ -4,19 +4,24 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.ArrayList;
 
-public class CourseList { 
+public class CourseList {
     private HashMap<UUID, Course> courses;
     private static CourseList courseList;
+
     /**
      * Constructor for a CourseList object
+     * 
      * @param ArrayList<Course> courses = List of courses
      */
     private CourseList(ArrayList<Course> courses) {
         this.courses = new HashMap<>();
-        for (int c = 0; c < courses.size(); c++) {
-            addCourse(courses.get(c));
-        }
+
+        if (courses == null)
+            return;
+
+        add(courses);
     }
+
     /**
      * @return Singleton instance for the CourseList constructor
      * @param ArrayList<COurse> courses = List of courses
@@ -28,6 +33,7 @@ public class CourseList {
         courseList = new CourseList(courses);
         return courseList;
     }
+
     /**
      * @return Course at a specified ID
      * @param UUID courseID = ID to find course at
@@ -35,15 +41,19 @@ public class CourseList {
     public Course getCourse(UUID courseID) {
         return courses.get(courseID);
     }
+
     /**
      * Adds a course to the course list
+     * 
      * @param Course course = course to be added
      */
     public void addCourse(Course course) {
         courses.put(course.getCourseID(), course);
     }
+
     /**
      * Updates the information in a course
+     * 
      * @param Course course = The course to be modified
      */
     public void updateCourse(Course course) {
@@ -51,33 +61,46 @@ public class CourseList {
         courses.put(course.getCourseID(), course);
         CourseDataProcessor.saveData(this);
     }
+
     /**
      * @return The number of courses in the list
      */
     public int numCourses() {
         return courses.size();
     }
+
+    public void add(ArrayList<Course> courses){
+        for (int c = 0; c < courses.size(); c++) {
+            addCourse(courses.get(c));
+        }
+    }
+
+    public void clear(){
+        courses.clear();
+    }
+
     /**
      * @return All the course of a given langauge
      * @param String Language = The language to find course by
      */
-    public ArrayList<Course> getAllByLanguage(String language){
+    public ArrayList<Course> getAllByLanguage(String language) {
         Course[] c = new Course[courses.size()];
         courses.values().toArray(c);
 
         ArrayList<Course> ret = new ArrayList<>();
-        for (int i = 0; i < c.length; i++){
-            if (c[i].getLanguage().toString().toLowerCase().equals(language.toLowerCase())){
+        for (int i = 0; i < c.length; i++) {
+            if (c[i].getLanguage().toString().toLowerCase().equals(language.toLowerCase())) {
                 ret.add(c[i]);
             }
         }
 
         return ret;
     }
+
     /**
      * Constructor to turn courses from ArrayList to array
      */
-    public Course[] toArray(){
+    public Course[] toArray() {
         Course[] c = new Course[courses.size()];
         courses.values().toArray(c);
         return c;

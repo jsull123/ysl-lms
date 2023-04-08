@@ -144,7 +144,12 @@ public class CourseDataProcessor {
     /**
      * @return The data of a course (title, language, etc.)
      */
+
     public static CourseList loadData() {
+        return CourseList.getInstance(loadDataToArrayList());
+    }
+
+    public static ArrayList<Course> loadDataToArrayList() {
         ArrayList<Course> courses = new ArrayList<>();
         try{
             FileReader reader = new FileReader(DataConstants.COURSES_FILE_NAME);
@@ -167,7 +172,7 @@ public class CourseDataProcessor {
             e.printStackTrace();
         }
     
-        return CourseList.getInstance(courses);
+        return courses;
     }
      /**
      * @return List of the reviews to be saved to the JSON file
@@ -272,7 +277,6 @@ public class CourseDataProcessor {
         }
 
         return jModules;
-    
     }
     /**
      * Saves all new data set
@@ -295,7 +299,6 @@ public class CourseDataProcessor {
             jCourse.put(DataConstants.MODULES, saveModules(courses[i].getAllModules()));
 
             jCourses.add(jCourse);
-
         }
 
           // Write JSONArray to file
