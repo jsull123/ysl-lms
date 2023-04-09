@@ -6,9 +6,6 @@ import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,7 +23,7 @@ public class TestUserDataProcessor {
         users = new ArrayList<>(Arrays.asList(userList.toArray()));
     }
 
-    @After
+    @AfterEach
     public static void tearDown() {
         users.clear();
     }
@@ -34,7 +31,6 @@ public class TestUserDataProcessor {
     @BeforeEach
 	public void setup() { 
         userList.clear();
-
         userList.addUser(new User(
             UUID.randomUUID(),
             AccountType.fromInt(0), 
@@ -64,5 +60,28 @@ public class TestUserDataProcessor {
         userList.clear();
 	}
 
+    @Test
+    public static void testUserNum() {
+        userList.addUser(new User(
+        UUID.randomUUID(),
+        AccountType.fromInt(0), 
+        "firstname",
+        "lastname",
+        "testStudent1",
+        "testStudent1@gmail.com",
+        "pass123",
+        Date.fromString("04/22/1996"),
+        new ArrayList<>(),
+        new ArrayList<>()
+    ));
+        assertEquals(3, userList.numUsers());
+    }
+
+    @AfterAll
+    public static void oneTimeTearDown() {
+        userList.clear();
+        userList.add(users);
+        UserDataProcessor.saveData(userList);
+    }
 
 }
