@@ -301,7 +301,7 @@ public class CourseDataProcessor {
             jCourses.add(jCourse);
         }
 
-          // Write JSONArray to file
+        // Write JSONArray to file
         try{
             FileWriter file = new FileWriter(DataConstants.COURSES_FILE_NAME);
             file.write(jCourses.toJSONString());
