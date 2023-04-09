@@ -80,4 +80,10 @@ public class UserList {
     public User getCurrentUser(){
         return currentUser;
     }
+
+    public void clear(){
+        users.clear();
+        passwordMap.clear();
+        currentUser = null;
+    }
 }
