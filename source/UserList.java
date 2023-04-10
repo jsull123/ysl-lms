@@ -80,4 +80,16 @@ public class UserList {
     public User getCurrentUser(){
         return currentUser;
     }
+
+    public void clear(){
+        users.clear();
+        passwordMap.clear();
+        currentUser = null;
+    }
+
+    public void add(ArrayList<User> users){
+        for (int i = 0; i < users.size(); i++) {
+            addUser(users.get(i));
+        }
+    }
 }
