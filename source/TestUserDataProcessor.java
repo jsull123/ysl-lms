@@ -302,4 +302,13 @@ class TestUserDataProcessor {
         UserDataProcessor.loadData();
         assertEquals(1, userList.numUsers());
     }
+
+    @Test
+    public void testLoadNullUser() {
+        userList.clear();
+        userList.addUser(null);
+        UserDataProcessor.saveData(userList);
+        UserDataProcessor.loadData();
+        assertEquals(1, userList.numUsers());
+    }
 }
