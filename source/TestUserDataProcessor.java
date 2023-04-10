@@ -34,8 +34,8 @@ class TestUserDataProcessor {
         userList.addUser(new User(
             UUID.randomUUID(),
             AccountType.fromInt(0), 
-            "firstname",
-            "lastname",
+            "firstuser1",
+            "lastuser1",
             "student123",
             "student123@gmail.com",
             "pass123",
@@ -46,8 +46,8 @@ class TestUserDataProcessor {
         userList.addUser(new User(
             UUID.randomUUID(),
             AccountType.fromInt(1), 
-            "firstname",
-            "lastname",
+            "firstuser2",
+            "lastuser2",
             "author123",
             "author123@gmail.com",
             "pass123",
@@ -175,5 +175,140 @@ class TestUserDataProcessor {
     }
 
 
+    @Test
+    public void testSameFirstNames(){
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "same",
+            "lastsfuser1",
+            "sfuser1",
+            "testStudent1@gmail.com",
+            "pass123",
+            Date.fromString("06/01/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "same",
+            "lastsfuser2",
+            "sfuser2",
+            "testStudent2@gmail.com",
+            "pass123",
+            Date.fromString("06/09/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        assertEquals(4, userList.numUsers());
+    }
 
+    @Test
+    public void testSameLastNames(){
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "firstsluser1",
+            "same",
+            "sluser1",
+            "testStudent1@gmail.com",
+            "pass123",
+            Date.fromString("06/01/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "firstsluser2",
+            "same",
+            "sluser2",
+            "testStudent2@gmail.com",
+            "pass123",
+            Date.fromString("06/09/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        assertEquals(4, userList.numUsers());
+    }
+
+    @Test
+    public void testSameFirstLast(){
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "same",
+            "same",
+            "suser1",
+            "testStudent1@gmail.com",
+            "pass123",
+            Date.fromString("06/01/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        userList.addUser(new User(
+            UUID.randomUUID(),
+            AccountType.fromInt(0), 
+            "same",
+            "same",
+            "suser2",
+            "testStudent2@gmail.com",
+            "pass123",
+            Date.fromString("06/09/1995"),
+            new ArrayList<>(),
+            new ArrayList<>()
+        ));
+        assertEquals(4, userList.numUsers());
+    }
+
+    @Test
+    public void testUserSave() {
+        UserDataProcessor.saveData(userList);
+        assertEquals(2, userList.numUsers());
+    }
+
+    @Test
+    public void testNoUserSave() {
+        userList.clear();
+        UserDataProcessor.saveData(userList);
+        assertEquals(0, userList.numUsers());
+    }
+
+    @Test
+    public void testNullUserSave() {
+        userList.clear();
+        userList.add(null);
+        UserDataProcessor.saveData(userList);
+        assertEquals(0, userList.numUsers());
+    }
+
+    @Test
+    public void testLoadUser() {
+        userList.clear();
+        userList.addUser(new User(
+        UUID.randomUUID(),
+        AccountType.fromInt(0), 
+        "test",
+        "test2",
+        "test3",
+        "test4@gmail.com",
+        "pass123",
+        Date.fromString("06/09/1995"),
+        new ArrayList<>(),
+        new ArrayList<>()
+    ));
+        UserDataProcessor.saveData(userList);
+        UserDataProcessor.loadData();
+        assertEquals(1, userList.numUsers());
+    }
+
+    @Test
+    public void testLoadNullUser() {
+        userList.clear();
+        userList.addUser(null);
+        UserDataProcessor.saveData(userList);
+        UserDataProcessor.loadData();
+        assertEquals(1, userList.numUsers());
+    }
 }
